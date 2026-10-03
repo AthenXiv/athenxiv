@@ -51,6 +51,7 @@ return [
     'common.server_error'      => 'Something went wrong on our side. The incident has been logged.',
     'common.language'          => 'Language',
     'common.footer_note'       => 'Papers are independently timestamped with OpenTimestamps.',
+    'footer.open_source' => 'The full source code of this site is open source at :site.',
     'common.select_placeholder' => '— please choose —',
     'common.search'            => 'Search',
     'common.search_placeholder' => 'Search titles, abstracts, keywords or authors…',

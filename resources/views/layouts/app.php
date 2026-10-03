@@ -213,6 +213,18 @@ window.ATHENAEUM = {
         <p class="small"><?= e(Settings::string('site.icp')) ?></p>
       <?php endif; ?>
       <p class="small muted">AthenXiv v<?= e(\ATHENAEUM_VERSION) ?></p>
+      <?php
+      // Small print at the very bottom: the source is open. The :site
+      // placeholder becomes the link, so the sentence stays translatable
+      // without hard-coding a URL or the word GitHub into 30 language files.
+      ?>
+      <p class="small muted">
+        <?= str_replace(
+            ':site',
+            '<a href="https://github.com/AthenXiv/athenxiv" target="_blank" rel="noopener">GitHub</a>',
+            e(__('footer.open_source'))
+        ) ?>
+      </p>
     </div>
   </div>
 </footer>

@@ -51,6 +51,7 @@ return [
     'common.server_error' => '我们这边出了点问题，该故障已被记录。',
     'common.language' => '语言',
     'common.footer_note' => '论文均通过 OpenTimestamps 独立完成时间戳存证。',
+    'footer.open_source' => '本站的源代码已全面开源至 :site。',
     'common.select_placeholder' => '— 请选择 —',
     'common.search' => '搜索',
     'common.search_placeholder' => '搜索标题、摘要、关键词或作者…',
