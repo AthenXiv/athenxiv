@@ -50,6 +50,7 @@ return [
     'common.server_error' => 'Qualcosa è andato storto dalla nostra parte. L’incidente è stato registrato.',
     'common.language' => 'Lingua',
     'common.footer_note' => 'Gli articoli sono marcati temporalmente in modo indipendente con OpenTimestamps.',
+    'footer.open_source' => 'Il codice sorgente completo di questo sito è open source su :site.',
     'common.select_placeholder' => '— scegli —',
     'common.search' => 'Cerca',
     'common.search_placeholder' => 'Cerca titoli, sommari, parole chiave o autori…',

@@ -51,6 +51,7 @@ return [
     'common.server_error'      => '我們這邊發生了問題，已將此狀況記錄下來。',
     'common.language'          => '語言',
     'common.footer_note'       => '所有論文均以 OpenTimestamps 獨立完成時戳存證。',
+    'footer.open_source' => '本站的完整原始碼已全面開源，詳見 :site。',
     'common.select_placeholder' => '— 請選擇 —',
     'common.search'            => '搜尋',
     'common.search_placeholder' => '搜尋標題、摘要、關鍵字或作者…',

@@ -50,6 +50,7 @@ return [
     'common.server_error' => 'เกิดข้อผิดพลาดในระบบของเรา เหตุการณ์นี้ได้ถูกบันทึกไว้แล้ว',
     'common.language' => 'ภาษา',
     'common.footer_note' => 'บทความทุกชิ้นได้รับการประทับเวลาอย่างอิสระด้วย OpenTimestamps',
+    'footer.open_source' => 'ซอร์สโค้ดทั้งหมดของเว็บไซต์นี้เป็นโอเพนซอร์สที่ :site',
     'common.select_placeholder' => '— กรุณาเลือก —',
     'common.search' => 'ค้นหา',
     'common.search_placeholder' => 'ค้นหาชื่อเรื่อง บทคัดย่อ คำสำคัญ หรือผู้เขียน…',

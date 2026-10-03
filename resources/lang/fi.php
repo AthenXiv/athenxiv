@@ -51,6 +51,7 @@ return [
     'common.server_error'          => 'Jotain meni pieleen meidän päässämme. Tapahtuma on kirjattu lokiin.',
     'common.language'              => 'Kieli',
     'common.footer_note'           => 'Artikkeleille luodaan riippumaton aikaleima OpenTimestampsin avulla.',
+    'footer.open_source' => 'Tämän sivuston koko lähdekoodi on avointa lähdekoodia — katso :site.',
     'common.select_placeholder'    => '— valitse —',
     'common.search'                => 'Haku',
     'common.search_placeholder'    => 'Hae otsikoista, tiivistelmistä, avainsanoista tai tekijöistä…',

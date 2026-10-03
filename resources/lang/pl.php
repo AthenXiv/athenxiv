@@ -51,6 +51,7 @@ return [
     'common.server_error'          => 'Coś poszło nie tak po naszej stronie. Zdarzenie zostało zapisane w dzienniku.',
     'common.language'              => 'Język',
     'common.footer_note'           => 'Artykuły są niezależnie oznaczane znacznikiem czasu za pomocą OpenTimestamps.',
+    'footer.open_source' => 'Pełny kod źródłowy tej witryny znajdziesz jako open source na :site.',
     'common.select_placeholder'    => '— wybierz —',
     'common.search'                => 'Szukaj',
     'common.search_placeholder'    => 'Szukaj tytułów, streszczeń, słów kluczowych lub autorów…',

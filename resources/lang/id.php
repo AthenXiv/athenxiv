@@ -51,6 +51,7 @@ return [
     'common.server_error'      => 'Terjadi kesalahan di sisi kami. Insiden ini telah dicatat.',
     'common.language'          => 'Bahasa',
     'common.footer_note'       => 'Makalah diberi stempel waktu secara independen dengan OpenTimestamps.',
+    'footer.open_source' => 'Kode sumber lengkap situs ini tersedia sebagai sumber terbuka di :site.',
     'common.select_placeholder' => '— silakan pilih —',
     'common.search'            => 'Cari',
     'common.search_placeholder' => 'Cari judul, ringkasan, kata kunci, atau penulis…',

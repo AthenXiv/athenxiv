@@ -51,6 +51,7 @@ return [
     'common.server_error'      => 'Algo ha fallado por nuestra parte. El incidente ha quedado registrado.',
     'common.language'          => 'Idioma',
     'common.footer_note'       => 'Los artículos reciben un sello de tiempo independiente con OpenTimestamps.',
+    'footer.open_source' => 'El código fuente completo de este sitio es de código abierto en :site.',
     'common.select_placeholder' => '— elige una opción —',
     'common.search'            => 'Buscar',
     'common.search_placeholder' => 'Busca por título, resumen, palabras clave o autores…',

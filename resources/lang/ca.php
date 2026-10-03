@@ -50,6 +50,7 @@ return [
     'common.server_error'       => 'Alguna cosa ha fallat a la nostra banda. L\'incident s\'ha registrat.',
     'common.language'           => 'Idioma',
     'common.footer_note'        => 'Els articles reben una marca de temps independent amb OpenTimestamps.',
+    'footer.open_source' => 'El codi font complet d\'aquest lloc està publicat com a codi obert a :site.',
     'common.select_placeholder' => '— tria una opció —',
     'common.search'             => 'Cerca',
     'common.search_placeholder' => 'Cerca títols, resums, paraules clau o autors…',

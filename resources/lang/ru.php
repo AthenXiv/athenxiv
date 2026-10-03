@@ -51,6 +51,7 @@ return [
     'common.server_error' => 'На нашей стороне произошла ошибка. Инцидент зарегистрирован.',
     'common.language' => 'Язык',
     'common.footer_note' => 'Статьи независимо заверяются метками времени с помощью OpenTimestamps.',
+    'footer.open_source' => 'Исходный код этого сайта полностью открыт и доступен на :site.',
     'common.select_placeholder' => '— выберите —',
     'common.search' => 'Поиск',
     'common.search_placeholder' => 'Поиск по названиям, аннотациям, ключевым словам и авторам…',

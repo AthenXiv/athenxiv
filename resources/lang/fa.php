@@ -51,6 +51,7 @@ return [
     'common.server_error' => 'خطایی از سمت ما رخ داد. این رویداد ثبت شد.',
     'common.language' => 'زبان',
     'common.footer_note' => 'مقاله‌ها هر یک به‌طور مستقل با OpenTimestamps مُهر زمانی می‌خورند.',
+    'footer.open_source' => 'کد منبع کامل این تارنما به‌صورت متن‌باز در :site منتشر شده است.',
     'common.select_placeholder' => '— لطفاً انتخاب کنید —',
     'common.search' => 'جست‌وجو',
     'common.search_placeholder' => 'جست‌وجو در عنوان‌ها، چکیده‌ها، کلیدواژه‌ها یا نویسندگان…',

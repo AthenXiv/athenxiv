@@ -52,6 +52,7 @@ return [
     'common.server_error'      => '서버에서 문제가 발생했습니다. 해당 오류는 기록되었습니다.',
     'common.language'          => '언어',
     'common.footer_note'       => '논문은 OpenTimestamps로 독립적으로 타임스탬프가 찍힙니다.',
+    'footer.open_source' => '이 사이트의 전체 소스 코드는 :site에서 오픈 소스로 공개되어 있습니다.',
     'common.select_placeholder' => '— 선택해 주세요 —',
     'common.search'            => '검색',
     'common.search_placeholder' => '제목, 초록, 키워드 또는 저자를 검색…',

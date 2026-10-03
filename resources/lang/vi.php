@@ -51,6 +51,7 @@ return [
     'common.server_error'      => 'Đã xảy ra lỗi từ phía chúng tôi. Sự cố đã được ghi lại.',
     'common.language'          => 'Ngôn ngữ',
     'common.footer_note'       => 'Các bài viết được đóng dấu thời gian độc lập bằng OpenTimestamps.',
+    'footer.open_source' => 'Toàn bộ mã nguồn của trang này là mã nguồn mở tại :site.',
     'common.select_placeholder' => '— vui lòng chọn —',
     'common.search'            => 'Tìm kiếm',
     'common.search_placeholder' => 'Tìm theo tiêu đề, tóm tắt, từ khóa hoặc tác giả…',

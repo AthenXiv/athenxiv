@@ -51,6 +51,7 @@ return [
     'common.server_error'      => 'サーバー側で問題が発生しました。この障害は記録されています。',
     'common.language'          => '言語',
     'common.footer_note'       => '論文には OpenTimestamps による独立したタイムスタンプが付与されています。',
+    'footer.open_source' => 'このサイトの全ソースコードは :site でオープンソースとして公開されています。',
     'common.select_placeholder' => '— 選択してください —',
     'common.search'            => '検索',
     'common.search_placeholder' => 'タイトル、要旨、キーワード、著者で検索…',

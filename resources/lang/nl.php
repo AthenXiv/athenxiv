@@ -51,6 +51,7 @@ return [
     'common.server_error'          => 'Er ging iets mis aan onze kant. Het incident is vastgelegd.',
     'common.language'              => 'Taal',
     'common.footer_note'           => 'Artikelen krijgen onafhankelijk een tijdstempel via OpenTimestamps.',
+    'footer.open_source' => 'De volledige broncode van deze site staat als open source op :site.',
     'common.select_placeholder'    => '— maak een keuze —',
     'common.search'                => 'Zoeken',
     'common.search_placeholder'    => 'Zoek in titels, samenvattingen, trefwoorden of auteurs…',

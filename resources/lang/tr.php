@@ -51,6 +51,7 @@ return [
     'common.server_error'          => 'Bizim tarafımızda bir şeyler ters gitti. Olay kayıt altına alındı.',
     'common.language'              => 'Dil',
     'common.footer_note'           => 'Makalelere OpenTimestamps ile bağımsız zaman damgası eklenir.',
+    'footer.open_source' => 'Bu sitenin tüm kaynak kodu :site adresinde açık kaynak olarak yayınlanmaktadır.',
     'common.select_placeholder'    => '— lütfen seçin —',
     'common.search'                => 'Ara',
     'common.search_placeholder'    => 'Başlıklarda, özetlerde, anahtar sözcüklerde veya yazarlarda ara…',

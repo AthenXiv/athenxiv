@@ -50,6 +50,7 @@ return [
     'common.server_error' => 'Κάτι πήγε στραβά από τη δική μας πλευρά. Το περιστατικό καταγράφηκε.',
     'common.language' => 'Γλώσσα',
     'common.footer_note' => 'Οι εργασίες φέρουν ανεξάρτητη χρονική σήμανση με OpenTimestamps.',
+    'footer.open_source' => 'Ο πλήρης πηγαίος κώδικας αυτού του ιστότοπου είναι ανοιχτού κώδικα στο :site.',
     'common.select_placeholder' => '— παρακαλώ επιλέξτε —',
     'common.search' => 'Αναζήτηση',
     'common.search_placeholder' => 'Αναζήτηση σε τίτλους, περιλήψεις, λέξεις-κλειδιά ή συγγραφείς…',

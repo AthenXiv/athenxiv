@@ -51,6 +51,7 @@ return [
     'common.server_error' => 'Noget gik galt hos os. Hændelsen er blevet logget.',
     'common.language' => 'Sprog',
     'common.footer_note' => 'Artiklerne tidsstemples uafhængigt med OpenTimestamps.',
+    'footer.open_source' => 'Hele kildekoden til dette websted er tilgængelig som open source på :site.',
     'common.select_placeholder' => '— vælg venligst —',
     'common.search' => 'Søg',
     'common.search_placeholder' => 'Søg titler, resuméer, nøgleord eller forfattere…',

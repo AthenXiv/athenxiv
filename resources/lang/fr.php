@@ -51,6 +51,7 @@ return [
     'common.server_error' => 'Une erreur est survenue de notre côté. L\'incident a été consigné.',
     'common.language' => 'Langue',
     'common.footer_note' => 'Les articles sont horodatés de manière indépendante avec OpenTimestamps.',
+    'footer.open_source' => 'Le code source complet de ce site est publié en open source sur :site.',
     'common.select_placeholder' => '— veuillez choisir —',
     'common.search' => 'Rechercher',
     'common.search_placeholder' => 'Rechercher des titres, résumés, mots-clés ou auteurs…',

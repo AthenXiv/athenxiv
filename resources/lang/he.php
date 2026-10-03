@@ -52,6 +52,7 @@ return [
     'common.server_error' => 'משהו נכשל אצלנו. התקלה נרשמה ביומן.',
     'common.language' => 'שפה',
     'common.footer_note' => 'המאמרים נחתמים באופן בלתי תלוי בחתימת זמן OpenTimestamps.',
+    'footer.open_source' => 'קוד המקור המלא של האתר הזה זמין כקוד פתוח ב-:site.',
     'common.select_placeholder' => '— נא לבחור —',
     'common.search' => 'חיפוש',
     'common.search_placeholder' => 'חיפוש לפי כותרות, תקצירים, מילות מפתח או מחברים…',

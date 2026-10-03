@@ -51,6 +51,7 @@ return [
     'common.server_error'      => 'Auf unserer Seite ist ein Fehler aufgetreten. Der Vorfall wurde protokolliert.',
     'common.language'          => 'Sprache',
     'common.footer_note'       => 'Aufsätze werden unabhängig mit OpenTimestamps zeitgestempelt.',
+    'footer.open_source' => 'Der vollständige Quellcode dieser Website ist als Open Source verfügbar unter :site.',
     'common.select_placeholder' => '— bitte auswählen —',
     'common.search'            => 'Suchen',
     'common.search_placeholder' => 'Titel, Zusammenfassungen, Schlüsselwörter oder Autoren suchen…',

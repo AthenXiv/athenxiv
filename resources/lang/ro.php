@@ -51,6 +51,7 @@ return [
     'common.server_error'      => 'Ceva nu a funcționat la noi. Incidentul a fost înregistrat.',
     'common.language'          => 'Limbă',
     'common.footer_note'       => 'Lucrările sunt marcate temporal în mod independent cu OpenTimestamps.',
+    'footer.open_source' => 'Codul sursă complet al acestui site este publicat ca open source pe :site.',
     'common.select_placeholder' => '— vă rugăm să alegeți —',
     'common.search'            => 'Caută',
     'common.search_placeholder' => 'Căutați titluri, rezumate, cuvinte-cheie sau autori…',

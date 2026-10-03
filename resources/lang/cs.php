@@ -51,6 +51,7 @@ return [
     'common.server_error'      => 'Na naší straně došlo k chybě. Incident byl zaznamenán.',
     'common.language'          => 'Jazyk',
     'common.footer_note'       => 'Příspěvky jsou nezávisle opatřeny časovým razítkem pomocí OpenTimestamps.',
+    'footer.open_source' => 'Úplný zdrojový kód tohoto webu najdete jako open source na :site.',
     'common.select_placeholder' => '— vyberte prosím —',
     'common.search'            => 'Hledat',
     'common.search_placeholder' => 'Hledat v názvech, abstraktech, klíčových slovech nebo autorech…',

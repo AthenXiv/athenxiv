@@ -52,6 +52,7 @@ return [
     'common.server_error' => 'हमारी ओर से कुछ गलत हो गया। घटना दर्ज कर ली गई है।',
     'common.language' => 'भाषा',
     'common.footer_note' => 'शोधपत्रों पर OpenTimestamps के साथ स्वतंत्र रूप से टाइमस्टैम्प लगाया जाता है।',
+    'footer.open_source' => 'इस साइट का पूरा स्रोत कोड :site पर ओपन सोर्स के रूप में उपलब्ध है।',
     'common.select_placeholder' => '— कृपया चुनें —',
     'common.search' => 'खोजें',
     'common.search_placeholder' => 'शीर्षक, सारांश, कीवर्ड या लेखक खोजें…',

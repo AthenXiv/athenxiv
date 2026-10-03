@@ -50,6 +50,7 @@ return [
     'common.server_error'       => 'Valami hiba történt a mi oldalunkon. Az esetet naplóztuk.',
     'common.language'           => 'Nyelv',
     'common.footer_note'        => 'A tanulmányok független időbélyegzést kapnak az OpenTimestamps segítségével.',
+    'footer.open_source' => 'Az oldal teljes forráskódja nyílt forráskódként érhető el a(z) :site oldalon.',
     'common.select_placeholder' => '— válassz —',
     'common.search'             => 'Keresés',
     'common.search_placeholder' => 'Keresés címekben, absztraktokban, kulcsszavakban vagy szerzőkben…',

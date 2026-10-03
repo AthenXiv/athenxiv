@@ -51,6 +51,7 @@ return [
     'common.server_error' => 'حدث خطأ من جانبنا. وقد سُجِّلت الواقعة في السجلّ.',
     'common.language' => 'اللغة',
     'common.footer_note' => 'تُختم الأوراق زمنيًّا كلٌّ على حدة بواسطة OpenTimestamps.',
+    'footer.open_source' => 'الشيفرة المصدرية الكاملة لهذا الموقع مفتوحة المصدر على :site.',
     'common.select_placeholder' => '— يُرجى الاختيار —',
     'common.search' => 'بحث',
     'common.search_placeholder' => 'ابحث في العناوين أو الملخّصات أو الكلمات المفتاحية أو أسماء المؤلفين…',

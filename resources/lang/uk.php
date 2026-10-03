@@ -51,6 +51,7 @@ return [
     'common.server_error' => 'На нашому боці сталася помилка. Інцидент зареєстровано.',
     'common.language' => 'Мова',
     'common.footer_note' => 'Статті незалежно засвідчуються мітками часу за допомогою OpenTimestamps.',
+    'footer.open_source' => 'Вихідний код цього сайту повністю відкритий і доступний на :site.',
     'common.select_placeholder' => '— будь ласка, виберіть —',
     'common.search' => 'Пошук',
     'common.search_placeholder' => 'Пошук за назвами, анотаціями, ключовими словами та авторами…',

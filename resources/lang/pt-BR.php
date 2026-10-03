@@ -50,6 +50,7 @@ return [
     'common.server_error' => 'Algo deu errado do nosso lado. A ocorrência foi registrada.',
     'common.language' => 'Idioma',
     'common.footer_note' => 'Os artigos são carimbados temporalmente de forma independente com OpenTimestamps.',
+    'footer.open_source' => 'O código-fonte completo deste site é de código aberto em :site.',
     'common.select_placeholder' => '— faça uma escolha —',
     'common.search' => 'Pesquisar',
     'common.search_placeholder' => 'Pesquise títulos, resumos, palavras-chave ou autores…',

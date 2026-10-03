@@ -51,6 +51,7 @@ return [
     'common.server_error' => 'Något gick fel hos oss. Händelsen har loggats.',
     'common.language' => 'Språk',
     'common.footer_note' => 'Artiklarna tidsstämplas oberoende med OpenTimestamps.',
+    'footer.open_source' => 'Hela källkoden för den här webbplatsen är öppen och finns på :site.',
     'common.select_placeholder' => '— välj —',
     'common.search' => 'Sök',
     'common.search_placeholder' => 'Sök titlar, sammanfattningar, nyckelord eller författare…',
