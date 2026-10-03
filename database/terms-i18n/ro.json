@@ -1,0 +1,5 @@
+{
+  "auth.terms": "Accept :policy și îmi asum răspunderea pentru materialul pe care îl încarc.",
+  "auth.terms_policy": "politica de utilizare",
+  "auth.code_sent": "Un cod din șase cifre este pe drum spre :email. Rămâne valabil 10 minute. Dacă nu ajunge, verificați folderul de spam."
+}

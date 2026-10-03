@@ -1,0 +1,5 @@
+{
+  "auth.terms": ":policy metnini kabul ediyor ve yüklediğim materyalin sorumluluğunu üstleniyorum.",
+  "auth.terms_policy": "kullanıcı politikası",
+  "auth.code_sent": "Altı haneli bir kod :email adresine doğru yola çıktı. 10 dakika geçerli kalır. Ulaşmazsa lütfen spam klasörünüzü kontrol edin."
+}

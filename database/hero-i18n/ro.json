@@ -1,0 +1,9 @@
+{
+  "common.tagline": "O arhivă deschisă pentru cercetare cu marcă temporală, din toate disciplinele",
+  "home.hero_title": "Publicați-vă cercetarea cu o prioritate verificabilă",
+  "home.hero_subtitle": "AthenXiv este o arhivă deschisă pentru cercetarea din orice domeniu. Fiecare lucrare trimisă este hash-uită și expediată către calendarele OpenTimestamps în momentul încărcării, astfel încât existența lucrării dumneavoastră poate fi verificată în blockchainul Bitcoin — indiferent dacă este sau nu acceptată spre publicare aici.",
+  "meta.description": "O arhivă deschisă și multidisciplinară pentru lucrări de cercetare, cu dovezi OpenTimestamps, citire PDF în browser și metadate în treizeci de limbi.",
+  "meta.keywords": "acces deschis, preprinturi, lucrări de cercetare, OpenTimestamps, Bitcoin, marcare temporală, multidisciplinar",
+  "page.about_p1": "AthenXiv este o arhivă deschisă pentru cercetarea din orice domeniu — articole, traduceri, comentarii și preprinturi. Există din două motive: să le ofere autorilor independenți un loc unde să publice fără filtre instituționale și să facă prioritatea unui text verificabilă.",
+  "page.guidelines_p1": "Oricine poate trimite o lucrare. Nu există cerințe instituționale, taxă de trimitere sau barieră de peer review. Editorii verifică dacă lucrarea este lizibilă, de sine stătătoare și reprezintă o cercetare autentică; o pot respinge, pot cere modificări sau pot muta lucrarea într-o altă secțiune."
+}

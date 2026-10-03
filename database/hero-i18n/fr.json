@@ -1,0 +1,9 @@
+{
+  "common.tagline": "Une archive ouverte pour la recherche horodatée, dans toutes les disciplines",
+  "home.hero_title": "Publiez vos recherches avec une preuve de priorité vérifiable",
+  "home.hero_subtitle": "AthenXiv est une archive ouverte pour la recherche dans tous les domaines. Chaque soumission est hachée et transmise aux calendriers OpenTimestamps dès son téléversement : l'existence de votre travail peut ainsi être vérifiée par rapport à la blockchain Bitcoin, qu'il soit ou non accepté pour publication ici.",
+  "meta.description": "Une archive ouverte et multidisciplinaire d'articles de recherche, avec preuves OpenTimestamps, lecture des PDF dans le navigateur et métadonnées en trente langues.",
+  "meta.keywords": "accès ouvert, préprints, articles de recherche, OpenTimestamps, Bitcoin, horodatage, multidisciplinaire",
+  "page.about_p1": "AthenXiv est une archive ouverte pour la recherche dans tous les domaines — articles, traductions, commentaires et préprints. Elle existe pour deux raisons : offrir aux auteurs indépendants un lieu où publier sans filtrage institutionnel, et rendre vérifiable la priorité d'un texte.",
+  "page.guidelines_p1": "Tout le monde peut soumettre. Aucune affiliation institutionnelle n'est exigée, il n'y a pas de frais de soumission et aucune barrière d'évaluation par les pairs. Les éditeurs vérifient qu'une soumission est lisible, autonome et constitue un véritable travail de recherche ; ils peuvent la refuser, demander des modifications ou déplacer un article d'une section à une autre."
+}

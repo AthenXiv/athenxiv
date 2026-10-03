@@ -1,0 +1,5 @@
+{
+  "auth.terms": "Akceptuję :policy i odpowiadam za przesyłany materiał.",
+  "auth.terms_policy": "polityka użytkownika",
+  "auth.code_sent": "Sześciocyfrowy kod jest w drodze na :email. Jest ważny 10 minut. Jeśli wiadomość nie dotrze, sprawdź folder ze spamem."
+}

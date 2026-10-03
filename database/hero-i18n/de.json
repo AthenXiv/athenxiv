@@ -1,0 +1,9 @@
+{
+  "common.tagline": "Ein offenes Archiv für zeitgestempelte Forschung in allen Disziplinen",
+  "home.hero_title": "Veröffentliche deine Forschung mit einem verifizierbaren Prioritätsanspruch",
+  "home.hero_subtitle": "AthenXiv ist ein offenes Archiv für Forschung aus allen Fachgebieten. Jede Einreichung wird gehasht und im Moment des Hochladens an die OpenTimestamps-Kalender übermittelt, sodass die Existenz deiner Arbeit gegen die Bitcoin-Blockchain überprüft werden kann – unabhängig davon, ob sie hier zur Veröffentlichung angenommen wird.",
+  "meta.description": "Ein offenes, multidisziplinäres Archiv für Forschungsarbeiten, mit OpenTimestamps-Nachweisen, PDF-Anzeige im Browser und Metadaten in dreißig Sprachen.",
+  "meta.keywords": "Open Access, Preprints, Forschungsarbeiten, OpenTimestamps, Bitcoin, Zeitstempeln, multidisziplinär",
+  "page.about_p1": "AthenXiv ist ein offenes Archiv für Forschung in allen Fachgebieten – Artikel, Übersetzungen, Kommentare und Preprints. Es gibt zwei Gründe dafür: unabhängigen Autorinnen und Autoren einen Ort zum Publizieren ohne institutionelle Zugangshürden zu geben und die Priorität eines Textes überprüfbar zu machen.",
+  "page.guidelines_p1": "Jede und jeder kann einreichen. Es gibt keine institutionelle Voraussetzung, keine Einreichungsgebühr und keine Begutachtungshürde. Die Redaktion prüft, ob eine Einreichung lesbar, in sich geschlossen und eine echte Forschungsarbeit ist; sie kann sie ablehnen, Änderungen verlangen oder einen Aufsatz in einen anderen Bereich verschieben."
+}

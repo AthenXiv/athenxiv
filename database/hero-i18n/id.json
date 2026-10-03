@@ -1,0 +1,9 @@
+{
+    "common.tagline": "Arsip terbuka untuk penelitian bercap waktu di semua bidang",
+    "home.hero_title": "Terbitkan penelitian Anda dengan klaim prioritas yang dapat diverifikasi",
+    "home.hero_subtitle": "AthenXiv adalah arsip terbuka untuk penelitian di segala bidang. Setiap naskah yang dikirim di-hash dan langsung diteruskan ke kalender OpenTimestamps publik begitu diunggah, sehingga keberadaan karya Anda dapat diverifikasi terhadap blockchain Bitcoin — baik naskah itu diterima untuk diterbitkan di sini maupun tidak.",
+    "meta.description": "Arsip terbuka dan multidisiplin untuk makalah penelitian, dengan bukti OpenTimestamps, pembacaan PDF di peramban, dan metadata dalam tiga puluh bahasa.",
+    "meta.keywords": "akses terbuka, pracetak, makalah penelitian, OpenTimestamps, Bitcoin, cap waktu, multidisiplin",
+    "page.about_p1": "AthenXiv adalah arsip terbuka untuk penelitian di segala bidang — artikel, terjemahan, komentar, dan pracetak. Arsip ini ada karena dua alasan: memberi penulis independen tempat menerbitkan tanpa penjaga gerbang institusional, dan membuat prioritas sebuah teks dapat diverifikasi.",
+    "page.guidelines_p1": "Siapa pun boleh mengirim. Tidak ada syarat institusional, tidak ada biaya pengiriman, dan tidak ada gerbang telaah sejawat. Editor memeriksa bahwa naskah yang dikirim dapat dibaca, berdiri sendiri, dan benar-benar karya penelitian; mereka dapat menolaknya, meminta perubahan, atau memindahkan makalah antar seksi."
+}

@@ -1,0 +1,9 @@
+{
+  "common.tagline": "Otwarte archiwum badań ze wszystkich dziedzin, opatrzonych znacznikiem czasu",
+  "home.hero_title": "Publikuj swoje badania z weryfikowalnym pierwszeństwem",
+  "home.hero_subtitle": "AthenXiv to otwarte archiwum badań ze wszystkich dziedzin. Każde zgłoszenie jest hashowane i w chwili przesłania trafia do kalendarzy OpenTimestamps, dzięki czemu istnienie Twojej pracy można zweryfikować w blockchainie Bitcoin — niezależnie od tego, czy zostanie tu przyjęta do publikacji.",
+  "meta.description": "Otwarte, multidyscyplinarne archiwum prac naukowych z dowodami OpenTimestamps, czytaniem PDF w przeglądarce i metadanymi w trzydziestu językach.",
+  "meta.keywords": "otwarty dostęp, preprinty, prace naukowe, OpenTimestamps, Bitcoin, znaczniki czasu, multidyscyplinarne",
+  "page.about_p1": "AthenXiv to otwarte archiwum badań ze wszystkich dziedzin — artykułów, tłumaczeń, komentarzy i preprintów. Istnieje z dwóch powodów: aby dać niezależnym autorom miejsce do publikowania bez instytucjonalnej kontroli dostępu oraz aby pierwszeństwo tekstu było weryfikowalne.",
+  "page.guidelines_p1": "Zgłosić może każdy. Nie ma wymogów instytucjonalnych, opłaty za zgłoszenie ani bariery recenzji naukowej. Redaktorzy sprawdzają, czy zgłoszenie jest czytelne, samodzielne i stanowi rzetelną pracę badawczą; mogą je odrzucić, poprosić o zmiany lub przenieść artykuł do innego działu."
+}

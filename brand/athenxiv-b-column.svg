@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="AthenXiv mark">
+  <title>AthenXiv — anchored column</title>
+  <!--
+    Concept B: "Anchored column".
+    A Doric column (capital, shaft with flutes) whose base runs down into a
+    pin/anchor tip, with the anchored moment marked by a square node on the
+    baseline. Reads as "text set in stone, fixed in time".
+  -->
+  <rect width="512" height="512" rx="112" fill="#1e3a8a"/>
+  <g fill="#ffffff">
+    <rect x="112" y="112" width="288" height="40" rx="8"/>
+    <rect x="144" y="152" width="224" height="24"/>
+  </g>
+  <g fill="#c7d7f5">
+    <rect x="176" y="176" width="48" height="184"/>
+    <rect x="232" y="176" width="48" height="184"/>
+    <rect x="288" y="176" width="48" height="184"/>
+  </g>
+  <g fill="#ffffff">
+    <rect x="144" y="360" width="224" height="24"/>
+    <rect x="112" y="384" width="288" height="40" rx="8"/>
+    <path d="M256 424 L304 470 L256 496 L208 470 Z"/>
+  </g>
+  <rect x="236" y="436" width="40" height="40" rx="8" fill="#1e3a8a" opacity="0"/>
+</svg>

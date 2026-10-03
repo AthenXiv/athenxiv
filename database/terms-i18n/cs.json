@@ -1,0 +1,5 @@
+{
+  "auth.terms": "Přijímám :policy a odpovídám za materiál, který nahrávám.",
+  "auth.terms_policy": "zásady užívání",
+  "auth.code_sent": "Šestimístný kód je na cestě na adresu :email. Zůstává v platnosti 10 minut. Pokud zpráva nedorazí, zkontrolujte složku se spamem."
+}

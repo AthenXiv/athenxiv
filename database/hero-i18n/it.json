@@ -1,0 +1,9 @@
+{
+  "common.tagline": "Un archivio aperto per la ricerca con marcatura temporale in ogni disciplina",
+  "home.hero_title": "Pubblicate la vostra ricerca con una prova di priorità verificabile",
+  "home.hero_subtitle": "AthenXiv è un archivio aperto per la ricerca in ogni campo. Ogni contributo viene sottoposto a hash e inviato ai calendari pubblici di OpenTimestamps nel momento stesso del caricamento, così l'esistenza del vostro lavoro può essere verificata rispetto alla blockchain Bitcoin, indipendentemente dal fatto che venga accettato o meno per la pubblicazione qui.",
+  "meta.description": "Un archivio aperto e multidisciplinare per articoli di ricerca, con prove OpenTimestamps, lettura dei PDF nel browser e metadati in trenta lingue.",
+  "meta.keywords": "accesso aperto, preprint, articoli di ricerca, OpenTimestamps, Bitcoin, marcatura temporale, multidisciplinare",
+  "page.about_p1": "AthenXiv è un archivio aperto per la ricerca in ogni campo — articoli, traduzioni, commenti e preprint. Esiste per due motivi: dare agli autori indipendenti un luogo dove pubblicare senza filtri istituzionali e rendere verificabile la priorità di un testo.",
+  "page.guidelines_p1": "Chiunque può inviare un contributo. Non servono affiliazioni istituzionali, non ci sono costi di invio né sbarramenti di revisione tra pari. Gli editor verificano che un contributo sia leggibile, completo e un vero lavoro di ricerca; possono rifiutarlo, chiedere modifiche o spostare un articolo da una sezione all'altra."
+}

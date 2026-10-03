@@ -1,0 +1,5 @@
+{
+  "auth.terms": "I accept the :policy and take responsibility for the material I upload.",
+  "auth.terms_policy": "user policy",
+  "auth.code_sent": "A six-digit code is on its way to :email. It stays valid for 10 minutes. If it does not arrive, please check your spam folder."
+}

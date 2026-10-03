@@ -1,0 +1,9 @@
+{
+  "common.tagline": "Um arquivo aberto para pesquisa com carimbo temporal em todas as áreas",
+  "home.hero_title": "Publique sua pesquisa com uma prova de prioridade verificável",
+  "home.hero_subtitle": "O AthenXiv é um arquivo aberto para pesquisa em todas as áreas. Cada submissão passa por hash e é enviada aos calendários públicos do OpenTimestamps no momento do upload, de modo que a existência do seu trabalho pode ser verificada em relação à blockchain do Bitcoin — quer ele seja aceito para publicação aqui, quer não.",
+  "meta.description": "Um arquivo aberto e multidisciplinar de artigos de pesquisa, com provas do OpenTimestamps, leitura de PDF no navegador e metadados em trinta idiomas.",
+  "meta.keywords": "acesso aberto, preprints, artigos de pesquisa, OpenTimestamps, Bitcoin, carimbo temporal, multidisciplinar",
+  "page.about_p1": "O AthenXiv é um arquivo aberto para pesquisa em todas as áreas — artigos, traduções, comentários e preprints. Ele existe por dois motivos: dar aos autores independentes um lugar para publicar sem barreiras institucionais e tornar verificável a prioridade de um texto.",
+  "page.guidelines_p1": "Qualquer pessoa pode enviar. Não há exigência institucional, nem taxa de submissão, nem barreira de revisão por pares. Os editores verificam se a submissão é legível, se sustenta por si só e constitui uma pesquisa genuína; podem recusá-la, pedir alterações ou mover um artigo entre seções."
+}

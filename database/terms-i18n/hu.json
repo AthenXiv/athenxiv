@@ -1,0 +1,5 @@
+{
+  "auth.terms": "Elfogadom a :policy, és felelősséget vállalok a feltöltött anyagért.",
+  "auth.terms_policy": "felhasználói szabályzat",
+  "auth.code_sent": "Egy hatjegyű kód úton van ide: :email. 10 percig érvényes. Ha nem érkezik meg, nézd meg a spam mappát."
+}

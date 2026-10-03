@@ -1,0 +1,5 @@
+{
+  "auth.terms": "Hyväksyn :policy ja kannan vastuun lataamastani aineistosta.",
+  "auth.terms_policy": "käyttäjäehdot",
+  "auth.code_sent": "Kuusinumeroinen koodi on matkalla osoitteeseen :email. Se on voimassa 10 minuuttia. Jos se ei saavu perille, tarkista roskapostikansio."
+}

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="AthenXiv mark">
+  <title>AthenXiv — stamped A</title>
+  <!--
+    Concept A: "Stamped A".
+    A typographic A (filled, with a triangular counter) whose crossbar runs on
+    past the right leg as a ledger rule and ends in a separate square stamp
+    node: the paper, and the proof of when it existed. Flat fills only — the
+    mark survives 16 px, monochrome and inversion.
+  -->
+  <rect width="512" height="512" rx="112" fill="#1d4ed8"/>
+
+  <!-- A: outer contour plus counter, one path so the apex stays crisp -->
+  <path fill="#ffffff" fill-rule="evenodd"
+        d="M232 80 h48 l132 352 h-56 l-27 -80 h-146 l-27 80 h-56 Z
+           M256 176 l-52 132 h104 Z"/>
+
+  <!-- ledger rule: the crossbar continues to the right -->
+  <rect x="150" y="286" width="222" height="34" fill="#bfd3fb"/>
+
+  <!-- stamp node: the anchored moment, deliberately detached -->
+  <rect x="396" y="279" width="48" height="48" rx="10" fill="#ffffff"/>
+</svg>

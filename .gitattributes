@@ -1,0 +1,27 @@
+# Normalise line endings: the application runs on Linux, so every text file is
+# stored with LF in the repository (Windows checkouts still get CRLF for the
+# batch scripts below).
+* text=auto eol=lf
+
+*.cmd text eol=crlf
+*.bat text eol=crlf
+
+# Binary assets — never touch these
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.webp binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.otf binary
+*.pdf binary
+*.zip binary
+*.gz binary
+*.ots binary
+
+# Generated / vendored code: keep it out of diffs and language stats
+public/vendor/** linguist-vendored
+app/Support/Parsedown.php linguist-vendored

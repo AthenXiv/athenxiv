@@ -1,0 +1,9 @@
+# Safety net for the (not recommended) case where the document root points at
+# the project root instead of public/. Everything that is not meant to be
+# fetched over HTTP is refused.
+
+<FilesMatch "\.(php|phtml|phar|sql|sqlite|md|log|json|lock|ini|yml|yaml|dist|example)$">
+    Require all denied
+</FilesMatch>
+
+RedirectMatch 404 ^/(app|config|database|resources|storage|bin|tests|routes)(/|$)

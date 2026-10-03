@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="AthenXiv">
+  <title>AthenXiv mark</title>
+  <!--
+    AthenXiv brand mark — "stamped A".
+    A typographic A whose crossbar runs on as a ledger rule and ends in a
+    detached square stamp node: the paper, and the cryptographic proof of when
+    it existed. Flat fills, two colours, no gradients, no live text.
+  -->
+  <rect width="512" height="512" rx="112" fill="#1d4ed8"/>
+  <path fill="#ffffff" fill-rule="evenodd"
+        d="M232 80 h48 l132 352 h-56 l-27 -80 h-146 l-27 80 h-56 Z
+           M256 176 l-52 132 h104 Z"/>
+  <rect x="150" y="286" width="222" height="34" fill="#bfd3fb"/>
+  <rect x="396" y="279" width="48" height="48" rx="10" fill="#ffffff"/>
+</svg>

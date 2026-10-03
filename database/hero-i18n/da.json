@@ -1,0 +1,9 @@
+{
+  "common.tagline": "Et åbent arkiv for tidsstemplet forskning på tværs af alle fagområder",
+  "home.hero_title": "Publicér din forskning med et verificerbart krav på prioritet",
+  "home.hero_subtitle": "AthenXiv er et åbent arkiv for forskning inden for alle fagområder. Hver indsendelse hashes og sendes til OpenTimestamps-kalenderne i samme øjeblik, den uploades, så dine arbejders eksistens kan verificeres mod Bitcoin-blockchainen — uanset om de bliver accepteret til publicering her eller ej.",
+  "meta.description": "Et åbent, tværfagligt arkiv for forskningsartikler med OpenTimestamps-beviser, PDF-læsning i browseren og metadata på tredive sprog.",
+  "meta.keywords": "åben adgang, preprints, forskningsartikler, OpenTimestamps, Bitcoin, tidsstempling, tværfaglig",
+  "page.about_p1": "AthenXiv er et åbent arkiv for forskning inden for alle fagområder — artikler, oversættelser, kommentarer og preprints. Det findes af to grunde: at give uafhængige forfattere et sted at publicere uden institutionelle gatekeepere, og at gøre en teksts prioritet verificerbar.",
+  "page.guidelines_p1": "Alle kan indsende. Der er intet institutionelt krav, ingen indsendelsesgebyr og ingen peer review-port. Redaktører kontrollerer, at en indsendelse er læsbar, selvstændig og et egentligt stykke forskning; de kan afvise den, bede om ændringer eller flytte en artikel mellem sektioner."
+}

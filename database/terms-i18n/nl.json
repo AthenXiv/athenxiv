@@ -1,0 +1,5 @@
+{
+  "auth.terms": "Ik accepteer het :policy en neem de verantwoordelijkheid voor het materiaal dat ik upload.",
+  "auth.terms_policy": "gebruikersbeleid",
+  "auth.code_sent": "Een code van zes cijfers is onderweg naar :email. Hij blijft 10 minuten geldig. Als hij niet aankomt, kijk dan in je spammap."
+}

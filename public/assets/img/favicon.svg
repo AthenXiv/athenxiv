@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="AthenXiv">
+  <title>AthenXiv</title>
+  <!-- Simplified for 16 px: the stamp node grows and the rule thickens so the
+       mark still reads as "A + proof" at favicon size. -->
+  <rect width="32" height="32" rx="7" fill="#1d4ed8"/>
+  <path fill="#ffffff" fill-rule="evenodd"
+        d="M14.4 4 h3.2 l8.4 24 h-4 l-1.6 -5 h-8.8 l-1.6 5 h-4 Z
+           M16 10.6 l-2.9 8.4 h5.8 Z"/>
+  <rect x="8" y="17.6" width="14.6" height="2.6" fill="#bfd3fb"/>
+  <rect x="24.4" y="17" width="4.2" height="4.2" rx="1" fill="#ffffff"/>
+</svg>

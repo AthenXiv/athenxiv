@@ -1,0 +1,9 @@
+{
+  "common.tagline": "An open archive for timestamped research across every discipline",
+  "home.hero_title": "Publish your research with a verifiable claim to priority",
+  "home.hero_subtitle": "AthenXiv is an open archive for research in every field. Every submission is hashed and sent to the OpenTimestamps calendars the moment it is uploaded, so the existence of your work can be verified against the Bitcoin blockchain — whether or not it is accepted for publication here.",
+  "meta.description": "An open, multidisciplinary archive for research papers, with OpenTimestamps proofs, in-browser PDF reading and metadata in thirty languages.",
+  "meta.keywords": "open access, preprints, research papers, OpenTimestamps, Bitcoin, timestamping, multidisciplinary",
+  "page.about_p1": "AthenXiv is an open archive for research in every field — articles, translations, commentaries and preprints. It exists for two reasons: to give independent authors a place to publish without institutional gatekeeping, and to make the priority of a text verifiable.",
+  "page.guidelines_p1": "Anyone may submit. There is no institutional requirement, no submission fee and no peer-review gate. Editors check that a submission is legible, self-contained and a genuine piece of research; they may reject, ask for changes, or move a paper between sections."
+}

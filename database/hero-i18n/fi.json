@@ -1,0 +1,9 @@
+{
+  "common.tagline": "Avoin arkisto aikaleimattuun tutkimukseen kaikilla aloilla",
+  "home.hero_title": "Julkaise tutkimuksesi ja todista prioriteettisi verifioitavasti",
+  "home.hero_subtitle": "AthenXiv on avoin arkisto kaikkien alojen tutkimukselle. Jokainen lähetys tiivistetään hajautusarvoksi ja viedään OpenTimestamps-kalentereihin heti lataamisen yhteydessä, joten työsi olemassaolo voidaan varmentaa Bitcoin-lohkoketjusta — riippumatta siitä, hyväksytäänkö se täällä julkaistavaksi.",
+  "meta.description": "Avoin, monitieteinen arkisto tutkimusartikkeleille: OpenTimestamps-todisteet, PDF-luku selaimessa ja metatiedot kolmellakymmenellä kielellä.",
+  "meta.keywords": "avoin saatavuus, preprintit, tutkimusartikkelit, OpenTimestamps, Bitcoin, aikaleimaus, monitieteinen",
+  "page.about_p1": "AthenXiv on avoin arkisto kaikkien alojen tutkimukselle — artikkelit, käännökset, kommentaarit ja preprintit. Se on olemassa kahdesta syystä: tarjotakseen riippumattomille kirjoittajille paikan julkaista ilman institutionaalista portinvartijuutta ja tehdäkseen tekstin prioriteetista verifioitavan.",
+  "page.guidelines_p1": "Kuka tahansa voi lähettää aineistoa. Institutionaalista vaatimusta, lähetysmaksua tai vertaisarvioinnin porttia ei ole. Toimittajat tarkistavat, että lähetys on luettava, itsenäinen ja aidosti tutkimusta; he voivat hylätä sen, pyytää muutoksia tai siirtää artikkelin osastosta toiseen."
+}

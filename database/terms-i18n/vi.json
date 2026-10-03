@@ -1,0 +1,5 @@
+{
+  "auth.terms": "Tôi chấp nhận :policy và tự chịu trách nhiệm về tài liệu mình tải lên.",
+  "auth.terms_policy": "điều khoản sử dụng",
+  "auth.code_sent": "Một mã sáu chữ số đang trên đường tới :email. Mã có hiệu lực trong 10 phút. Nếu không nhận được, vui lòng kiểm tra thư mục thư rác."
+}

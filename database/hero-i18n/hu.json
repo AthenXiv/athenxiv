@@ -1,0 +1,9 @@
+{
+  "common.tagline": "Nyílt archívum időbélyeggel ellátott kutatásokhoz, minden tudományterületről",
+  "home.hero_title": "Publikáld kutatásodat ellenőrizhető elsőbbséggel",
+  "home.hero_subtitle": "Az AthenXiv nyílt archívum minden tudományterület kutatásai számára. Minden beküldött anyagot hash-elünk, és feltöltésének pillanatában elküldjük az OpenTimestamps naptárakba, így kutatásod létezése a Bitcoin blokkláncon ellenőrizhető — függetlenül attól, hogy itt elfogadják-e publikálásra.",
+  "meta.description": "Nyílt, multidiszciplináris archívum tudományos közleményekhez: OpenTimestamps-bizonyítékok, PDF-olvasás a böngészőben és metaadatok harminc nyelven.",
+  "meta.keywords": "nyílt hozzáférés, preprintek, tudományos közlemények, OpenTimestamps, Bitcoin, időbélyegzés, multidiszciplináris",
+  "page.about_p1": "Az AthenXiv nyílt archívum minden tudományterület kutatásaihoz — cikkek, fordítások, kommentárok és preprintek. Két okból létezik: hogy a független szerzőknek intézményi kapuőrök nélkül legyen hol publikálniuk, és hogy egy szöveg elsőbbsége ellenőrizhető legyen.",
+  "page.guidelines_p1": "Bárki beküldhet anyagot. Nincs intézményi követelmény, beküldési díj és lektorálási kapu. A szerkesztők ellenőrzik, hogy a beküldött anyag olvasható, önmagában is érthető és valódi kutatás; elutasíthatják, változtatást kérhetnek, vagy másik szekcióba helyezhetik a dolgozatot."
+}

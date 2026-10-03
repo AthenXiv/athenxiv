@@ -1,0 +1,9 @@
+{
+  "common.tagline": "Otevřený archiv pro výzkum ze všech oborů s časovými razítky",
+  "home.hero_title": "Publikujte svůj výzkum s ověřitelnou prioritou",
+  "home.hero_subtitle": "AthenXiv je otevřený archiv pro výzkum ve všech oborech. Každý příspěvek je zahašován a v okamžiku nahrání odeslán do kalendářů OpenTimestamps, takže existenci vaší práce lze ověřit proti blockchainu Bitcoin — bez ohledu na to, zda zde bude přijata k publikaci.",
+  "meta.description": "Otevřený multidisciplinární archiv odborných prací s důkazy OpenTimestamps, čtením PDF v prohlížeči a metadaty ve třiceti jazycích.",
+  "meta.keywords": "otevřený přístup, preprinty, odborné práce, OpenTimestamps, Bitcoin, časová razítka, multidisciplinární",
+  "page.about_p1": "AthenXiv je otevřený archiv pro výzkum ve všech oborech — články, překlady, komentáře a preprinty. Existuje ze dvou důvodů: dát nezávislým autorům místo k publikování bez institucionální kontroly a učinit prioritu textu ověřitelnou.",
+  "page.guidelines_p1": "Přispět může kdokoli. Neexistuje žádný institucionální požadavek, žádný poplatek za podání ani žádná bariéra recenzního řízení. Editoři kontrolují, zda je příspěvek čitelný, samostatný a zda jde o skutečnou odbornou práci; mohou jej odmítnout, požádat o úpravy nebo práci přesunout do jiné sekce."
+}

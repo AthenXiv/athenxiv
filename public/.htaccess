@@ -1,0 +1,59 @@
+# AthenXiv — public web root.
+#
+# Apache 2.4 (shared hosting friendly). If your host cannot use .htaccess,
+# configure the equivalent rewrite in the vhost:
+#   RewriteCond %{REQUEST_FILENAME} !-f
+#   RewriteCond %{REQUEST_FILENAME} !-d
+#   RewriteRule ^ index.php [L]
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Honour the directory the app is served from (subfolder installs work).
+    RewriteBase /
+
+    # Never route real files (asset bundles, the PDF.js viewer) through PHP.
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    RewriteRule ^ index.php [L]
+</IfModule>
+
+# Do not let anyone upload/execute code through the upload directory even if
+# someone points storage/ inside the web root by mistake.
+<FilesMatch "\.(php|phtml|phar|pl|py|cgi|asp|aspx|jsp|sh)$">
+    Require all denied
+</FilesMatch>
+
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set X-Frame-Options "SAMEORIGIN"
+</IfModule>
+
+<IfModule mod_mime.c>
+    # PDF.js ships ES modules; Apache does not know .mjs out of the box and
+    # would serve them as application/octet-stream, breaking the viewer.
+    AddType text/javascript .mjs
+</IfModule>
+
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml
+</IfModule>
+
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/css "access plus 7 days"
+    ExpiresByType application/javascript "access plus 7 days"
+    ExpiresByType image/svg+xml "access plus 30 days"
+</IfModule>
+
+# Uncomment if your host allows PHP configuration through .htaccess and you
+# need PDF uploads larger than the defaults (they must not exceed post_max_size,
+# which has to be at least as large as upload_max_filesize).
+# <IfModule mod_php.c>
+#     php_value upload_max_filesize 32M
+#     php_value post_max_size 40M
+#     php_value max_execution_time 120
+# </IfModule>

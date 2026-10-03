@@ -1,0 +1,27 @@
+# ---------------------------------------------------------------- secrets
+config/config.local.php
+.env
+.env.*
+*.key
+*.pem
+*.p12
+secrets.*
+
+# ---------------------------------------------------------------- runtime
+storage/
+var-*/
+*.sqlite
+*.sqlite3
+*.db
+*.log
+/public/uploads/
+/cache/
+
+# ---------------------------------------------------------------- tooling
+_deploy/
+.idea/
+.vscode/
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db

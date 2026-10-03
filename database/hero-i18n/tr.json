@@ -1,0 +1,9 @@
+{
+  "common.tagline": "Her disiplinden zaman damgalı araştırma için açık bir arşiv",
+  "home.hero_title": "Araştırmanızı doğrulanabilir bir öncelik iddiasıyla yayımlayın",
+  "home.hero_subtitle": "AthenXiv, her alandan araştırma için açık bir arşivdir. Her gönderi, yüklendiği anda karma değeri (hash) hesaplanarak OpenTimestamps takvimlerine gönderilir; böylece çalışmanızın varlığı, burada yayımlanmak üzere kabul edilip edilmediğinden bağımsız olarak Bitcoin blok zinciri üzerinden doğrulanabilir.",
+  "meta.description": "Araştırma makaleleri için açık, disiplinler arası bir arşiv: OpenTimestamps kanıtları, tarayıcı içinde PDF okuma ve otuz dilde üstveri.",
+  "meta.keywords": "açık erişim, ön baskılar, araştırma makaleleri, OpenTimestamps, Bitcoin, zaman damgalama, disiplinler arası",
+  "page.about_p1": "AthenXiv, her alandan araştırma için açık bir arşivdir — makaleler, çeviriler, yorumlar ve ön baskılar. İki nedenden dolayı var: bağımsız yazarlara kurumsal bekçilik olmadan yayımlayabilecekleri bir yer sunmak ve bir metnin önceliğini doğrulanabilir kılmak.",
+  "page.guidelines_p1": "Herkes gönderi gönderebilir. Kurumsal bir koşul, gönderi ücreti veya hakem değerlendirmesi engeli yoktur. Editörler bir gönderinin okunabilir, kendi başına yeterli ve gerçek bir araştırma çalışması olduğunu kontrol eder; reddedebilir, değişiklik isteyebilir veya bir makaleyi bölümler arasında taşıyabilir."
+}

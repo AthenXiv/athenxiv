@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="AthenXiv">
+  <title>AthenXiv mark (monochrome)</title>
+  <!-- Single colour for stamps, print and any context that sets the colour. -->
+  <g fill="currentColor">
+    <path fill-rule="evenodd"
+          d="M232 80 h48 l132 352 h-56 l-27 -80 h-146 l-27 80 h-56 Z
+             M256 176 l-52 132 h104 Z"/>
+    <rect x="150" y="286" width="222" height="34" opacity=".45"/>
+    <rect x="396" y="279" width="48" height="48" rx="10"/>
+  </g>
+</svg>

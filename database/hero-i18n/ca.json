@@ -1,0 +1,9 @@
+{
+  "common.tagline": "Un arxiu obert per a la recerca amb segellat temporal a totes les disciplines",
+  "home.hero_title": "Publiqueu la vostra recerca amb una prova de prioritat verificable",
+  "home.hero_subtitle": "AthenXiv és un arxiu obert per a la recerca en tots els àmbits. Cada tramesa es ressegueix amb un hash i s'envia als calendaris públics d'OpenTimestamps en el moment de pujar-la, de manera que l'existència de la vostra feina es pot verificar contra la cadena de blocs de Bitcoin, tant si s'accepta per publicar aquí com si no.",
+  "meta.description": "Un arxiu obert i multidisciplinari d'articles de recerca, amb proves d'OpenTimestamps, lectura de PDF al navegador i metadades en trenta llengües.",
+  "meta.keywords": "accés obert, preprints, articles de recerca, OpenTimestamps, Bitcoin, segellat temporal, multidisciplinari",
+  "page.about_p1": "AthenXiv és un arxiu obert per a la recerca en tots els àmbits — articles, traduccions, comentaris i preprints. Existeix per dos motius: donar als autors independents un lloc on publicar sense filtres institucionals i fer verificable la prioritat d'un text.",
+  "page.guidelines_p1": "Hi pot enviar qualsevol persona. No cal cap requisit institucional, no hi ha taxa de tramesa ni barrera de revisió d'experts. Els editors comproven que una tramesa sigui llegible, autònoma i una veritable recerca; poden rebutjar-la, demanar canvis o moure un article d'una secció a una altra."
+}

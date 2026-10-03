@@ -1,0 +1,9 @@
+{
+  "common.tagline": "Un archivo abierto para la investigación con sellado temporal en todas las disciplinas",
+  "home.hero_title": "Publica tu investigación con una prueba de prioridad verificable",
+  "home.hero_subtitle": "AthenXiv es un archivo abierto para la investigación en todos los campos. Cada envío se somete a hash y se remite a los calendarios públicos de OpenTimestamps en el momento de subirlo, de modo que la existencia de tu trabajo puede verificarse contra la cadena de bloques de Bitcoin, se acepte o no su publicación aquí.",
+  "meta.description": "Un archivo abierto y multidisciplinario de artículos de investigación, con pruebas de OpenTimestamps, lectura de PDF en el navegador y metadatos en treinta idiomas.",
+  "meta.keywords": "acceso abierto, preprints, artículos de investigación, OpenTimestamps, Bitcoin, sellado temporal, multidisciplinario",
+  "page.about_p1": "AthenXiv es un archivo abierto para la investigación en todos los campos —artículos, traducciones, comentarios y preprints—. Existe por dos motivos: dar a los autores independientes un lugar donde publicar sin filtros institucionales y hacer verificable la prioridad de un texto.",
+  "page.guidelines_p1": "Cualquiera puede enviar. No se exige adscripción institucional, no hay tasa de envío ni barrera de revisión por pares. Los editores comprueban que un envío sea legible, se entienda por sí solo y constituya una investigación genuina; pueden rechazarlo, pedir cambios o mover un artículo de una sección a otra."
+}

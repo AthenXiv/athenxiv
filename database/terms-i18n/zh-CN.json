@@ -1,0 +1,5 @@
+{
+  "auth.terms": "我接受:policy，并对所上传的材料承担责任。",
+  "auth.terms_policy": "用户政策",
+  "auth.code_sent": "6 位验证码已发送至 :email，10 分钟内有效。如果没有收到，请检查垃圾邮件文件夹。"
+}

@@ -1,0 +1,5 @@
+{
+  "auth.terms": "Accetto la :policy e mi assumo la responsabilità del materiale che carico.",
+  "auth.terms_policy": "politica di utilizzo",
+  "auth.code_sent": "Un codice di sei cifre è in arrivo a :email. Resta valido per 10 minuti. Se non arriva, controlla la cartella di posta indesiderata."
+}
