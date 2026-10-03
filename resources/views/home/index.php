@@ -25,11 +25,12 @@ $siteName = Settings::siteName();
         <?php endif; ?>
       </p>
     </div>
-    <dl class="hero__stats">
-      <div><dt><?= e(__('home.stats_papers')) ?></dt><dd><?= (int) $stats['papers'] ?></dd></div>
-      <div><dt><?= e(__('home.stats_authors')) ?></dt><dd><?= (int) $stats['authors'] ?></dd></div>
-      <div><dt><?= e(__('home.stats_timestamped')) ?></dt><dd><?= (int) $stats['timestamped'] ?></dd></div>
-    </dl>
+    <?php
+    // The paper/author/timestamp counters used to sit here. An archive that
+    // announces "2 authors" reads as abandoned rather than open, so the hero
+    // now carries the claim and the call to action only. HomeController still
+    // computes $stats, so restoring the block is a copy-paste away.
+    ?>
   </div>
 </section>
 
