@@ -1,0 +1,12 @@
+{
+  "paper.rights_public_domain": "Publiek domein",
+  "paper.rights_unknown": "Open access",
+  "paper.rights_hint": "Rechtenstatus van dit gearchiveerde werk",
+  "paper.origin_published": "Oorspronkelijk gepubliceerd :date",
+  "paper.origin_published_short": "Eerste publicatie :date",
+  "paper.copyright_expired": "Auteursrecht verlopen :date",
+  "paper.copyright_status": "Rechten: :rights (geen vervaldatum geregistreerd)",
+  "paper.added_to_site": "Toegevoegd aan AthenXiv :date",
+  "paper.archive_notice": "Gearchiveerd werk met open access, geïmporteerd uit :source voor langdurige bewaring. Het is geen inzending voor AthenXiv en heeft daarom geen versiegeschiedenis en geen tijdstempelgeschiedenis.",
+  "paper.archive_source_default": "een bron met open access"
+}

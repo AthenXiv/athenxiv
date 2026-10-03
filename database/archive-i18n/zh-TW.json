@@ -1,0 +1,12 @@
+{
+  "paper.rights_public_domain": "公眾領域",
+  "paper.rights_unknown": "開放取用",
+  "paper.rights_hint": "這篇典藏論文的權利狀態",
+  "paper.origin_published": "原刊登日期：:date",
+  "paper.origin_published_short": "首次刊登於 :date",
+  "paper.copyright_expired": "著作權屆滿日期：:date",
+  "paper.copyright_status": "權利：:rights（未記錄屆滿日期）",
+  "paper.added_to_site": "已加入 AthenXiv：:date",
+  "paper.archive_notice": "這是一篇從 :source 匯入、為長期保存而典藏的開放取用論文。它並非 AthenXiv 的投稿，因此沒有版本歷程，也沒有時戳存證歷程。",
+  "paper.archive_source_default": "一個開放取用來源"
+}

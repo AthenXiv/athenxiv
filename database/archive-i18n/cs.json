@@ -1,0 +1,12 @@
+{
+  "paper.rights_public_domain": "Volné dílo",
+  "paper.rights_unknown": "Otevřený přístup",
+  "paper.rights_hint": "Stav práv k tomuto archivovanému dílu",
+  "paper.origin_published": "Původně publikováno :date",
+  "paper.origin_published_short": "Poprvé publikováno :date",
+  "paper.copyright_expired": "Autorská práva vypršela :date",
+  "paper.copyright_status": "Práva: :rights (datum vypršení není zaznamenáno)",
+  "paper.added_to_site": "Přidáno na AthenXiv :date",
+  "paper.archive_notice": "Archivovaná práce s otevřeným přístupem, importovaná pro dlouhodobé zachování (původ: :source). Nejde o příspěvek na AthenXiv, proto nemá historii verzí ani historii časových razítek.",
+  "paper.archive_source_default": "otevřený zdroj"
+}

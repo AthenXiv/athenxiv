@@ -1,0 +1,12 @@
+{
+  "paper.rights_public_domain": "パブリックドメイン",
+  "paper.rights_unknown": "オープンアクセス",
+  "paper.rights_hint": "このアーカイブ論文の権利状態",
+  "paper.origin_published": "当初の公開 :date",
+  "paper.origin_published_short": "初回掲載 :date",
+  "paper.copyright_expired": "著作権の保護期間満了 :date",
+  "paper.copyright_status": "権利：:rights（満了日は記録されていません）",
+  "paper.added_to_site": "AthenXiv に追加 :date",
+  "paper.archive_notice": ":source から長期保存のためにインポートしたオープンアクセスのアーカイブ論文です。AthenXiv への投稿ではないため、バージョン履歴もタイムスタンプ履歴もありません。",
+  "paper.archive_source_default": "オープンアクセスの出典"
+}

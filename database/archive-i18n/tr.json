@@ -1,0 +1,12 @@
+{
+  "paper.rights_public_domain": "Public domain",
+  "paper.rights_unknown": "Açık erişim",
+  "paper.rights_hint": "Bu arşivlenmiş çalışmanın hak durumu",
+  "paper.origin_published": "İlk yayımlandığı tarih :date",
+  "paper.origin_published_short": "İlk yayım tarihi :date",
+  "paper.copyright_expired": "Telif hakkı sona erdi :date",
+  "paper.copyright_status": "Haklar: :rights (sona erme tarihi kayıtlı değil)",
+  "paper.added_to_site": "AthenXiv'e eklendi :date",
+  "paper.archive_notice": "Arşivlenmiş açık erişimli çalışma, uzun vadeli koruma amacıyla :source üzerinden içe aktarılmıştır. Bir AthenXiv gönderisi değildir; bu nedenle sürüm geçmişi ve zaman damgası geçmişi yoktur.",
+  "paper.archive_source_default": "açık erişimli bir kaynak"
+}

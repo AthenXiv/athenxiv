@@ -1,0 +1,12 @@
+{
+  "paper.rights_public_domain": "Domini públic",
+  "paper.rights_unknown": "Accés obert",
+  "paper.rights_hint": "Estat dels drets d'aquesta obra arxivada",
+  "paper.origin_published": "Publicat originalment :date",
+  "paper.origin_published_short": "Publicat per primera vegada :date",
+  "paper.copyright_expired": "Drets d'autor caducats :date",
+  "paper.copyright_status": "Drets: :rights (no hi ha cap data de caducitat registrada)",
+  "paper.added_to_site": "Afegit a AthenXiv :date",
+  "paper.archive_notice": "Obra en accés obert arxivada, importada de :source per a la conservació a llarg termini. No és una tramesa a AthenXiv, així que no té historial de versions ni historial de marques de temps.",
+  "paper.archive_source_default": "una font en accés obert"
+}

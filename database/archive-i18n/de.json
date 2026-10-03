@@ -1,0 +1,12 @@
+{
+  "paper.rights_public_domain": "Gemeinfrei",
+  "paper.rights_unknown": "Open Access",
+  "paper.rights_hint": "Rechtsstatus dieses archivierten Werks",
+  "paper.origin_published": "Ursprünglich veröffentlicht :date",
+  "paper.origin_published_short": "Erstveröffentlichung :date",
+  "paper.copyright_expired": "Urheberrecht abgelaufen :date",
+  "paper.copyright_status": "Rechte: :rights (kein Ablaufdatum erfasst)",
+  "paper.added_to_site": "Zu AthenXiv hinzugefügt :date",
+  "paper.archive_notice": "Archiviertes Open-Access-Werk, aus :source zur langfristigen Bewahrung übernommen. Es ist keine Einreichung bei AthenXiv und hat daher weder Versionsverlauf noch Zeitstempel-Verlauf.",
+  "paper.archive_source_default": "eine Open-Access-Quelle"
+}

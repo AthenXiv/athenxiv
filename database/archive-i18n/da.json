@@ -1,0 +1,12 @@
+{
+  "paper.rights_public_domain": "Public domain",
+  "paper.rights_unknown": "Åben adgang",
+  "paper.rights_hint": "Rettighedsstatus for dette arkiverede værk",
+  "paper.origin_published": "Oprindeligt publiceret :date",
+  "paper.origin_published_short": "Først publiceret :date",
+  "paper.copyright_expired": "Ophavsretten er udløbet :date",
+  "paper.copyright_status": "Rettigheder: :rights (ingen udløbsdato registreret)",
+  "paper.added_to_site": "Tilføjet til AthenXiv :date",
+  "paper.archive_notice": "Arkiveret værk med åben adgang, importeret fra :source med henblik på langsigtet bevaring. Det er ikke en indsendelse til AthenXiv og har derfor ingen versionshistorik og ingen tidsstempelhistorik.",
+  "paper.archive_source_default": "en kilde med åben adgang"
+}

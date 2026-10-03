@@ -1,0 +1,12 @@
+{
+  "paper.rights_public_domain": "الملك العام",
+  "paper.rights_unknown": "وصول مفتوح",
+  "paper.rights_hint": "حالة الحقوق لهذا العمل المؤرشف",
+  "paper.origin_published": "نُشرت أصلًا في :date",
+  "paper.origin_published_short": "نُشرت أول مرة في :date",
+  "paper.copyright_expired": "انتهت حقوق النشر :date",
+  "paper.copyright_status": "الحقوق: :rights (لا يوجد تاريخ انتهاء مسجَّل)",
+  "paper.added_to_site": "أُضيف إلى AthenXiv :date",
+  "paper.archive_notice": "عمل مؤرشف مفتوح الوصول، مُستورَد من :source لحفظه على المدى الطويل. وهو ليس عملًا مُرسَلًا إلى AthenXiv، لذا ليس له سجلّ إصدارات ولا سجلّ أختام زمنية.",
+  "paper.archive_source_default": "مصدر مفتوح الوصول"
+}

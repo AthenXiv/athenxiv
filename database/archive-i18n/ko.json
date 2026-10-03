@@ -1,0 +1,12 @@
+{
+  "paper.rights_public_domain": "퍼블릭 도메인",
+  "paper.rights_unknown": "오픈 액세스",
+  "paper.rights_hint": "이 아카이브 논문의 권리 상태",
+  "paper.origin_published": "원래 게재 :date",
+  "paper.origin_published_short": "최초 게재 :date",
+  "paper.copyright_expired": "저작권 만료 :date",
+  "paper.copyright_status": "권리: :rights (만료일 기록 없음)",
+  "paper.added_to_site": "AthenXiv에 추가 :date",
+  "paper.archive_notice": ":source에서 장기 보존을 위해 가져온 오픈 액세스 아카이브 논문입니다. AthenXiv에 투고된 논문이 아니므로 버전 이력과 타임스탬프 이력이 없습니다.",
+  "paper.archive_source_default": "오픈 액세스 출처"
+}

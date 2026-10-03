@@ -1,0 +1,12 @@
+{
+  "paper.rights_public_domain": "Domaine public",
+  "paper.rights_unknown": "Libre accès",
+  "paper.rights_hint": "Statut des droits sur ce travail archivé",
+  "paper.origin_published": "Publié à l'origine :date",
+  "paper.origin_published_short": "Première publication :date",
+  "paper.copyright_expired": "Droits d'auteur expirés :date",
+  "paper.copyright_status": "Droits : :rights (aucune date d'expiration enregistrée)",
+  "paper.added_to_site": "Ajouté à AthenXiv :date",
+  "paper.archive_notice": "Travail en libre accès archivé, importé depuis :source pour une conservation à long terme. Il ne s'agit pas d'une soumission à AthenXiv : il n'a donc ni historique de versions ni historique d'horodatages.",
+  "paper.archive_source_default": "une source en libre accès"
+}

@@ -1,0 +1,12 @@
+{
+  "paper.rights_public_domain": "Allmän egendom",
+  "paper.rights_unknown": "Öppen tillgång",
+  "paper.rights_hint": "Rättighetsstatus för detta arkiverade verk",
+  "paper.origin_published": "Ursprungligen publicerad :date",
+  "paper.origin_published_short": "Först publicerad :date",
+  "paper.copyright_expired": "Upphovsrätten har upphört :date",
+  "paper.copyright_status": "Rättigheter: :rights (inget utgångsdatum registrerat)",
+  "paper.added_to_site": "Tillagd i AthenXiv :date",
+  "paper.archive_notice": "Arkiverat verk med öppen tillgång, importerat från :source för långsiktigt bevarande. Det är inte en inlämning till AthenXiv och har därför ingen versionshistorik och ingen tidsstämpelhistorik.",
+  "paper.archive_source_default": "en källa med öppen tillgång"
+}

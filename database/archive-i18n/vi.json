@@ -1,0 +1,12 @@
+{
+  "paper.rights_public_domain": "Phạm vi công cộng",
+  "paper.rights_unknown": "Truy cập mở",
+  "paper.rights_hint": "Tình trạng quyền của tác phẩm lưu trữ này",
+  "paper.origin_published": "Công bố ban đầu :date",
+  "paper.origin_published_short": "Công bố lần đầu :date",
+  "paper.copyright_expired": "Bản quyền đã hết hạn :date",
+  "paper.copyright_status": "Quyền: :rights (không ghi nhận ngày hết hạn)",
+  "paper.added_to_site": "Đã thêm vào AthenXiv :date",
+  "paper.archive_notice": "Tác phẩm truy cập mở đã được lưu trữ, nhập từ :source để bảo quản lâu dài. Đây không phải là bài gửi cho AthenXiv nên không có lịch sử phiên bản và cũng không có lịch sử dấu thời gian.",
+  "paper.archive_source_default": "một nguồn truy cập mở"
+}

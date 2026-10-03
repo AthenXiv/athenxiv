@@ -1,0 +1,12 @@
+{
+  "paper.rights_public_domain": "مالکیت عمومی",
+  "paper.rights_unknown": "دسترسی آزاد",
+  "paper.rights_hint": "وضعیت حقوق این اثر در آرشیو",
+  "paper.origin_published": "انتشار اصلی :date",
+  "paper.origin_published_short": "نخستین انتشار :date",
+  "paper.copyright_expired": "حقوق نشر منقضی شد :date",
+  "paper.copyright_status": "حقوق: :rights (تاریخ انقضا ثبت نشده است)",
+  "paper.added_to_site": "به AthenXiv افزوده شد :date",
+  "paper.archive_notice": "اثری با دسترسی آزاد که در آرشیو قرار دارد و از :source برای نگهداری بلندمدت وارد شده است. این اثر ارسالی برای AthenXiv نیست، پس نه تاریخچهٔ نسخه‌ها دارد و نه تاریخچهٔ مهرهای زمانی.",
+  "paper.archive_source_default": "یک منبع با دسترسی آزاد"
+}

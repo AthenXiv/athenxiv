@@ -1,0 +1,12 @@
+{
+  "paper.rights_public_domain": "สาธารณสมบัติ",
+  "paper.rights_unknown": "การเข้าถึงแบบเปิด",
+  "paper.rights_hint": "สถานะสิทธิ์ของผลงานที่จัดเก็บในคลังนี้",
+  "paper.origin_published": "เดิมเผยแพร่เมื่อ :date",
+  "paper.origin_published_short": "เผยแพร่ครั้งแรกเมื่อ :date",
+  "paper.copyright_expired": "ลิขสิทธิ์หมดอายุ :date",
+  "paper.copyright_status": "สิทธิ์: :rights (ไม่มีการบันทึกวันหมดอายุ)",
+  "paper.added_to_site": "เพิ่มลงใน AthenXiv เมื่อ :date",
+  "paper.archive_notice": "ผลงานที่เข้าถึงแบบเปิดซึ่งจัดเก็บไว้ในคลัง นำเข้าจาก :source เพื่อการรักษาระยะยาว ไม่ใช่บทความที่ส่งเข้ามายัง AthenXiv จึงไม่มีประวัติเวอร์ชันและไม่มีประวัติการประทับเวลา",
+  "paper.archive_source_default": "แหล่งที่มาที่เข้าถึงแบบเปิด"
+}
