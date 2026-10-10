@@ -884,4 +884,20 @@ return [
     'email.subject_verify_code'   => 'Kode verifikasi AthenXiv Anda',
     'email.body_verify_code'      => "Halo,\n\nKode verifikasi Anda adalah :code.\n\nKode ini kedaluwarsa dalam 10 menit. Jika Anda tidak memintanya, pesan ini boleh diabaikan.\n\n— :site",
 
+    // ------------------- password recovery by e-mail
+    'auth.forgot_password'         => 'Lupa kata sandi Anda?',
+    'auth.reset_title'             => 'Atur ulang kata sandi Anda',
+    'auth.reset_subtitle'          => 'Masukkan alamat email akun Anda. Kami mengirim kode enam digit; dengan kode itu Anda memilih kata sandi baru.',
+    'auth.reset_email'             => 'Alamat email akun',
+    'auth.reset_send_cta'          => 'Kirim kode pengaturan ulang',
+    'auth.reset_code_label'        => 'Kode enam digit dari pesan',
+    'auth.reset_new_password'      => 'Kata sandi baru',
+    'auth.reset_submit'            => 'Simpan kata sandi baru',
+    'auth.reset_hint'              => 'Kode hanya berlaku sekali dan kedaluwarsa setelah 10 menit.',
+    'auth.reset_sent'              => 'Jika ada akun untuk :email, kode pengaturan ulang sedang dikirim kepada Anda. Mohon periksa juga folder spam.',
+    'auth.reset_done'              => 'Kata sandi Anda telah diubah. Anda sekarang dapat masuk.',
+    'auth.reset_invalid'           => 'Kode itu salah atau sudah kedaluwarsa. Minta kode baru.',
+    'auth.reset_unavailable'       => 'Pemulihan kata sandi melalui email belum tersedia di situs ini. Silakan menulis ke alamat kontak di footer.',
+    'email.subject_reset_code'     => 'Kode pengaturan ulang kata sandi AthenXiv Anda',
+    'email.body_reset_code'        => "Halo,\n\nSeseorang meminta pengaturan ulang kata sandi akun AthenXiv yang memakai alamat ini.\n\nKode pengaturan ulang Anda adalah :code — kode ini kedaluwarsa dalam :minutes menit.\n\nBuka :url dan masukkan kode itu bersama kata sandi baru Anda. Jika bukan Anda yang meminta, abaikan pesan ini: tidak ada yang berubah tanpa kode tersebut.\n\n— :site",
 ];

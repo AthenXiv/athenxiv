@@ -40,6 +40,29 @@ $error = Session::getFlash('error');
     <a href="<?= e(url('page.about')) ?>"><?= e(__('common.about')) ?></a> ·
     <a href="<?= e(url('page.timestamping')) ?>"><?= e(__('nav.timestamping')) ?></a>
   </p>
+
+  <?php
+  // The language has to be choosable *before* signing in: the verification and
+  // password-reset mails are written in the language the visitor reads here.
+  $authLocale = locale();
+  $authLocales = \Athenaeum\Core\I18n::enabledLocales();
+  $authCatalogue = \Athenaeum\Core\I18n::catalogue();
+  ?>
+  <details class="lang-switch lang-switch--auth">
+    <summary title="<?= e(__('common.language')) ?>">
+      <?= e($authCatalogue[$authLocale]['name'] ?? strtoupper($authLocale)) ?>
+    </summary>
+    <ul class="lang-switch__list">
+      <?php foreach ($authLocales as $authCode): ?>
+        <li>
+          <a href="<?= e(url('locale.switch', ['locale' => $authCode]) . '?next=' . rawurlencode(current_path())) ?>"
+             class="<?= $authCode === $authLocale ? 'is-active' : '' ?>" hreflang="<?= e($authCode) ?>">
+            <?= e($authCatalogue[$authCode]['name'] ?? $authCode) ?>
+          </a>
+        </li>
+      <?php endforeach; ?>
+    </ul>
+  </details>
 </main>
 <script src="<?= e(asset('assets/js/app.js')) ?>" defer></script>
 </body>

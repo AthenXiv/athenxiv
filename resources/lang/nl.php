@@ -889,4 +889,21 @@ Je verificatiecode is :code.
 Hij verloopt over 10 minuten. Heb je er niet om gevraagd, dan kun je dit bericht negeren.
 
 — :site",
+
+    // ------------------- password recovery by e-mail
+    'auth.forgot_password'         => 'Wachtwoord vergeten?',
+    'auth.reset_title'             => 'Je wachtwoord opnieuw instellen',
+    'auth.reset_subtitle'          => 'Voer het e-mailadres van je account in. We sturen je een zescijferige code; daarmee kies je een nieuw wachtwoord.',
+    'auth.reset_email'             => 'E-mailadres van je account',
+    'auth.reset_send_cta'          => 'Resetcode versturen',
+    'auth.reset_code_label'        => 'Zescijferige code uit het bericht',
+    'auth.reset_new_password'      => 'Nieuw wachtwoord',
+    'auth.reset_submit'            => 'Nieuw wachtwoord opslaan',
+    'auth.reset_hint'              => 'De code werkt één keer en verloopt na 10 minuten.',
+    'auth.reset_sent'              => 'Als er een account bestaat voor :email, is er een resetcode onderweg. Controleer ook je spammap.',
+    'auth.reset_done'              => 'Je wachtwoord is gewijzigd. Je kunt nu inloggen.',
+    'auth.reset_invalid'           => 'Die code is onjuist of verlopen. Vraag een nieuwe aan.',
+    'auth.reset_unavailable'       => 'Wachtwoordherstel via e-mail is op deze site nog niet beschikbaar. Schrijf naar het contactadres in de voettekst.',
+    'email.subject_reset_code'     => 'Je resetcode voor AthenXiv',
+    'email.body_reset_code'        => "Hallo,\n\nIemand heeft gevraagd om het wachtwoord opnieuw in te stellen van het AthenXiv-account dat dit adres gebruikt.\n\nJe resetcode is :code — deze verloopt over :minutes minuten.\n\nOpen :url en voer de code samen met je nieuwe wachtwoord in. Was jij dit niet, negeer dit bericht dan: zonder de code verandert er niets.\n\n— :site",
 ];

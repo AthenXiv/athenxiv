@@ -82,6 +82,9 @@ $stateClass = static fn (string $state): string => match ($state) {
             <?php if (!empty($row['paper_uid'])): ?>
               <a href="<?= e(url('admin.paper', ['id' => $row['paper_id']])) ?>"><?= e(excerpt((string) $row['paper_title'], 50)) ?></a>
               <br><code class="muted"><?= e((string) $row['paper_uid']) ?></code>
+            <?php elseif (!empty($row['page_slug'])): ?>
+              <a href="<?= e(url('admin.page', ['id' => $row['page_id']])) ?>"><?= e(__('admin.edit_page')) ?></a>
+              <br><code class="muted"><?= e((string) $row['page_slug']) ?></code>
             <?php else: ?>
               <span class="muted">#<?= (int) $row['paper_id'] ?></span>
             <?php endif; ?>

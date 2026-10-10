@@ -197,6 +197,9 @@ CREATE TABLE IF NOT EXISTS {prefix}paper_links (
 CREATE TABLE IF NOT EXISTS {prefix}timestamps (
     id              BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
     paper_id        BIGINT UNSIGNED NOT NULL,
+    -- Page proofs (target_type = 'page') keep paper_id = 0 and point here
+    -- instead; a page proof is about the page's own content, not a paper.
+    page_id         BIGINT UNSIGNED NULL,
     target_type     VARCHAR(20)     NOT NULL DEFAULT 'pdf',
     attachment_id   BIGINT UNSIGNED NULL,
     file_name       VARCHAR(255)    NULL,
@@ -218,6 +221,7 @@ CREATE TABLE IF NOT EXISTS {prefix}timestamps (
     updated_at      DATETIME        NULL,
     PRIMARY KEY (id),
     KEY idx_timestamps_paper (paper_id),
+    KEY idx_timestamps_page (page_id),
     KEY idx_timestamps_status (status),
     KEY idx_timestamps_hash (file_sha256)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

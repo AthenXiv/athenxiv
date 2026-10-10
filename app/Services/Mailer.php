@@ -30,6 +30,8 @@ final class Mailer
     public const EVENT_PROXY       = 'paper_proxy_upload';
     public const EVENT_WELCOME     = 'welcome';
     public const EVENT_TEST        = 'test';
+    /** Six-digit code for a forgotten password. */
+    public const EVENT_RESET_CODE  = 'reset_code';
 
     /** @return array{ok:bool,reason:string} */
     public static function configured(): array
@@ -376,6 +378,37 @@ final class Mailer
     }
 
     /**
+     * The interface locale an event's mail should be written in.
+     *
+     * The author is written to in the language of the paper they submitted — a
+     * rejection notice in a language they did not write in reads as a form
+     * letter. Paper languages are more numerous than interface locales (74 vs
+     * 30), so a language we do not ship falls back to the uploader's own
+     * preference and then to the site default.
+     *
+     * @param array<string,mixed> $paper
+     */
+    public static function localeForPaper(array $paper, ?array $uploader = null): string
+    {
+        $default = (string) Settings::get('ui.default_locale', 'en');
+        $paperLocale = I18n::bestMatch((string) ($paper['language'] ?? ''));
+        if ($paperLocale !== null) {
+            return $paperLocale;
+        }
+        // A custom language (x-…) carries its human name; try that too, so
+        // "Deutsch" typed by hand still produces a German notification.
+        $custom = (string) ($paper['language_custom'] ?? '');
+        if ($custom !== '') {
+            $customLocale = I18n::bestMatch($custom);
+            if ($customLocale !== null) {
+                return $customLocale;
+            }
+        }
+        $uploaderLocale = I18n::bestMatch((string) ($uploader['locale'] ?? ''));
+        return $uploaderLocale ?? $default;
+    }
+
+    /**
      * Fire the notifications for a paper event: the author (if enabled and the
      * paper has an uploader) and the moderation address (if enabled).
      */
@@ -386,7 +419,7 @@ final class Mailer
         }
 
         $uploader = Paper::uploader($paper);
-        $vars = array_merge([
+        $base = array_merge([
             'site'    => Settings::siteName(),
             'title'   => (string) ($paper['title'] ?? ''),
             'uid'     => (string) ($paper['uid'] ?? ''),
@@ -394,26 +427,48 @@ final class Mailer
                 ? Paper::publicUrl($paper)
                 : Config::baseUrl(),
             'admin_url' => \Athenaeum\Core\Router::url('admin.paper', ['id' => (int) ($paper['id'] ?? 0)]),
-            'status'  => \Athenaeum\Models\Paper::statusLabel((string) ($paper['status'] ?? '')),
             'contact' => Settings::string('site.contact_email'),
             'name'    => $uploader !== null ? (string) ($uploader['display_name'] ?: $uploader['nickname']) : '',
         ], array_map(static fn ($value): string => (string) $value, $extra));
+
+        // `status` is a translated label, so it has to be built once per
+        // recipient language rather than once per event.
+        $varsFor = static fn (string $locale): array => $base + [
+            'status' => self::statusLabelIn($locale, (string) ($paper['status'] ?? '')),
+        ];
 
         if (Settings::bool('mail.notify_author') && $uploader !== null) {
             $to = (string) $uploader['email'];
             // The author should not be told "your paper was uploaded by an admin"
             // for proxy uploads unless the administrator is the actor.
             if ($to !== '' && !($event === self::EVENT_PROXY && (int) ($paper['uploader_id'] ?? 0) === 0)) {
-                self::sendTemplate($to, $event, $vars, (string) ($uploader['locale'] ?? '') ?: null);
+                $authorLocale = self::localeForPaper($paper, $uploader);
+                self::sendTemplate($to, $event, $varsFor($authorLocale), $authorLocale);
             }
         }
 
         if (Settings::bool('mail.notify_admin')) {
             $adminTo = Settings::string('moderation.notify_email') ?: Settings::string('site.contact_email');
             if ($adminTo !== '' && filter_var($adminTo, FILTER_VALIDATE_EMAIL)) {
-                self::sendTemplate($adminTo, $event, $vars, (string) Settings::get('ui.default_locale', 'en'));
+                $adminLocale = (string) Settings::get('ui.default_locale', 'en');
+                self::sendTemplate($adminTo, $event, $varsFor($adminLocale), $adminLocale);
             }
         }
+    }
+
+    /** The status label as one recipient language sees it. */
+    private static function statusLabelIn(string $locale, string $status): string
+    {
+        $previous = I18n::locale();
+        $match = I18n::bestMatch($locale);
+        if ($match !== null) {
+            I18n::setLocale($match);
+        }
+        $label = \Athenaeum\Models\Paper::statusLabel($status);
+        if ($match !== null) {
+            I18n::setLocale($previous);
+        }
+        return $label;
     }
 
     /** Admin panel "send a test message" button. */

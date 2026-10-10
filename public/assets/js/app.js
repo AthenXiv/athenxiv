@@ -476,18 +476,27 @@
     });
   }
 
-  /* ------------------------------------------- registration e-mail code */
-  var codeForm = document.querySelector('[data-email-code-form]');
-  if (codeForm) {
-    var codeButton = codeForm.querySelector('[data-send-code]');
-    var codeStatus = codeForm.querySelector('[data-code-status]');
-    var emailField = document.getElementById('email');
-    var endpoint = codeForm.getAttribute('data-endpoint');
+  /* ----------------------------------------------- e-mail verification code */
+  // The block is the *container*, not the <form>: a page may keep the code and
+  // the new password in one form, and then the request has to go somewhere else.
+  // Everything the handler needs — the button, the status line, the address —
+  // must live inside this element, so the lookup is scoped to it.
+  var codeBlock = document.querySelector('[data-email-code-block]');
+  if (codeBlock) {    var codeButton = codeBlock.querySelector('[data-send-code]');
+    var codeStatus = codeBlock.querySelector('[data-code-status]');
+    // The address may sit inside the block (recovery page) or earlier in the
+    // same form (registration, where the code block comes after it).
+    var emailField = codeBlock.querySelector('input[name="email"]') || document.querySelector('input[name="email"]');
+    var endpoint = codeBlock.getAttribute('data-endpoint');
     var cooldown = 0;
     var timer = null;
 
     var say = function (message, ok) {
-      if (!codeStatus) { return; }
+      if (!codeStatus) {
+        // Without a place to print, a silent failure is worse than a loud one.
+        window.alert(message);
+        return;
+      }
       codeStatus.hidden = false;
       codeStatus.textContent = message;
       codeStatus.className = 'small ' + (ok ? 'ok' : 'danger');
@@ -516,9 +525,10 @@
         }
         codeButton.disabled = true;
         var body = new URLSearchParams();
-        body.set('_token', codeForm.getAttribute('data-csrf') || '');
+        body.set('_token', codeBlock.getAttribute('data-csrf') || '');
         body.set('email', email);
-        body.set('locale', codeForm.getAttribute('data-locale') || '');
+        // No locale is sent: the server writes the message in the language of
+        // this request's session, which is the one the visitor is reading.
 
         fetch(endpoint, {
           method: 'POST',

@@ -884,4 +884,21 @@ return [
     'auth.registered_verified'     => 'Účet vytvořen — vaše e-mailová adresa je ověřena.',
     'email.subject_verify_code'    => 'Váš ověřovací kód pro AthenXiv',
     'email.body_verify_code'       => "Dobrý den,\n\nVáš ověřovací kód je :code.\n\nVyprší za 10 minut. Pokud jste o něj nežádali, můžete tuto zprávu ignorovat.\n\n— :site",
+
+    // ------------------- password recovery by e-mail
+    'auth.forgot_password'         => 'Zapomněli jste heslo?',
+    'auth.reset_title'             => 'Obnovení hesla',
+    'auth.reset_subtitle'          => 'Zadejte e-mailovou adresu svého účtu. Pošleme vám šestmístný kód, kterým si zvolíte nové heslo.',
+    'auth.reset_email'             => 'E-mailová adresa účtu',
+    'auth.reset_send_cta'          => 'Poslat kód pro obnovení',
+    'auth.reset_code_label'        => 'Šestimístný kód ze zprávy',
+    'auth.reset_new_password'      => 'Nové heslo',
+    'auth.reset_submit'            => 'Uložit nové heslo',
+    'auth.reset_hint'              => 'Kód platí jen jednou a vyprší po 10 minutách.',
+    'auth.reset_sent'              => 'Pokud k adrese :email existuje účet, kód pro obnovení už je na cestě. Zkontrolujte prosím také složku se spamem.',
+    'auth.reset_done'              => 'Heslo bylo změněno. Nyní se můžete přihlásit.',
+    'auth.reset_invalid'           => 'Tento kód je nesprávný nebo vypršel. Vyžádejte si nový.',
+    'auth.reset_unavailable'       => 'Obnovení hesla e-mailem zatím na tomto webu není dostupné. Napište prosím na kontaktní adresu uvedenou v zápatí.',
+    'email.subject_reset_code'     => 'Váš kód pro obnovení hesla AthenXiv',
+    'email.body_reset_code'        => "Dobrý den,\n\nněkdo požádal o obnovení hesla účtu AthenXiv, který používá tuto adresu.\n\nVáš kód pro obnovení je :code — vyprší za :minutes minut.\n\nOtevřete :url a zadejte kód společně s novým heslem. Pokud jste to nebyli vy, tuto zprávu ignorujte: bez kódu se nic nezmění.\n\n— :site",
 ];

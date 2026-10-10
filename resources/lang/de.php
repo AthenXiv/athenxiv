@@ -885,4 +885,21 @@ return [
     'auth.registered_verified'     => 'Konto erstellt — Ihre E-Mail-Adresse ist bestätigt.',
     'email.subject_verify_code'    => 'Ihr AthenXiv-Bestätigungscode',
     'email.body_verify_code'       => "Guten Tag,\n\nIhr Bestätigungscode lautet :code.\n\nEr läuft in 10 Minuten ab. Wenn Sie ihn nicht angefordert haben, können Sie diese Nachricht ignorieren.\n\n— :site",
+
+    // ------------------- password recovery by e-mail
+    'auth.forgot_password'         => 'Passwort vergessen?',
+    'auth.reset_title'             => 'Passwort zurücksetzen',
+    'auth.reset_subtitle'          => 'Geben Sie die E-Mail-Adresse Ihres Kontos ein. Wir senden Ihnen einen sechsstelligen Code; mit diesem Code wählen Sie ein neues Passwort.',
+    'auth.reset_email'             => 'E-Mail-Adresse des Kontos',
+    'auth.reset_send_cta'          => 'Zurücksetzungscode senden',
+    'auth.reset_code_label'        => 'Sechsstelliger Code aus der Nachricht',
+    'auth.reset_new_password'      => 'Neues Passwort',
+    'auth.reset_submit'            => 'Neues Passwort speichern',
+    'auth.reset_hint'              => 'Der Code gilt nur einmal und läuft nach 10 Minuten ab.',
+    'auth.reset_sent'              => 'Falls ein Konto für :email existiert, ist ein Zurücksetzungscode unterwegs. Bitte prüfen Sie auch Ihren Spam-Ordner.',
+    'auth.reset_done'              => 'Ihr Passwort wurde geändert. Sie können sich jetzt anmelden.',
+    'auth.reset_invalid'           => 'Dieser Code ist falsch oder abgelaufen. Fordern Sie einen neuen an.',
+    'auth.reset_unavailable'       => 'Die Passwort-Wiederherstellung per E-Mail ist auf dieser Website noch nicht verfügbar. Bitte schreiben Sie an die Kontaktadresse im Fußbereich.',
+    'email.subject_reset_code'     => 'Ihr Code zum Zurücksetzen des AthenXiv-Passworts',
+    'email.body_reset_code'        => "Hallo,\n\njemand hat darum gebeten, das Passwort des AthenXiv-Kontos zurückzusetzen, das diese Adresse verwendet.\n\nIhr Zurücksetzungscode lautet :code — er läuft in :minutes Minuten ab.\n\nÖffnen Sie :url und geben Sie den Code zusammen mit Ihrem neuen Passwort ein. Wenn Sie das nicht waren, ignorieren Sie diese Nachricht: ohne den Code ändert sich nichts.\n\n— :site",
 ];

@@ -884,4 +884,20 @@ return [
     'email.subject_verify_code'   => 'AthenXiv doğrulama kodunuz',
     'email.body_verify_code'      => "Merhaba,\n\nDoğrulama kodunuz :code.\n\n10 dakika içinde sona erer. Bunu siz istemediyseniz bu iletiyi yok sayabilirsiniz.\n\n— :site",
 
+    // ------------------- password recovery by e-mail
+    'auth.forgot_password'         => 'Parolanızı mı unuttunuz?',
+    'auth.reset_title'             => 'Parolanızı sıfırlayın',
+    'auth.reset_subtitle'          => 'Hesabınızın e-posta adresini girin. Size altı haneli bir kod gönderilir; bu kodla yeni bir parola belirleyebilirsiniz.',
+    'auth.reset_email'             => 'Hesabın e-posta adresi',
+    'auth.reset_send_cta'          => 'Sıfırlama kodunu gönder',
+    'auth.reset_code_label'        => 'Mesajdaki altı haneli kod',
+    'auth.reset_new_password'      => 'Yeni parola',
+    'auth.reset_submit'            => 'Yeni parolayı kaydet',
+    'auth.reset_hint'              => 'Kod yalnızca bir kez geçerlidir ve 10 dakika sonra zaman aşımına uğrar.',
+    'auth.reset_sent'              => 'Eğer :email için bir hesap varsa, sıfırlama kodu yola çıkmıştır. Lütfen spam klasörünüzü de kontrol edin.',
+    'auth.reset_done'              => 'Parolanız değiştirildi. Artık giriş yapabilirsiniz.',
+    'auth.reset_invalid'           => 'Bu kod yanlış veya zaman aşımına uğramış. Yeni bir kod isteyin.',
+    'auth.reset_unavailable'       => 'Bu sitede e-posta ile parola kurtarma henüz kullanılamıyor. Lütfen sayfanın altındaki iletişim adresine yazın.',
+    'email.subject_reset_code'     => 'AthenXiv parola sıfırlama kodunuz',
+    'email.body_reset_code'        => "Merhaba,\n\nBirisi bu adresi kullanan AthenXiv hesabının parolasını sıfırlamak istedi.\n\nSıfırlama kodunuz :code — :minutes dakika içinde zaman aşımına uğrar.\n\n:url adresini açın ve kodu yeni parolanızla birlikte girin. Bunu siz istemediyseniz bu mesajı yok sayın: kod olmadan hiçbir şey değişmez.\n\n— :site",
 ];

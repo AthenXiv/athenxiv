@@ -890,4 +890,21 @@ Vahvistuskoodisi on :code.
 Se vanhenee 10 minuutissa. Jos et pyytänyt sitä, voit jättää tämän viestin huomiotta.
 
 — :site",
+
+    // ------------------- password recovery by e-mail
+    'auth.forgot_password'         => 'Unohditko salasanasi?',
+    'auth.reset_title'             => 'Vaihda salasanasi',
+    'auth.reset_subtitle'          => 'Anna tilisi sähköpostiosoite. Lähetämme kuusinumeroisen koodin, jolla valitset uuden salasanan.',
+    'auth.reset_email'             => 'Tilin sähköpostiosoite',
+    'auth.reset_send_cta'          => 'Lähetä vaihtokoodi',
+    'auth.reset_code_label'        => 'Viestissä saatu kuusinumeroinen koodi',
+    'auth.reset_new_password'      => 'Uusi salasana',
+    'auth.reset_submit'            => 'Tallenna uusi salasana',
+    'auth.reset_hint'              => 'Koodi toimii vain kerran ja vanhenee 10 minuutissa.',
+    'auth.reset_sent'              => 'Jos osoitteelle :email on olemassa tili, vaihtokoodi on jo matkalla. Tarkista myös roskapostikansio.',
+    'auth.reset_done'              => 'Salasanasi on vaihdettu. Voit nyt kirjautua sisään.',
+    'auth.reset_invalid'           => 'Koodi on väärä tai vanhentunut. Pyydä uusi koodi.',
+    'auth.reset_unavailable'       => 'Salasanan palauttaminen sähköpostitse ei ole vielä käytettävissä tällä sivustolla. Kirjoita sivun alaosassa ilmoitettuun yhteysosoitteeseen.',
+    'email.subject_reset_code'     => 'AthenXiv-salasanasi vaihtokoodi',
+    'email.body_reset_code'        => "Hei,\n\nJoku pyysi vaihtamaan tähän osoitteeseen liitetyn AthenXiv-tilin salasanan.\n\nVaihtokoodisi on :code — se vanhenee :minutes minuutissa.\n\nAvaa :url ja syötä koodi yhdessä uuden salasanasi kanssa. Jos et ollut sinä, jätä tämä viesti huomiotta: ilman koodia mikään ei muutu.\n\n— :site",
 ];

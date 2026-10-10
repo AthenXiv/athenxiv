@@ -889,4 +889,21 @@ Twój kod weryfikacyjny to :code.
 Wygasa po 10 minutach. Jeśli go nie zamawiałeś, zignoruj tę wiadomość.
 
 — :site",
+
+    // ------------------- password recovery by e-mail
+    'auth.forgot_password'         => 'Nie pamiętasz hasła?',
+    'auth.reset_title'             => 'Zresetuj swoje hasło',
+    'auth.reset_subtitle'          => 'Podaj adres e-mail przypisany do Twojego konta. Wyślemy sześciocyfrowy kod, którym ustawisz nowe hasło.',
+    'auth.reset_email'             => 'Adres e-mail konta',
+    'auth.reset_send_cta'          => 'Wyślij kod resetujący',
+    'auth.reset_code_label'        => 'Sześciocyfrowy kod z wiadomości',
+    'auth.reset_new_password'      => 'Nowe hasło',
+    'auth.reset_submit'            => 'Zapisz nowe hasło',
+    'auth.reset_hint'              => 'Kod działa jednorazowo i wygasa po 10 minutach.',
+    'auth.reset_sent'              => 'Jeśli konto dla adresu :email istnieje, kod resetujący jest już w drodze. Sprawdź także folder ze spamem.',
+    'auth.reset_done'              => 'Hasło zostało zmienione. Możesz się teraz zalogować.',
+    'auth.reset_invalid'           => 'Ten kod jest nieprawidłowy lub wygasł. Poproś o nowy.',
+    'auth.reset_unavailable'       => 'Odzyskiwanie hasła przez e-mail nie jest jeszcze dostępne w tym serwisie. Napisz na adres kontaktowy podany w stopce.',
+    'email.subject_reset_code'     => 'Twój kod resetujący hasło do AthenXiv',
+    'email.body_reset_code'        => "Dzień dobry,\n\nKtoś poprosił o zresetowanie hasła do konta AthenXiv powiązanego z tym adresem.\n\nTwój kod resetujący to :code — wygasa po :minutes minutach.\n\nOtwórz :url i wpisz kod razem z nowym hasłem. Jeśli to nie Ty, zignoruj tę wiadomość: bez kodu nic się nie zmieni.\n\n— :site",
 ];

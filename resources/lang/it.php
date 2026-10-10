@@ -859,4 +859,21 @@ Il tuo codice di verifica è :code.
 Scade tra 10 minuti. Se non l’hai richiesto, puoi ignorare questo messaggio.
 
 — :site",
+
+    // ------------------- password recovery by e-mail
+    'auth.forgot_password'         => 'Hai dimenticato la password?',
+    'auth.reset_title'             => 'Reimposta la password',
+    'auth.reset_subtitle'          => 'Inserisci l’indirizzo e-mail del tuo account. Ti inviamo un codice di sei cifre; con quel codice scegli una nuova password.',
+    'auth.reset_email'             => 'Indirizzo e-mail dell’account',
+    'auth.reset_send_cta'          => 'Invia il codice di reimpostazione',
+    'auth.reset_code_label'        => 'Codice di sei cifre ricevuto nel messaggio',
+    'auth.reset_new_password'      => 'Nuova password',
+    'auth.reset_submit'            => 'Salva la nuova password',
+    'auth.reset_hint'              => 'Il codice funziona una sola volta e scade dopo 10 minuti.',
+    'auth.reset_sent'              => 'Se esiste un account per :email, un codice di reimpostazione è già in viaggio. Controlla anche la cartella dello spam.',
+    'auth.reset_done'              => 'La tua password è stata modificata. Ora puoi accedere.',
+    'auth.reset_invalid'           => 'Questo codice è errato o è scaduto. Richiedine uno nuovo.',
+    'auth.reset_unavailable'       => 'Il recupero della password via e-mail non è ancora disponibile su questo sito. Scrivi all’indirizzo di contatto indicato nel piè di pagina.',
+    'email.subject_reset_code'     => 'Il tuo codice di reimpostazione della password AthenXiv',
+    'email.body_reset_code'        => "Salve,\n\nQualcuno ha chiesto di reimpostare la password dell’account AthenXiv associato a questo indirizzo.\n\nIl tuo codice di reimpostazione è :code — scade tra :minutes minuti.\n\nApri :url e inserisci il codice insieme alla nuova password. Se non sei stato tu, ignora questo messaggio: senza il codice non cambia nulla.\n\n— :site",
 ];

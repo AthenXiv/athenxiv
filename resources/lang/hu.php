@@ -823,4 +823,21 @@ return [
     'auth.registered_verified'     => 'Fiók létrehozva — az e-mail-címed ellenőrizve.',
     'email.subject_verify_code'    => 'Az AthenXiv ellenőrző kódod',
     'email.body_verify_code'       => "Szia,\n\nAz ellenőrző kódod: :code.\n\n10 perc múlva lejár. Ha nem te kérted, hagyd figyelmen kívül ezt az üzenetet.\n\n— :site",
+
+    // ------------------- password recovery by e-mail
+    'auth.forgot_password'         => 'Elfelejtette a jelszavát?',
+    'auth.reset_title'             => 'Jelszó visszaállítása',
+    'auth.reset_subtitle'          => 'Adja meg a fiókja e-mail-címét. Küldünk egy hatjegyű kódot, amellyel új jelszót választhat.',
+    'auth.reset_email'             => 'A fiók e-mail-címe',
+    'auth.reset_send_cta'          => 'A visszaállító kód elküldése',
+    'auth.reset_code_label'        => 'Az üzenetben kapott hatjegyű kód',
+    'auth.reset_new_password'      => 'Új jelszó',
+    'auth.reset_submit'            => 'Az új jelszó mentése',
+    'auth.reset_hint'              => 'A kód csak egyszer használható, és 10 perc után lejár.',
+    'auth.reset_sent'              => 'Ha létezik fiók a(z) :email címhez, a visszaállító kód már úton van. Nézze meg a spam mappát is.',
+    'auth.reset_done'              => 'A jelszava megváltozott. Most már bejelentkezhet.',
+    'auth.reset_invalid'           => 'Ez a kód hibás vagy lejárt. Kérjen újat.',
+    'auth.reset_unavailable'       => 'Ezen a webhelyen még nem érhető el a jelszó helyreállítása e-mailben. Írjon a láblécben megadott kapcsolattartási címre.',
+    'email.subject_reset_code'     => 'Az AthenXiv jelszó-visszaállító kódja',
+    'email.body_reset_code'        => "Kedves Címzett!\n\nValaki az ehhez a címhez tartozó AthenXiv-fiók jelszavának visszaállítását kérte.\n\nA visszaállító kódja :code — :minutes perc múlva lejár.\n\nNyissa meg a(z) :url oldalt, és adja meg a kódot az új jelszavával együtt. Ha nem Ön kérte, hagyja figyelmen kívül ezt az üzenetet: a kód nélkül semmi sem változik.\n\n— :site",
 ];

@@ -286,6 +286,13 @@ return [
     'ots.verify_at'            => 'Verify at opentimestamps.org',
     'ots.proof_missing'        => 'No proof file is stored for this item.',
     'ots.stamp_disabled'       => 'Timestamping is currently disabled by the administrators.',
+    'ots.target_page'          => 'Page content',
+    'ots.download_snapshot'    => 'Download the stamped text (.txt) so you can re-hash it and confirm the page has not changed',
+    'ots.page_heading'         => 'This page is timestamped',
+    'ots.page_intro'           => 'The wording on this page is not just a claim about our dates: its text is hashed and committed to the Bitcoin blockchain through the public OpenTimestamps calendars. Download the stamped text below and re-hash it to confirm the page has not moved since the moment it was stamped — without trusting this site.',
+    'ots.page_first_stamped'   => 'Earliest proof for this page: :date.',
+    'ots.page_pending_explainer' => 'The text above was accepted by the public OpenTimestamps calendars when this page was last saved. The Bitcoin attestation usually appears within a few hours.',
+    'ots.page_confirmed_explainer' => 'This page\'s text is committed to the Bitcoin blockchain. Anyone can verify it with the official client or the opentimestamps.org web page, using the .txt snapshot and the .ots proof below.',
 
     // ------------------------------------------------------------- link kinds
     'link_kind.doi'            => 'DOI',
@@ -608,8 +615,8 @@ return [
     'page.about_title'         => 'About AthenXiv',
     'page.timestamping_title'  => 'How timestamping works here',
     'page.guidelines_title'    => 'Submission guidelines',
-    'page.about_p1'            => 'AthenXiv is an open archive for research in every field — articles, translations, commentaries and preprints. It exists for two reasons: to give independent authors a place to publish without institutional gatekeeping, and to make the priority of a text verifiable.',
-    'page.about_p2'            => 'Every uploaded file is hashed with SHA-256 and the digest is submitted to public OpenTimestamps calendars. The returned proof is stored alongside the paper and can be downloaded by anyone, then verified against the Bitcoin blockchain without trusting this site.',
+    'page.about_p1'            => 'In the age of AGI the frontier of knowledge is coming within reach — GPT-5, working with mathematicians, supplied the missing step in the proof of Erdős Problem 848. The right to explore, and the right to publish what that exploration finds, should belong to everyone; AthenXiv exists so that an idea can be published without institutional gatekeeping.',
+    'page.about_p2'            => 'This site cannot assign a DOI, but every uploaded file is hashed with SHA-256 and the digest is submitted to public OpenTimestamps calendars, which anchor it in the Bitcoin blockchain. The paper\'s publication date is therefore backed by a verifiable timestamp that protects the author\'s priority.',
     'page.about_p3'            => 'Submissions are reviewed by editors who decide which section a paper belongs to. Rejection is not a judgement about your timestamp: proofs are created at upload time and survive rejection, withdrawal and even deletion of the paper record.',
     'page.timestamping_p1'     => 'Timestamping answers one narrow question: did this exact file exist before a certain moment? It does not say anything about quality, authorship or truth. It is a cryptographic receipt, nothing more.',
     'page.timestamping_p2'     => 'On upload we compute the SHA-256 digest of each file and send that digest — never the file itself — to the public calendars listed below. Each calendar returns a partial proof that commits the digest to a Merkle tree, and eventually to a Bitcoin block. The complete proof is stored with the paper as an .ots file.',
@@ -813,6 +820,13 @@ return [
     'admin.pages'              => 'Content pages',
     'admin.edit_page'          => 'Edit page',
     'admin.page_saved'         => 'Page saved for locale :locale.',
+    'admin.page_stamp_action'  => 'Timestamp it',
+    'admin.pages_stamp_all'    => 'Timestamp every page',
+    'admin.page_stamp_disabled' => 'OpenTimestamps is switched off in the settings.',
+    'admin.page_stamp_empty'   => 'This page has no content to timestamp yet.',
+    'admin.page_stamp_failed'  => 'The calendars could not be reached: :error',
+    'admin.page_stamped'       => 'Page proof: :status',
+    'admin.pages_stamped'      => 'Stamped :ok page(s); :failed failed.',
     'admin.page_created'       => 'Page created.',
     'admin.page_deleted'       => 'Page deleted.',
     'admin.system_page_kept'   => 'System pages cannot be deleted — edit their content instead.',
@@ -849,6 +863,8 @@ return [
     'audit.page.save'          => 'Content page edited',
     'audit.page.create'        => 'Content page created',
     'audit.page.purge'         => 'Content page deleted',
+    'audit.page.stamp'         => 'Content page timestamped',
+    'audit.page.stamp_all'     => 'All content pages timestamped',
     'audit.category.move'      => 'Subject area moved',
     'audit.ai.review'          => 'AI review run',
     'audit.ai.batch'           => 'AI batch review run',
@@ -913,4 +929,27 @@ return [
     'auth.registered_verified'     => 'Account created — your e-mail address is verified.',
     'email.subject_verify_code'    => 'Your AthenXiv verification code',
     'email.body_verify_code'       => "Hello,\n\nYour verification code is :code.\n\nIt expires in 10 minutes. If you did not ask for it, you can ignore this message.\n\n— :site",
+
+    // ------------------- password recovery by e-mail
+    'auth.forgot_password'         => 'Forgot your password?',
+    'auth.reset_title'             => 'Reset your password',
+    'auth.reset_subtitle'          => 'Enter the e-mail address of your account. We send a six-digit code; with that code you choose a new password.',
+    'auth.reset_email'             => 'Account e-mail address',
+    'auth.reset_send_cta'          => 'Send the reset code',
+    'auth.reset_code_label'        => 'Six-digit code from the message',
+    'auth.reset_new_password'      => 'New password',
+    'auth.reset_submit'            => 'Save the new password',
+    'auth.reset_hint'              => 'The code works once and expires after 10 minutes.',
+    'auth.reset_sent'              => 'If an account exists for :email, a reset code is on its way. Please check your spam folder as well.',
+    'auth.reset_done'              => 'Your password has been changed. You can sign in now.',
+    'auth.reset_invalid'           => 'That code is wrong or has expired. Request a new one.',
+    'auth.reset_unavailable'       => 'Password recovery by e-mail is not available on this site yet. Please write to the contact address in the footer.',
+    'email.subject_reset_code'     => 'Your AthenXiv password reset code',
+    'email.body_reset_code'        => "Hello,\n\nSomeone asked to reset the password of the AthenXiv account that uses this address.\n\nYour reset code is :code — it expires in :minutes minutes.\n\nOpen :url and type the code together with your new password. If this was not you, ignore this message: nothing changes without the code.\n\n— :site",
+
+    // The password-recovery switch lives on the settings screen, next to
+    // "allow open registration". Like the crawler-journal keys above it, this
+    // one label has no manual translation yet: the other twenty-nine locales
+    // fall back to the English string rather than showing a raw key.
+    'admin.registration_reset_password' => 'Allow password recovery by e-mail (needs working mail settings)',
 ];

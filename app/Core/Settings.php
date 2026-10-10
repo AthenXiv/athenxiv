@@ -50,6 +50,7 @@ final class Settings
         // Accounts.
         'registration.open'      => true,
         'registration.verify_email' => true,
+        'registration.reset_password' => true,
         'registration.default_role' => 'user',
         'moderation.auto_approve' => false,
         'moderation.notify_email' => '',

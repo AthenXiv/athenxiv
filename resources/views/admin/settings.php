@@ -253,6 +253,12 @@ $v = static fn (string $key, mixed $default = '') => $values[$key] ?? $default;
     </div>
     <div class="form-row">
       <label class="checkbox">
+        <input type="checkbox" name="registration.reset_password" value="1" <?= !empty($v('registration.reset_password')) ? 'checked' : '' ?>>
+        <?= e(__('admin.registration_reset_password')) ?>
+      </label>
+    </div>
+    <div class="form-row">
+      <label class="checkbox">
         <input type="checkbox" name="moderation.auto_approve" value="1" <?= !empty($v('moderation.auto_approve')) ? 'checked' : '' ?>>
         <?= e(__('admin.auto_approve')) ?>
       </label>

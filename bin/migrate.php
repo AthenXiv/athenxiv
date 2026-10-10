@@ -5,6 +5,14 @@
  *   php bin/migrate.php                 # apply everything that is missing
  *   php bin/migrate.php --dry-run       # report without touching the database
  *   php bin/migrate.php --seed-only     # only (re)seed pages, taxonomy, versions
+ *   php bin/migrate.php --force-pages=about      # overwrite one system page's
+ *                                       # copy from database/seed_pages.php
+ *                                       # (comma-separated slugs; add no value
+ *                                       # to refresh all system pages). Only the
+ *                                       # locales present in the seed (zh-CN + en)
+ *                                       # are touched; other locales keep their
+ *                                       # translations. Note: this overwrites
+ *                                       # administrator edits to those pages.
  *
  * Every step is idempotent: it checks for the table/column/row first, so the
  * command can be run repeatedly — after a code update, on a fresh install, or
@@ -35,6 +43,15 @@ foreach (array_slice($argv, 1) as $argument) {
 }
 $dryRun = !empty($options['dry-run']);
 $seedOnly = !empty($options['seed-only']);
+$forcePages = $options['force-pages'] ?? null;
+if ($forcePages === true) {
+    // bare --force-pages refreshes every system page
+    $forcePages = [];
+} elseif (is_string($forcePages) && $forcePages !== '') {
+    $forcePages = array_values(array_filter(array_map('trim', explode(',', $forcePages))));
+} else {
+    $forcePages = null;
+}
 
 $db = Database::instance();
 $changes = 0;
@@ -201,6 +218,14 @@ if (!$seedOnly) {
         step("papers.{$column}", $applied, $dryRun, $changes);
     }
 
+    // --- columns on timestamps ---------------------------------------------
+    // Page-content proofs live in the same table as paper proofs
+    // (target_type = 'page', paper_id = 0, page_id = the content page).
+    $applied = $dryRun
+        ? !$db->hasColumn('timestamps', 'page_id')
+        : $db->addColumn('timestamps', 'page_id', 'BIGINT UNSIGNED NULL', 'INTEGER');
+    step('timestamps.page_id', $applied, $dryRun, $changes);
+
     // --- index for the AI queue -------------------------------------------
     if (!$db->isSqlite() && !$dryRun) {
         try {
@@ -227,7 +252,23 @@ $seedPages = require $root . '/database/seed_pages.php';
 foreach ($seedPages as $slug => $page) {
     $existing = Page::findBySlug((string) $slug);
     if ($existing !== null) {
-        step("page {$slug}", false, $dryRun, $changes);
+        $wanted = $forcePages === [] || (is_array($forcePages) && in_array((string) $slug, $forcePages, true));
+        if ($wanted) {
+            $titles = (array) ($page['titles'] ?? []);
+            $contents = (array) ($page['contents'] ?? []);
+            $current = Page::texts($existing, 'contents');
+            $refreshed = 0;
+            foreach ($contents as $locale => $text) {
+                if (!is_string($text) || ($current[$locale] ?? '') === $text) {
+                    continue;
+                }
+                Page::saveLocale((int) $existing['id'], (string) $locale, (string) ($titles[$locale] ?? ''), $text);
+                $refreshed++;
+            }
+            step("page {$slug} refreshed ({$refreshed} locale(s))", $refreshed > 0, $dryRun, $changes);
+        } else {
+            step("page {$slug}", false, $dryRun, $changes);
+        }
         continue;
     }
     if (!$dryRun) {

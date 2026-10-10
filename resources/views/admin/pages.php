@@ -4,13 +4,21 @@
  * List of editable content pages.
  *
  * @var array $pages,$system,$locales
+ * @var bool $stamping  OpenTimestamps is switched on
  */
 
 use Athenaeum\Models\Page;
+use Athenaeum\Models\Timestamp;
 ?>
 <header class="page-head">
   <h1><?= e(__('admin.pages')) ?></h1>
   <p class="muted small"><?= e(__('admin.pages_hint')) ?></p>
+  <?php if (!empty($stamping)): ?>
+    <form class="inline" method="post" action="<?= e(url('admin.pages.stamp')) ?>">
+      <?= csrf_field() ?>
+      <button class="btn btn--ghost btn--small" type="submit"><?= e(__('admin.pages_stamp_all')) ?></button>
+    </form>
+  <?php endif; ?>
 </header>
 
 <?php if ($pages === []): ?>
@@ -22,6 +30,7 @@ use Athenaeum\Models\Page;
         <th><?= e(__('admin.page_slug')) ?></th>
         <th><?= e(__('admin.name')) ?></th>
         <th><?= e(__('admin.filled_locales')) ?></th>
+        <th><?= e(__('ots.heading')) ?></th>
         <th><?= e(__('common.updated')) ?></th>
         <th></th>
       </tr>
@@ -44,6 +53,22 @@ use Athenaeum\Models\Page;
           </td>
           <td class="small"><?= (int) $page['locale_count'] ?> / <?= count($locales) ?>
             <br><span class="muted"><?= number_format((int) $page['size']) ?> chars</span></td>
+          <td class="small">
+            <?php if (!empty($page['stamp'])): ?>
+              <?php $stampState = (string) $page['stamp']['status']; ?>
+              <span class="ots-chip ots-chip--<?= e($stampState === 'confirmed' ? 'ok' : ($stampState === 'failed' ? 'bad' : 'warn')) ?>">
+                <?= e(Timestamp::shortStatusLabel($stampState)) ?>
+              </span>
+              <br><span class="muted"><?= e(format_date((string) $page['stamp']['submitted_at'], true)) ?></span>
+            <?php elseif (!empty($stamping)): ?>
+              <form class="inline" method="post" action="<?= e(url('admin.page.stamp', ['id' => $page['id']])) ?>">
+                <?= csrf_field() ?>
+                <button class="btn btn--ghost btn--tiny" type="submit"><?= e(__('admin.page_stamp_action')) ?></button>
+              </form>
+            <?php else: ?>
+              <span class="muted">—</span>
+            <?php endif; ?>
+          </td>
           <td class="small">
             <?= e(format_date((string) ($page['updated_at'] ?? $page['created_at']), true)) ?>
             <?php if (!empty($page['editor'])): ?>

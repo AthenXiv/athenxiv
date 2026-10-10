@@ -56,6 +56,10 @@ $router->get('/about/timestamping', [HomeController::class, 'timestamping'])->na
 $router->get('/guidelines', [HomeController::class, 'guidelines'])->name('page.guidelines');
 $router->get('/policy', [HomeController::class, 'policy'])->name('page.policy');
 $router->get('/p/{slug}', [HomeController::class, 'customPage'])->name('page.custom');
+// A content page's own OpenTimestamps proof, plus the exact text it commits to.
+// No uid and no account: verification must never depend on trusting this site.
+$router->get('/page-proof/{timestamp}', [HomeController::class, 'pageProof'])->name('page.timestamp.proof');
+$router->get('/page-snapshot/{timestamp}', [HomeController::class, 'pageSnapshot'])->name('page.timestamp.snapshot');
 $router->get('/media/{kind}/{file}', [MediaController::class, 'show'])->name('media');
 // Bundled assets (PDF.js) with correct MIME types — nginx would serve .mjs as
 // application/octet-stream and the viewer would never run. Matches nested paths.
@@ -72,6 +76,12 @@ $router->post('/login', [AuthController::class, 'login'])->middleware(['guest', 
 $router->get('/register', [AuthController::class, 'registerForm'])->name('register')->middleware('guest');
 $router->post('/register', [AuthController::class, 'register'])->middleware(['guest', 'csrf']);
 $router->post('/register/code', [AuthController::class, 'sendCode'])->name('register.code')->middleware(['guest', 'csrf']);
+// Password recovery: the code arrives by e-mail, the new password is chosen on
+// the same page (POST /password/reset). Both routes are for guests only — a
+// signed-in visitor changes the password from /settings instead.
+$router->get('/password/forgot', [AuthController::class, 'forgotForm'])->name('password.request')->middleware('guest');
+$router->post('/password/forgot', [AuthController::class, 'sendResetCode'])->name('password.email')->middleware(['guest', 'csrf']);
+$router->post('/password/reset', [AuthController::class, 'reset'])->name('password.update')->middleware(['guest', 'csrf']);
 $router->post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware(['auth', 'csrf']);
 $router->get('/logout', static function () {
     return \Athenaeum\Core\Response::redirect(url('home'));
@@ -154,6 +164,8 @@ $router->get('/admin/papers', [AdminController::class, 'papers'])->name('admin.p
     $router->get('/admin/page/{id}', [AdminController::class, 'page'])->name('admin.page');
     $router->post('/admin/page/{id}', [AdminController::class, 'savePage'])->name('admin.page.save')->middleware('csrf');
     $router->post('/admin/pages', [AdminController::class, 'createPage'])->name('admin.pages.create')->middleware('csrf');
+    $router->post('/admin/pages/stamp', [AdminController::class, 'stampAllPages'])->name('admin.pages.stamp')->middleware('csrf');
+    $router->post('/admin/page/{id}/stamp', [AdminController::class, 'restampPage'])->name('admin.page.stamp')->middleware('csrf');
     $router->post('/admin/page/{id}/purge', [AdminController::class, 'purgePage'])->name('admin.page.purge')->middleware('csrf');
 
     // AI review

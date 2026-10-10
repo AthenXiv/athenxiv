@@ -21,6 +21,12 @@
     <button class="btn btn--primary btn--block" type="submit"><?= e(__('auth.login_cta')) ?></button>
   </form>
 
+  <?php if (\Athenaeum\Controllers\AuthController::resetAvailable()): ?>
+    <p class="card__foot small">
+      <a href="<?= e(url('password.request')) ?>"><?= e(__('auth.forgot_password')) ?></a>
+    </p>
+  <?php endif; ?>
+
   <?php if (\Athenaeum\Core\Settings::bool('registration.open')): ?>
     <p class="card__foot small">
       <?= e(__('auth.no_account')) ?>

@@ -88,6 +88,18 @@ def login(browser: Browser, email: str, password: str) -> None:
     browser.post("/login", {"_token": browser.token("/login"), "email": email, "password": password})
 
 
+def signed_in(browser: Browser, email: str, password: str) -> bool:
+    """Sign in and report whether the dashboard really opened.
+
+    The client follows redirects, so a failed login ends on /login with HTTP 200
+    — the status code alone cannot tell the two apart. The dashboard's own
+    "new submission" link can.
+    """
+    login(browser, email, password)
+    status, body, _ = browser.get("/dashboard")
+    return status == 200 and "/submit" in text(body)
+
+
 def text(body: bytes) -> str:
     return body.decode("utf-8", "replace")
 
@@ -731,6 +743,181 @@ def main() -> int:  # noqa: C901 - a test script reads better as one flow
     status, body, _ = guest.get("/dashboard")
     check("the right code creates the account", status == 200, f"HTTP {status}")
     check("the new account is logged in", "logout" in text(body) or "Log out" in text(body))
+
+    # ------------------------------------------- password recovery by e-mail
+    print("\npassword recovery by e-mail:")
+    # The switch lives on the settings screen; other suites may have turned it
+    # off, so pin it for this run the same way registration codes are pinned.
+    set_setting("registration.verify_email", "0")
+    set_setting("registration.reset_password", "1")
+    reset_email = f"reset-user-{stamp}@example.org"
+    reset_old_password = "old-code-flow-password-2026"
+    reset_new_password = "new-code-flow-password-2026"
+    signup = Browser(BASE)
+    status, body, _ = signup.post("/register", {
+        "_token": signup.token("/register"),
+        "nickname": f"Reset{stamp[:5]}",
+        "email": reset_email,
+        "password": reset_old_password,
+        "password_confirmation": reset_old_password,
+        "email_code": "000000",
+        "terms": "1",
+    })
+    status, body, _ = signup.get("/dashboard")
+    check("the account that will lose its password exists", status == 200, f"HTTP {status}")
+
+    status, body, _ = public.get("/login?lang=en")
+    login_page = text(body)
+    check("the sign-in form offers password recovery",
+          "/password/forgot" in login_page, "no recovery link on /login")
+
+    stranger = Browser(BASE)
+    status, body, _ = stranger.get("/password/forgot?lang=en")
+    recovery_page = text(body)
+    check("the recovery form renders", status == 200, f"HTTP {status}")
+    check("the form asks for a code and a new password",
+          'name="code"' in recovery_page and 'name="password"' in recovery_page)
+    check("the form can request the code", "data-send-code" in recovery_page)
+    # The button's JavaScript scopes its lookups to the element carrying
+    # data-email-code-block. The status line sits after a nested wrapper div, so
+    # compare positions rather than slicing at the first </div>.
+    anchor_at = recovery_page.find("data-email-code-block")
+    button_at = recovery_page.find("data-send-code")
+    status_at = recovery_page.find("data-code-status")
+    check("the send button and its status line live in the anchored block",
+          anchor_at != -1 and anchor_at < button_at != -1 and anchor_at < status_at,
+          f"anchor={anchor_at} button={button_at} status={status_at}")
+
+    unknown_email = f"nobody-{stamp}@example.org"
+    status, body, _ = stranger.post("/password/forgot", {
+        "_token": stranger.token("/password/forgot"), "email": unknown_email, "locale": "en",
+    }, headers={"Accept": "application/json"})
+    try:
+        unknown_payload = json.loads(text(body))
+    except Exception:  # noqa: BLE001
+        unknown_payload = {}
+    check("an unknown address gets the same answer (no account oracle)",
+          unknown_payload.get("ok") is True, text(body)[:200])
+
+    # The message follows the language the visitor picked on this very page, not
+    # a value baked into the form when it was rendered. A separate account is
+    # used so the per-address cool-down cannot disturb the main flow below.
+    switch = re.search(r'href="([^"]*?/locale/de[^"]*)"', recovery_page)
+    check("the sign-in pages let a visitor choose the language", switch is not None,
+          "no language switcher on /password/forgot")
+    if switch:
+        german_email = f"reset-de-{stamp}@example.org"
+        german_signup = Browser(BASE)
+        german_signup.post("/register", {
+            "_token": german_signup.token("/register"),
+            "nickname": f"ResetDe{stamp[:5]}",
+            "email": german_email,
+            "password": reset_old_password,
+            "password_confirmation": reset_old_password,
+            "email_code": "000000",
+            "terms": "1",
+        })
+
+        german = Browser(BASE)
+        german.get(switch.group(1))
+        if os.path.exists(message_file):
+            os.remove(message_file)
+        status, body, _ = german.post("/password/forgot", {
+            "_token": german.token("/password/forgot"), "email": german_email,
+        }, headers={"Accept": "application/json"})
+        try:
+            german_payload = json.loads(text(body))
+        except Exception:  # noqa: BLE001
+            german_payload = {}
+        check("the request is accepted in the chosen language",
+              german_payload.get("ok") is True, text(body)[:200])
+
+        german_text = ""
+        if os.path.exists(message_file):
+            raw = open(message_file, "r", encoding="utf-8", errors="replace").read()
+            for chunk in re.findall(r"\r?\n\r?\n([A-Za-z0-9+/=\r\n]{40,})", raw):
+                try:
+                    german_text += base64.b64decode(re.sub(r"\s+", "", chunk)).decode("utf-8", "replace")
+                except Exception:  # noqa: BLE001
+                    continue
+        check("the reset code arrives in German",
+              "Passwort" in german_text or "Zurücksetzen" in german_text.lower(),
+              german_text[:200] or "no message captured")
+        if os.path.exists(message_file):
+            os.remove(message_file)
+
+    if os.path.exists(message_file):
+        os.remove(message_file)
+    status, body, _ = stranger.post("/password/forgot", {
+        "_token": stranger.token("/password/forgot"), "email": reset_email, "locale": "en",
+    }, headers={"Accept": "application/json"})
+    try:
+        payload = json.loads(text(body))
+    except Exception:  # noqa: BLE001
+        payload = {}
+    check("the reset code endpoint answers with JSON", payload.get("ok") is True, text(body)[:200])
+
+    reset_code = ""
+    if os.path.exists(message_file):
+        raw = open(message_file, "r", encoding="utf-8", errors="replace").read()
+        decoded = []
+        for chunk in re.findall(r"\r?\n\r?\n([A-Za-z0-9+/=\r\n]{40,})", raw):
+            try:
+                decoded.append(base64.b64decode(re.sub(r"\s+", "", chunk)).decode("utf-8", "replace"))
+            except Exception:  # noqa: BLE001
+                continue
+        joined = "\n".join(decoded)
+        match = re.search(r"\b(\d{6})\b", joined)
+        reset_code = match.group(1) if match else ""
+        check("the message names the reset code, not a registration code",
+              "password" in joined.lower() and "reset" in joined.lower(), joined[:200])
+    check("the mail carried a six-digit reset code", len(reset_code) == 6, f"code={reset_code!r}")
+
+    # A wrong code must leave the password exactly as it was.
+    wrong_reset = Browser(BASE)
+    token = wrong_reset.token("/password/forgot")
+    status, body, _ = wrong_reset.post("/password/reset", {
+        "_token": token, "email": reset_email, "code": "000000",
+        "password": reset_new_password, "password_confirmation": reset_new_password,
+    })
+    check("a wrong code does not change the password",
+          signed_in(Browser(BASE), reset_email, reset_old_password),
+          "the original password stopped working after a wrong code")
+
+    recovery = Browser(BASE)
+    token = recovery.token("/password/forgot")
+    # The client follows redirects, so what comes back here is already the page
+    # the visitor lands on: the sign-in form carrying the success flash.
+    status, reset_body, _ = recovery.post("/password/reset", {
+        "_token": token, "email": reset_email, "code": reset_code,
+        "password": reset_new_password, "password_confirmation": reset_new_password,
+    })
+    landing = text(reset_body)
+    check("the reset is accepted", status in (200, 302), f"HTTP {status}")
+    check("the reset lands on the sign-in form",
+          "/password/forgot" in landing and 'name="password"' in landing, landing[:200])
+    alerts = re.findall(r'<div class="alert alert--(\w+)"[^>]*>(.*?)</div>', landing, re.S)
+    check("the visitor is told the password changed",
+          any(kind == "success" for kind, _ in alerts) and "changed" in landing.lower(),
+          f"alerts={[(kind, ' '.join(body.split())[:90]) for kind, body in alerts]}")
+
+    check("the old password no longer works",
+          not signed_in(Browser(BASE), reset_email, reset_old_password),
+          "the replaced password still opens the dashboard")
+    check("the new password signs in",
+          signed_in(Browser(BASE), reset_email, reset_new_password),
+          "the chosen password was refused")
+
+    # The code was consumed by the successful reset above.
+    replay = Browser(BASE)
+    status, body, _ = replay.post("/password/reset", {
+        "_token": replay.token("/password/forgot"), "email": reset_email, "code": reset_code,
+        "password": "another-password-2026", "password_confirmation": "another-password-2026",
+    }, headers={"Accept": "application/json"})
+    check("a spent code cannot be replayed",
+          signed_in(Browser(BASE), reset_email, reset_new_password)
+          and not signed_in(Browser(BASE), reset_email, "another-password-2026"),
+          "the replayed code changed the password again")
 
     # ------------------------------------------------- v2.3 brand + wording
     print("\nAthenXiv branding:")

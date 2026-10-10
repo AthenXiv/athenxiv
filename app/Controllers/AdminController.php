@@ -26,6 +26,7 @@ use Athenaeum\Models\User;
 use Athenaeum\Services\AiReviewer;
 use Athenaeum\Services\Mailer;
 use Athenaeum\Services\OpenTimestamps;
+use Athenaeum\Services\PageTimestamps;
 use Athenaeum\Services\PaperService;
 use Athenaeum\Services\Uploader;
 
@@ -993,7 +994,7 @@ final class AdminController extends Controller
             'upload.max_avatar_kb', 'upload.max_logo_kb', 'ui.papers_per_page', 'versions.max',
         ];
         $flags = [
-            'registration.open', 'moderation.auto_approve', 'ots.enabled',
+            'registration.open', 'registration.reset_password', 'moderation.auto_approve', 'ots.enabled',
             'ots.auto_upgrade', 'ots.require_for_publish', 'ui.allow_profile_markdown',
             'ui.show_view_counts', 'notice.dismissible', 'versions.enabled', 'versions.keep_files',
         ];
@@ -1111,8 +1112,10 @@ final class AdminController extends Controller
         $page = min($page, $pages);
 
         $rows = $db->select(
-            'SELECT t.*, p.uid AS paper_uid, p.title AS paper_title, p.status AS paper_status'
+            'SELECT t.*, p.uid AS paper_uid, p.title AS paper_title, p.status AS paper_status,'
+            . ' pg.slug AS page_slug, pg.titles AS page_titles'
             . ' FROM {{timestamps}} t LEFT JOIN {{papers}} p ON p.id = t.paper_id'
+            . ' LEFT JOIN {{pages}} pg ON pg.id = t.page_id'
             . $clause . ' ORDER BY t.id DESC LIMIT ' . $perPage . ' OFFSET ' . (($page - 1) * $perPage),
             $params
         );
@@ -1235,10 +1238,12 @@ final class AdminController extends Controller
     {
         $pages = Page::ordered();
         $rows = [];
+        $stamping = PageTimestamps::enabled();
         foreach ($pages as $page) {
             $page['locale_count'] = count(Page::availableLocales($page));
             $page['size'] = Page::size($page);
             $page['editor'] = $page['updated_by'] ? User::find((int) $page['updated_by']) : null;
+            $page['stamp'] = $stamping ? (PageTimestamps::overview($page)['current'] ?? null) : null;
             $rows[] = $page;
         }
 
@@ -1247,6 +1252,7 @@ final class AdminController extends Controller
             'pages'  => $rows,
             'system' => Page::SYSTEM,
             'locales' => I18n::catalogue(),
+            'stamping' => $stamping,
         ], 'layouts/admin');
     }
 
@@ -1300,8 +1306,75 @@ final class AdminController extends Controller
         );
         AuditLog::record('page.save', 'page', (int) $page['id'], ['slug' => $page['slug'], 'locale' => $locale]);
 
+        // Re-stamp the page so its OpenTimestamps proof matches the text a
+        // visitor will now read. Best effort: a calendar outage must never stop
+        // an administrator from saving.
+        $fresh = Page::find((int) $page['id']);
+        if ($fresh !== null && PageTimestamps::enabled()) {
+            $stamped = PageTimestamps::ensure($fresh);
+            if ($stamped !== null) {
+                AuditLog::record('page.stamp', 'page', (int) $page['id'], [
+                    'slug'         => $page['slug'],
+                    'timestamp_id' => (int) $stamped['id'],
+                    'status'       => (string) $stamped['status'],
+                ]);
+            }
+        }
+
         Session::flash('success', __('admin.page_saved', ['locale' => $locale]));
         return $this->redirect(url('admin.page', ['id' => $page['id']]) . '?locale=' . rawurlencode($locale));
+    }
+
+    /** Create (or retry) the OpenTimestamps proof for a single content page. */
+    public function restampPage(Request $request, string $id): Response
+    {
+        $page = Page::find((int) $id);
+        if ($page === null) {
+            return View::error(404);
+        }
+        if (!PageTimestamps::enabled()) {
+            Session::flash('error', __('admin.page_stamp_disabled'));
+            return $this->redirect(url('admin.page', ['id' => $page['id']]));
+        }
+        $row = PageTimestamps::ensure($page);
+        AuditLog::record('page.stamp', 'page', (int) $page['id'], ['slug' => $page['slug']]);
+
+        if ($row === null) {
+            Session::flash('error', __('admin.page_stamp_empty'));
+        } elseif ((string) $row['status'] === Timestamp::STATUS_FAILED) {
+            Session::flash('error', __('admin.page_stamp_failed', ['error' => (string) ($row['last_error'] ?? '')]));
+        } else {
+            Session::flash('success', __('admin.page_stamped', ['status' => Timestamp::statusLabel((string) $row['status'])]));
+        }
+        return $this->redirect(url('admin.page', ['id' => $page['id']]));
+    }
+
+    /** Stamp every content page that has no proof for its current text yet. */
+    public function stampAllPages(Request $request): Response
+    {
+        if (!PageTimestamps::enabled()) {
+            Session::flash('error', __('admin.page_stamp_disabled'));
+            return $this->redirect(url('admin.pages'));
+        }
+        $ok = 0;
+        $failed = 0;
+        foreach (Page::ordered() as $page) {
+            $row = PageTimestamps::ensure($page);
+            if ($row === null) {
+                continue;
+            }
+            if ((string) $row['status'] === Timestamp::STATUS_FAILED) {
+                $failed++;
+            } else {
+                $ok++;
+            }
+        }
+        AuditLog::record('page.stamp_all', 'pages', null, ['ok' => $ok, 'failed' => $failed]);
+        Session::flash($failed > 0 ? 'error' : 'success', __('admin.pages_stamped', [
+            'ok'     => (string) $ok,
+            'failed' => (string) $failed,
+        ]));
+        return $this->redirect(url('admin.pages'));
     }
 
     public function createPage(Request $request): Response

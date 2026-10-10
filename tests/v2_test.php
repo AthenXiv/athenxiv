@@ -122,6 +122,7 @@ $original = [
     'ai.auto_publish' => Settings::get('ai.auto_publish'),
     'ai.min_confidence' => Settings::get('ai.min_confidence'),
     'mail.enabled' => Settings::get('mail.enabled'),
+    'registration.reset_password' => Settings::get('registration.reset_password'),
     'versions.enabled' => Settings::get('versions.enabled'),
 ];
 $scratch = [];
@@ -586,6 +587,227 @@ try {
         ['email' => $staleEmail]
     );
     check('pruning removes stale rows', \Athenaeum\Models\EmailVerification::prune() >= 1);
+
+    // =====================================================================
+    echo "\npassword recovery:\n";
+    $resetEmail = 'reset-' . bin2hex(random_bytes(3)) . '@example.org';
+    $resetUserId = \Athenaeum\Models\User::register([
+        'email'    => $resetEmail,
+        'password' => 'the-original-password-2026',
+        'nickname' => 'Recovery Test',
+        'locale'   => 'zh-CN',
+    ]);
+
+    // A code minted for registration must not open the reset door, and vice
+    // versa: the purpose column is what keeps the two flows apart.
+    $registerCode = \Athenaeum\Models\EmailVerification::issue($resetEmail);
+    check('a registration code is rejected by the reset flow',
+        empty(\Athenaeum\Models\EmailVerification::verify(
+            $resetEmail,
+            (string) $registerCode['code'],
+            \Athenaeum\Models\EmailVerification::PURPOSE_RESET
+        )['ok']));
+    check('the registration code still works for its own purpose',
+        !empty(\Athenaeum\Models\EmailVerification::verify(
+            $resetEmail,
+            (string) $registerCode['code'],
+            \Athenaeum\Models\EmailVerification::PURPOSE_REGISTER
+        )['ok']));
+
+    $resetIssue = \Athenaeum\Models\EmailVerification::issue(
+        $resetEmail,
+        \Athenaeum\Models\EmailVerification::PURPOSE_RESET
+    );
+    check('a reset code can be issued', !empty($resetIssue['ok']), (string) ($resetIssue['error'] ?? ''));
+    $resetCode = (string) ($resetIssue['code'] ?? '');
+    check('the reset code is six digits', (bool) preg_match('/^\d{6}$/', $resetCode), $resetCode);
+    check('the reset code is not stored in clear text', (function () use ($resetEmail, $resetCode): bool {
+        $row = Database::instance()->selectOne(
+            'SELECT code_hash FROM {{email_verifications}} WHERE email = :email AND purpose = :purpose',
+            ['email' => $resetEmail, 'purpose' => \Athenaeum\Models\EmailVerification::PURPOSE_RESET]
+        );
+        return $row !== null && (string) $row['code_hash'] !== $resetCode;
+    })());
+
+    // The e-mail a locked-out visitor receives: the link has to be absolute and
+    // no placeholder may survive into the message.
+    $resetMail = Mailer::template(Mailer::EVENT_RESET_CODE, [
+        'site'    => 'AthenXiv',
+        'code'    => $resetCode,
+        'minutes' => '10',
+        'url'     => url('password.request'),
+        'name'    => 'Recovery Test',
+    ], 'en');
+    check('the reset mail carries the code', str_contains($resetMail['text'], $resetCode));
+    check('the reset mail links to the recovery page',
+        str_contains($resetMail['text'], url('password.request')), $resetMail['text']);
+    check('the reset mail says how long the code lives', str_contains($resetMail['text'], '10'));
+    check('no placeholder survives in the reset mail',
+        !preg_match('/:(code|minutes|url|site|name)\b/', $resetMail['text']), $resetMail['text']);
+    check('the reset mail has an html alternative', str_contains($resetMail['html'], '<p>'));
+
+    // The real thing: the code changes the stored hash, once.
+    \Athenaeum\Models\User::updatePassword($resetUserId, 'the-chosen-password-2026');
+    $after = \Athenaeum\Models\User::find($resetUserId);
+    check('the stored hash now matches the new password',
+        password_verify('the-chosen-password-2026', (string) $after['password_hash']));
+    check('the old password stopped working',
+        !password_verify('the-original-password-2026', (string) $after['password_hash']));
+    check('the reset code is consumed by its own purpose',
+        !empty(\Athenaeum\Models\EmailVerification::verify(
+            $resetEmail,
+            $resetCode,
+            \Athenaeum\Models\EmailVerification::PURPOSE_RESET
+        )['ok']));
+
+    // Availability follows the mail settings, not a hard-coded true.
+    $mailEnabled = Settings::get('mail.enabled');
+    Settings::set('mail.enabled', false);
+    Settings::set('registration.reset_password', true);
+    check('recovery is offered only while mail can be sent',
+        \Athenaeum\Controllers\AuthController::resetAvailable() === false);
+    Settings::set('mail.enabled', $mailEnabled);
+    Settings::set('registration.reset_password', false);
+    check('the administrator can switch recovery off',
+        \Athenaeum\Controllers\AuthController::resetAvailable() === false);
+    Settings::set('registration.reset_password', true);
+    \Athenaeum\Models\User::purge($resetUserId);
+
+    // The code button once did nothing at all: the JavaScript scoped its lookup
+    // to the element carrying data-email-code-form, and on the recovery page
+    // that element was an empty helper <form> — the button and the status line
+    // were siblings, so the click handler found no status element and failed
+    // silently. The contract is therefore enforced on the markup itself.
+    $codeView = static function (string $file): array {
+        $html = (string) file_get_contents($file);
+        $start = strpos($html, 'data-email-code-block');
+        if ($start === false) {
+            return ['anchor' => false, 'button' => false, 'status' => false, 'is_form' => false];
+        }
+        // The block is a <div>, so its extent is the matching closing tag: the
+        // button lives inside a nested .code-row wrapper, and cutting at the
+        // first </div> would stop short of the status line. The anchor's own
+        // <div> is already open, hence depth starts at 1.
+        $depth = 1;
+        $offset = strpos($html, '>', $start);
+        $end = strlen($html);
+        while ($offset !== false && $offset < strlen($html)) {
+            if (preg_match('/<div\b/', $html, $m, PREG_OFFSET_CAPTURE, $offset) === 1) {
+                $nextOpen = (int) $m[0][1];
+            } else {
+                $nextOpen = PHP_INT_MAX;
+            }
+            $nextClose = strpos($html, '</div>', $offset);
+            if ($nextClose === false) {
+                break;
+            }
+            if ($nextOpen < $nextClose) {
+                $depth++;
+                $offset = $nextOpen + 4;
+                continue;
+            }
+            $depth--;
+            $offset = $nextClose + 6;
+            if ($depth <= 0) {
+                $end = $nextClose;
+                break;
+            }
+        }
+        $block = substr($html, $start, max(0, $end - $start));
+        $tagStart = strrpos(substr($html, 0, $start), '<');
+        return [
+            'anchor'  => true,
+            'button'  => str_contains($block, 'data-send-code'),
+            'status'  => str_contains($block, 'data-code-status'),
+            'is_form' => str_starts_with(substr($html, (int) $tagStart, 5), '<form'),
+        ];
+    };
+    foreach ([
+        'the password-recovery page' => ATHENAEUM_ROOT . '/resources/views/auth/forgot-password.php',
+        'the registration page'      => ATHENAEUM_ROOT . '/resources/views/auth/register.php',
+    ] as $label => $viewFile) {
+        $layout = $codeView($viewFile);
+        check("{$label} anchors the code block", $layout['anchor']);
+        check("{$label} keeps the send button inside that block", $layout['button']);
+        check("{$label} keeps the status line inside that block", $layout['status']);
+        check("{$label} does not nest forms", $layout['is_form'] === false,
+            'the code block is a <form> on a page that already has one');
+    }
+
+    // =====================================================================
+    echo "\nthe language a notification is written in:\n";
+    // The interface language, not the account's stored preference, decides the
+    // language of a verification code: the code has to match the page the
+    // visitor is reading.
+    $previousLocale = \Athenaeum\Core\I18n::locale();
+    \Athenaeum\Core\I18n::setLocale('ja');
+    $japaneseCode = Mailer::template('verify_code', ['code' => '123456', 'site' => 'AthenXiv']);
+    check('a code follows the interface language',
+        $japaneseCode['subject'] !== Mailer::template('verify_code', [
+            'code' => '123456', 'site' => 'AthenXiv',
+        ], 'en')['subject'], $japaneseCode['subject']);
+    check('the code mail really is Japanese',
+        (bool) preg_match('/[\x{3040}-\x{30ff}]/u', $japaneseCode['text']), $japaneseCode['text']);
+    $germanReset = Mailer::template('reset_code', [
+        'site' => 'AthenXiv', 'code' => '123456', 'minutes' => '10',
+        'url' => 'https://athenxiv.com/index.php/password/forgot', 'name' => 'Test',
+    ], 'de');
+    check('a reset code can be written in German',
+        str_contains($germanReset['text'], '123456') && !str_contains($germanReset['text'], ':code'),
+        $germanReset['text']);
+    \Athenaeum\Core\I18n::setLocale($previousLocale);
+
+    // Language resolution itself: codes, regional variants and typed names.
+    foreach ([
+        ['de', 'de'],
+        ['de-DE', 'de'],
+        ['zh-TW', 'zh-CN'],
+        ['Deutsch', 'de'],
+        ['pt-BR', 'pt-BR'],
+        ['x-klingon', null],
+        ['', null],
+    ] as [$tag, $want]) {
+        $got = \Athenaeum\Core\I18n::bestMatch($tag);
+        check("language '{$tag}' resolves to " . var_export($want, true),
+            $got === $want, 'got ' . var_export($got, true));
+    }
+
+    // A paper's own language, not the author's account preference, decides the
+    // language of the review notice.
+    $paperLocaleCases = [
+        ['language' => 'de', 'language_custom' => null, 'uploader' => 'ja', 'expected' => 'de',
+         'why' => 'a German paper speaks German to a Japanese-reading author'],
+        ['language' => 'zh-TW', 'language_custom' => null, 'uploader' => 'en', 'expected' => 'zh-CN',
+         'why' => 'zh-TW collapses onto the Chinese interface we ship'],
+        ['language' => '', 'language_custom' => 'Deutsch', 'uploader' => 'en', 'expected' => 'de',
+         'why' => 'a hand-typed language name still resolves'],
+        ['language' => 'x-klingon', 'language_custom' => 'Klingon', 'uploader' => 'fr', 'expected' => 'fr',
+         'why' => 'an untranslated language falls back to the author'],
+        ['language' => '', 'language_custom' => '', 'uploader' => '', 'expected' => 'en',
+         'why' => 'nothing known falls back to the site default'],
+    ];
+    foreach ($paperLocaleCases as $case) {
+        $resolved = Mailer::localeForPaper(
+            ['language' => $case['language'], 'language_custom' => $case['language_custom']],
+            ['locale' => $case['uploader']]
+        );
+        check($case['why'], $resolved === $case['expected'], "got {$resolved}, want {$case['expected']}");
+    }
+
+    // The label inside the message follows the recipient's language too: the
+    // status word is translated when the template is rendered, not before.
+    \Athenaeum\Core\I18n::setLocale('en');
+    $statusVars = static fn (): array => [
+        'site' => 'AthenXiv', 'title' => 'T', 'uid' => 'ATH-1', 'reason' => 'R',
+        'url' => 'https://example.org', 'status' => '',
+    ];
+    $englishNotice = Mailer::template(Mailer::EVENT_REJECTED, $statusVars(), 'en')['text'];
+    $germanNotice = Mailer::template(Mailer::EVENT_REJECTED, $statusVars(), 'de')['text'];
+    check('a German notice differs from the English one',
+        $englishNotice !== $germanNotice && $germanNotice !== '', $germanNotice);
+    check('rendering one locale does not leave the site in it',
+        \Athenaeum\Core\I18n::locale() === 'en', \Athenaeum\Core\I18n::locale());
+    \Athenaeum\Core\I18n::setLocale($previousLocale);
 
     // =====================================================================
     echo "\nAI answers in the author's language:\n";

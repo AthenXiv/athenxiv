@@ -854,4 +854,21 @@ return [
     'auth.registered_verified'     => 'Conta criada — seu endereço de e-mail está verificado.',
     'email.subject_verify_code'    => 'Seu código de verificação do AthenXiv',
     'email.body_verify_code'       => "Olá,\n\nSeu código de verificação é :code.\n\nEle expira em 10 minutos. Se você não o solicitou, pode ignorar esta mensagem.\n\n— :site",
+
+    // ------------------- password recovery by e-mail
+    'auth.forgot_password'         => 'Esqueceu sua senha?',
+    'auth.reset_title'             => 'Redefinir sua senha',
+    'auth.reset_subtitle'          => 'Digite o endereço de e-mail da sua conta. Enviamos um código de seis dígitos; com ele você escolhe uma nova senha.',
+    'auth.reset_email'             => 'E-mail da conta',
+    'auth.reset_send_cta'          => 'Enviar o código de redefinição',
+    'auth.reset_code_label'        => 'Código de seis dígitos da mensagem',
+    'auth.reset_new_password'      => 'Nova senha',
+    'auth.reset_submit'            => 'Salvar a nova senha',
+    'auth.reset_hint'              => 'O código funciona uma única vez e expira em 10 minutos.',
+    'auth.reset_sent'              => 'Se existir uma conta para :email, um código de redefinição está a caminho. Verifique também a pasta de spam.',
+    'auth.reset_done'              => 'Sua senha foi alterada. Você já pode entrar.',
+    'auth.reset_invalid'           => 'Esse código está incorreto ou expirou. Solicite um novo.',
+    'auth.reset_unavailable'       => 'A recuperação de senha por e-mail ainda não está disponível neste site. Escreva para o endereço de contato no rodapé.',
+    'email.subject_reset_code'     => 'Seu código de redefinição de senha do AthenXiv',
+    'email.body_reset_code'        => "Olá,\n\nAlguém pediu para redefinir a senha da conta AthenXiv que usa este endereço.\n\nSeu código de redefinição é :code — ele expira em :minutes minutos.\n\nAbra :url e digite o código junto com sua nova senha. Se não foi você, ignore esta mensagem: nada muda sem o código.\n\n— :site",
 ];

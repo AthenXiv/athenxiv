@@ -25,10 +25,9 @@
     </div>
 
     <?php if (!empty($verifyEmail)): ?>
-      <div class="form-row" data-email-code-form
+      <div class="form-row" data-email-code-block
            data-endpoint="<?= e(url('register.code')) ?>"
-           data-csrf="<?= e(csrf_token()) ?>"
-           data-locale="<?= e(locale()) ?>">
+           data-csrf="<?= e(csrf_token()) ?>">
         <label for="email_code"><?= e(__('auth.email_code')) ?> <span class="req">*</span></label>
         <div class="code-row">
           <input type="text" id="email_code" name="email_code" required inputmode="numeric"

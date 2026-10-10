@@ -174,6 +174,117 @@ final class OpenTimestamps
     }
 
     /**
+     * Create an OpenTimestamps proof for a content page (关于本站, 投稿指南, …).
+     *
+     * A page proof commits to a deterministic text snapshot of the page — its
+     * slug, title and body in every locale it ships in — rather than to a PDF.
+     * The snapshot is stored beside the .ots proof so a visitor can re-hash it
+     * and confirm the page has not changed since the moment it was stamped.
+     *
+     * @return array{ok:bool,status:string,timestamp_id?:int,commitments?:int,error?:string}
+     */
+    public static function stampPage(int $pageId, string $slug, string $snapshot): array
+    {
+        if ($snapshot === '') {
+            return ['ok' => false, 'status' => 'failed', 'error' => 'empty snapshot'];
+        }
+        $digest = hash('sha256', $snapshot, true);
+        $digestHex = bin2hex($digest);
+
+        $existing = Timestamp::findForPageContent($pageId, $digestHex);
+        if ($existing !== null && (string) $existing['status'] !== Timestamp::STATUS_FAILED) {
+            return [
+                'ok'           => true,
+                'status'       => (string) $existing['status'],
+                'timestamp_id' => (int) $existing['id'],
+                'commitments'  => (int) $existing['calendar_count'],
+            ];
+        }
+
+        // Store the exact bytes we are about to commit to before contacting any
+        // calendar, so verification stays possible even if the calendars fail.
+        self::writeSnapshot($pageId, $digestHex, $snapshot);
+
+        $now = \Athenaeum\Core\Database::instance()->now();
+        if ($existing !== null) {
+            $rowId = (int) $existing['id'];
+        } else {
+            $rowId = Timestamp::create([
+                'paper_id'      => 0,
+                'page_id'       => $pageId,
+                'target_type'   => Timestamp::TARGET_PAGE,
+                'attachment_id' => null,
+                'file_name'     => $slug . '.txt',
+                'file_sha256'   => $digestHex,
+                'algo'          => 'sha256',
+                'status'        => Timestamp::STATUS_PENDING,
+                'attempts'      => 0,
+                'created_at'    => $now,
+            ]);
+        }
+
+        $result = self::submitDigest($digest);
+        if (!$result['ok']) {
+            Timestamp::update($rowId, [
+                'status'          => Timestamp::STATUS_FAILED,
+                'last_error'      => mb_substr((string) $result['error'], 0, 480),
+                'attempts'        => (int) ($existing['attempts'] ?? 0) + 1,
+                'last_attempt_at' => \Athenaeum\Core\Database::instance()->now(),
+            ]);
+            Logger::warning('OpenTimestamps page submit failed', [
+                'page_id' => $pageId,
+                'error'   => $result['error'],
+            ]);
+            return ['ok' => false, 'status' => 'failed', 'timestamp_id' => $rowId, 'error' => (string) $result['error']];
+        }
+
+        $otsBytes = self::buildProof($digest, $result['body']);
+        $relative = self::pageProofRelativePath($pageId, $digestHex);
+        $target = Config::path('ots', $relative);
+        $dir = dirname($target);
+        if (!is_dir($dir)) {
+            @mkdir($dir, 0775, true);
+        }
+        if (@file_put_contents($target, $otsBytes) === false) {
+            Timestamp::update($rowId, [
+                'status'     => Timestamp::STATUS_FAILED,
+                'last_error' => 'cannot write proof file',
+            ]);
+            return ['ok' => false, 'status' => 'failed', 'timestamp_id' => $rowId, 'error' => 'cannot write proof file'];
+        }
+
+        $tree = self::parse($otsBytes);
+        $pending = $tree === null ? [] : self::pendingCommitments($tree['root']);
+
+        Timestamp::update($rowId, [
+            'status'          => Timestamp::STATUS_PENDING,
+            'ots_path'        => $relative,
+            'ots_name'        => self::pageProofFileName($slug),
+            'calendars'       => json_encode($pending, JSON_UNESCAPED_SLASHES),
+            'calendar_count'  => count($pending),
+            'submitted_at'    => \Athenaeum\Core\Database::instance()->now(),
+            'last_attempt_at' => \Athenaeum\Core\Database::instance()->now(),
+            'attempts'        => (int) ($existing['attempts'] ?? 0) + 1,
+            'last_error'      => null,
+        ]);
+
+        Logger::info('OpenTimestamps page proof created', [
+            'page_id'     => $pageId,
+            'slug'        => $slug,
+            'sha256'      => $digestHex,
+            'calendars'   => count($pending),
+            'proof_bytes' => strlen($otsBytes),
+        ]);
+
+        return [
+            'ok'           => true,
+            'status'       => 'pending',
+            'timestamp_id' => $rowId,
+            'commitments'  => count($pending),
+        ];
+    }
+
+    /**
      * POST the digest to the configured calendars and merge every successful
      * answer into a single operation chain.
      *
@@ -319,12 +430,16 @@ final class OpenTimestamps
         Timestamp::update((int) $row['id'], $update);
 
         if ($status === Timestamp::STATUS_CONFIRMED) {
-            AuditLog::record('ots.confirmed', 'paper', (int) $row['paper_id'], [
-                'height' => $height,
-                'sha256' => $row['file_sha256'],
-            ]);
+            $isPage = ((string) ($row['target_type'] ?? 'pdf')) === Timestamp::TARGET_PAGE;
+            AuditLog::record(
+                'ots.confirmed',
+                $isPage ? 'page' : 'paper',
+                $isPage ? (int) ($row['page_id'] ?? 0) : (int) $row['paper_id'],
+                ['height' => $height, 'sha256' => $row['file_sha256']]
+            );
             Logger::info('OpenTimestamps confirmed', [
                 'paper_id' => $row['paper_id'],
+                'page_id'  => $row['page_id'] ?? null,
                 'height'   => $height,
             ]);
         }
@@ -444,6 +559,42 @@ final class OpenTimestamps
     public static function proofFileName(int $paperId, string $digestHex): string
     {
         return 'paper-' . $paperId . '-' . substr($digestHex, 0, 12) . '.ots';
+    }
+
+    /** Proof path for a content page proof (kept apart from paper proofs). */
+    public static function pageProofRelativePath(int $pageId, string $digestHex): string
+    {
+        return 'pages/p' . $pageId . '/' . gmdate('Ymd') . '-' . substr($digestHex, 0, 16) . '.ots';
+    }
+
+    public static function pageProofFileName(string $slug): string
+    {
+        return 'page-' . $slug . '.ots';
+    }
+
+    public static function snapshotFileName(string $slug): string
+    {
+        return 'page-' . $slug . '.txt';
+    }
+
+    /**
+     * The snapshot shares the proof's path with a .txt extension, so it can be
+     * found again later without storing a second path in the database.
+     */
+    public static function snapshotPathFor(array|string $proof): string
+    {
+        $relative = is_array($proof) ? (string) ($proof['ots_path'] ?? '') : (string) $proof;
+        return (string) preg_replace('/\.ots$/', '.txt', $relative);
+    }
+
+    private static function writeSnapshot(int $pageId, string $digestHex, string $snapshot): void
+    {
+        $path = Config::path('ots', self::snapshotPathFor(self::pageProofRelativePath($pageId, $digestHex)));
+        $dir = dirname($path);
+        if (!is_dir($dir)) {
+            @mkdir($dir, 0775, true);
+        }
+        @file_put_contents($path, $snapshot);
     }
 
     public static function verifyUrl(): string

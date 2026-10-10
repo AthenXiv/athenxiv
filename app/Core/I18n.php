@@ -123,7 +123,7 @@ final class I18n
     }
 
     /** Loose matching so `zh-TW`, `zh-Hans`, `zh` all land on `zh-CN`. */
-    private static function match(string $tag, array $enabled): ?string
+    public static function match(string $tag, array $enabled): ?string
     {
         $normalised = self::normalise($tag);
         if ($normalised === '') {
@@ -137,6 +137,44 @@ final class I18n
         $primary = explode('-', $normalised)[0];
         foreach ($enabled as $locale) {
             if (strcasecmp(explode('-', $locale)[0], $primary) === 0) {
+                return $locale;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Best interface locale for a language tag, or null when we have no
+     * translation for it.
+     *
+     * Used where the language of the *content* differs from the language of the
+     * reader: a paper written in `zh-TW` is announced to its author in the
+     * `zh-CN` interface, because that is the Chinese we actually ship. Paper
+     * languages outnumber interface locales (74 vs 30), so "no match" is normal
+     * and the caller falls back to the site default.
+     */
+    public static function bestMatch(?string $tag): ?string
+    {
+        $tag = (string) $tag;
+        if ($tag === '') {
+            return null;
+        }
+        $enabled = self::enabledLocales();
+        // `match()` walks the enabled list in order, so when a language has two
+        // enabled variants (pt-PT against pt-BR) the configured order decides.
+        $match = self::match($tag, $enabled);
+        if ($match !== null) {
+            return $match;
+        }
+        // A hand-typed language arrives as a name, not a tag ("Deutsch",
+        // "Bahasa Indonesia"). Compare it with the native names we display.
+        $needle = mb_strtolower(trim($tag));
+        if ($needle === '') {
+            return null;
+        }
+        foreach ($enabled as $locale) {
+            $name = (string) (self::CATALOGUE[$locale]['name'] ?? '');
+            if ($name !== '' && mb_strtolower($name) === $needle) {
                 return $locale;
             }
         }

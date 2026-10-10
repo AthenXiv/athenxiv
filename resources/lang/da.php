@@ -890,4 +890,21 @@ Din bekræftelseskode er :code.
 Den udløber om 10 minutter. Har du ikke bedt om den, kan du se bort fra denne meddelelse.
 
 — :site",
+
+    // ------------------- password recovery by e-mail
+    'auth.forgot_password'         => 'Glemt din adgangskode?',
+    'auth.reset_title'             => 'Nulstil din adgangskode',
+    'auth.reset_subtitle'          => 'Indtast e-mailadressen på din konto. Vi sender en sekscifret kode, og med den vælger du en ny adgangskode.',
+    'auth.reset_email'             => 'Kontoens e-mailadresse',
+    'auth.reset_send_cta'          => 'Send nulstillingskoden',
+    'auth.reset_code_label'        => 'Sekscifret kode fra beskeden',
+    'auth.reset_new_password'      => 'Ny adgangskode',
+    'auth.reset_submit'            => 'Gem den nye adgangskode',
+    'auth.reset_hint'              => 'Koden virker kun én gang og udløber efter 10 minutter.',
+    'auth.reset_sent'              => 'Hvis der findes en konto til :email, er en nulstillingskode på vej. Tjek også din mappe for spam.',
+    'auth.reset_done'              => 'Din adgangskode er blevet ændret. Du kan logge ind nu.',
+    'auth.reset_invalid'           => 'Koden er forkert eller udløbet. Bed om en ny.',
+    'auth.reset_unavailable'       => 'Gendannelse af adgangskode via e-mail er endnu ikke tilgængelig på dette websted. Skriv til den kontaktadresse, der står i sidefoden.',
+    'email.subject_reset_code'     => 'Din kode til nulstilling af AthenXiv-adgangskoden',
+    'email.body_reset_code'        => "Hej,\n\nnogen har bedt om at nulstille adgangskoden til den AthenXiv-konto, der bruger denne adresse.\n\nDin nulstillingskode er :code — den udløber om :minutes minutter.\n\nÅbn :url, og indtast koden sammen med din nye adgangskode. Hvis det ikke var dig, kan du ignorere denne besked: intet ændres uden koden.\n\n— :site",
 ];

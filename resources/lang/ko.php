@@ -886,4 +886,21 @@ return [
     'auth.registered_verified'     => '계정이 생성되었습니다 — 이메일 주소가 인증되었습니다.',
     'email.subject_verify_code'    => 'AthenXiv 인증 코드',
     'email.body_verify_code'       => "안녕하세요.\n\n인증 코드는 :code입니다.\n\n10분 후에 만료됩니다. 요청하지 않으셨다면 이 메일은 무시하셔도 됩니다.\n\n— :site",
+
+    // ------------------- password recovery by e-mail
+    'auth.forgot_password'         => '비밀번호를 잊으셨나요?',
+    'auth.reset_title'             => '비밀번호 재설정',
+    'auth.reset_subtitle'          => '계정의 이메일 주소를 입력해 주세요. 6자리 인증 코드를 보내드리면, 그 코드로 새 비밀번호를 정하실 수 있습니다.',
+    'auth.reset_email'             => '계정 이메일 주소',
+    'auth.reset_send_cta'          => '인증 코드 보내기',
+    'auth.reset_code_label'        => '메일로 받은 6자리 코드',
+    'auth.reset_new_password'      => '새 비밀번호',
+    'auth.reset_submit'            => '새 비밀번호 저장',
+    'auth.reset_hint'              => '이 코드는 한 번만 사용할 수 있으며 10분 후에 만료됩니다.',
+    'auth.reset_sent'              => ':email 계정이 있다면 재설정 코드를 보내드렸습니다. 스팸함도 함께 확인해 주세요.',
+    'auth.reset_done'              => '비밀번호가 변경되었습니다. 이제 로그인하실 수 있습니다.',
+    'auth.reset_invalid'           => '코드가 올바르지 않거나 만료되었습니다. 새 코드를 요청해 주세요.',
+    'auth.reset_unavailable'       => '이 사이트에서는 아직 이메일로 비밀번호를 찾을 수 없습니다. 페이지 하단에 있는 연락처로 문의해 주세요.',
+    'email.subject_reset_code'     => 'AthenXiv 비밀번호 재설정 코드',
+    'email.body_reset_code'        => "안녕하세요.\n\n이 주소를 사용하는 AthenXiv 계정의 비밀번호를 재설정해 달라는 요청이 있었습니다.\n\n재설정 코드는 :code이며, :minutes분 후에 만료됩니다.\n\n:url을 열고 코드와 새 비밀번호를 함께 입력해 주세요. 본인이 요청한 것이 아니라면 이 메일은 무시하셔도 됩니다. 코드 없이는 아무것도 바뀌지 않습니다.\n\n— :site",
 ];

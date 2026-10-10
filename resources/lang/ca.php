@@ -823,4 +823,21 @@ return [
     'auth.registered_verified'     => 'Compte creat — la teva adreça electrònica està verificada.',
     'email.subject_verify_code'    => 'El teu codi de verificació d\'AthenXiv',
     'email.body_verify_code'       => "Hola,\n\nEl teu codi de verificació és :code.\n\nCaduca en 10 minuts. Si no l'has demanat, pots ignorar aquest missatge.\n\n— :site",
+
+    // ------------------- password recovery by e-mail
+    'auth.forgot_password'         => 'Has oblidat la contrasenya?',
+    'auth.reset_title'             => 'Restableix la contrasenya',
+    'auth.reset_subtitle'          => 'Introdueix l\'adreça electrònica del teu compte. T\'enviarem un codi de sis xifres; amb aquest codi triaràs una contrasenya nova.',
+    'auth.reset_email'             => 'Adreça electrònica del compte',
+    'auth.reset_send_cta'          => 'Envia el codi de restabliment',
+    'auth.reset_code_label'        => 'Codi de sis xifres del missatge',
+    'auth.reset_new_password'      => 'Contrasenya nova',
+    'auth.reset_submit'            => 'Desa la contrasenya nova',
+    'auth.reset_hint'              => 'El codi només funciona una vegada i caduca al cap de 10 minuts.',
+    'auth.reset_sent'              => 'Si existeix un compte per a :email, ja hem enviat un codi de restabliment. Comprova també la carpeta de correu brossa.',
+    'auth.reset_done'              => 'La contrasenya s\'ha canviat. Ja pots iniciar la sessió.',
+    'auth.reset_invalid'           => 'Aquest codi és incorrecte o ha caducat. Demana\'n un de nou.',
+    'auth.reset_unavailable'       => 'La recuperació de la contrasenya per correu electrònic encara no està disponible en aquest lloc. Escriu a l\'adreça de contacte que trobaràs al peu de pàgina.',
+    'email.subject_reset_code'     => 'El teu codi de restabliment de contrasenya d\'AthenXiv',
+    'email.body_reset_code'        => "Hola,\n\nAlgú ha demanat restablir la contrasenya del compte d'AthenXiv que utilitza aquesta adreça.\n\nEl teu codi de restabliment és :code — caduca d'aquí a :minutes minuts.\n\nObre :url i escriu el codi juntament amb la contrasenya nova. Si no has estat tu, ignora aquest missatge: res no canviarà sense el codi.\n\n— :site",
 ];

@@ -885,4 +885,21 @@ return [
     'auth.registered_verified'     => 'Cuenta creada — tu dirección de correo electrónico está verificada.',
     'email.subject_verify_code'    => 'Tu código de verificación de AthenXiv',
     'email.body_verify_code'       => "Hola:\n\nTu código de verificación es :code.\n\nCaduca en 10 minutos. Si no lo has solicitado, puedes ignorar este mensaje.\n\n— :site",
+
+    // ------------------- password recovery by e-mail
+    'auth.forgot_password'         => '¿Has olvidado tu contraseña?',
+    'auth.reset_title'             => 'Restablece tu contraseña',
+    'auth.reset_subtitle'          => 'Introduce la dirección de correo de tu cuenta. Te enviamos un código de seis dígitos; con ese código eliges una nueva contraseña.',
+    'auth.reset_email'             => 'Dirección de correo de la cuenta',
+    'auth.reset_send_cta'          => 'Enviar el código de restablecimiento',
+    'auth.reset_code_label'        => 'Código de seis dígitos del mensaje',
+    'auth.reset_new_password'      => 'Nueva contraseña',
+    'auth.reset_submit'            => 'Guardar la nueva contraseña',
+    'auth.reset_hint'              => 'El código solo funciona una vez y caduca a los 10 minutos.',
+    'auth.reset_sent'              => 'Si existe una cuenta para :email, el código de restablecimiento ya está en camino. Revisa también la carpeta de correo no deseado.',
+    'auth.reset_done'              => 'Tu contraseña se ha cambiado. Ya puedes iniciar sesión.',
+    'auth.reset_invalid'           => 'Ese código es incorrecto o ha caducado. Solicita uno nuevo.',
+    'auth.reset_unavailable'       => 'La recuperación de la contraseña por correo aún no está disponible en este sitio. Escribe a la dirección de contacto que figura en el pie de página.',
+    'email.subject_reset_code'     => 'Tu código de restablecimiento de la contraseña de AthenXiv',
+    'email.body_reset_code'        => "Hola,\n\nAlguien ha pedido restablecer la contraseña de la cuenta de AthenXiv asociada a esta dirección.\n\nTu código de restablecimiento es :code — caduca en :minutes minutos.\n\nAbre :url e introduce el código junto con tu nueva contraseña. Si no has sido tú, ignora este mensaje: sin el código no cambia nada.\n\n— :site",
 ];

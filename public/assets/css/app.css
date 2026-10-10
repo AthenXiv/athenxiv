@@ -186,6 +186,11 @@ img.brand__mark {
 }
 .lang-switch__list a:hover, .user-menu__list a:hover { background: #f2f2ee; text-decoration: none; }
 .lang-switch__list a.is-active { color: var(--accent); font-weight: 600; }
+/* On the sign-in shell there is no header to anchor to: the picker sits under
+   the card, centred, and its panel opens below the label. */
+.lang-switch--auth { margin: 1rem auto 0; width: fit-content; }
+.lang-switch--auth summary { color: var(--ink-mute); font-size: .82rem; }
+.lang-switch--auth .lang-switch__list { right: auto; left: 50%; transform: translateX(-50%); }
 .user-menu__id { padding: .3rem .8rem; font-size: .78rem; color: var(--ink-mute); border-bottom: 1px solid var(--line); }
 
 .avatar {

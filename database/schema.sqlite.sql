@@ -165,6 +165,9 @@ CREATE INDEX IF NOT EXISTS idx_paper_links_paper ON {prefix}paper_links (paper_i
 CREATE TABLE IF NOT EXISTS {prefix}timestamps (
     id              INTEGER PRIMARY KEY AUTOINCREMENT,
     paper_id        INTEGER NOT NULL,
+    -- Page proofs (target_type = 'page') keep paper_id = 0 and point here
+    -- instead; a page proof is about the page's own content, not a paper.
+    page_id         INTEGER,
     target_type     TEXT NOT NULL DEFAULT 'pdf',
     attachment_id   INTEGER,
     file_name       TEXT,
@@ -186,6 +189,7 @@ CREATE TABLE IF NOT EXISTS {prefix}timestamps (
     updated_at      TEXT
 );
 CREATE INDEX IF NOT EXISTS idx_timestamps_paper ON {prefix}timestamps (paper_id);
+CREATE INDEX IF NOT EXISTS idx_timestamps_page ON {prefix}timestamps (page_id);
 CREATE INDEX IF NOT EXISTS idx_timestamps_status ON {prefix}timestamps (status);
 CREATE INDEX IF NOT EXISTS idx_timestamps_hash ON {prefix}timestamps (file_sha256);
 

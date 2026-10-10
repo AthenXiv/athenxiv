@@ -15,6 +15,7 @@ use Athenaeum\Models\Paper;
 use Athenaeum\Models\Section;
 use Athenaeum\Models\Timestamp;
 use Athenaeum\Models\User;
+use Athenaeum\Services\PageTimestamps;
 
 /**
  * Public landing pages, plus the machine readable files Google needs
@@ -128,6 +129,13 @@ final class HomeController extends Controller
             $markdown = $this->fallbackBody($slug);
         }
 
+        // The page's own OpenTimestamps proof: a visitor can download the exact
+        // text we committed to and re-hash it, without trusting this server.
+        $pageProofs = ['current' => null, 'history' => [], 'earliest' => null];
+        if ($page !== null && PageTimestamps::enabled()) {
+            $pageProofs = PageTimestamps::overview($page);
+        }
+
         return $this->view('pages/show', array_merge([
             'title'       => $title,
             'pageTitle'   => $title,
@@ -137,7 +145,48 @@ final class HomeController extends Controller
             'fromDatabase' => $fromDatabase,
             'updatedAt'   => $page['updated_at'] ?? null,
             'locales'     => $page !== null ? \Athenaeum\Models\Page::availableLocales($page) : [],
+            'pageProofs'  => $pageProofs,
         ], $extra));
+    }
+
+    /** Download the .ots proof that covers a content page. */
+    public function pageProof(Request $request, string $timestamp): Response
+    {
+        $row = $this->findPageProof($timestamp);
+        if ($row === null || empty($row['ots_path'])) {
+            return \Athenaeum\Core\View::error(404);
+        }
+        $path = Config::path('ots', (string) $row['ots_path']);
+        if (!is_file($path)) {
+            return \Athenaeum\Core\View::error(404);
+        }
+        return Response::file($path, (string) ($row['ots_name'] ?: 'page-proof.ots'), 'application/octet-stream', false);
+    }
+
+    /** Download the exact bytes a page proof commits to, so it can be re-hashed. */
+    public function pageSnapshot(Request $request, string $timestamp): Response
+    {
+        $row = $this->findPageProof($timestamp);
+        if ($row === null) {
+            return \Athenaeum\Core\View::error(404);
+        }
+        $relative = \Athenaeum\Services\OpenTimestamps::snapshotPathFor($row);
+        $path = $relative === '' ? '' : Config::path('ots', $relative);
+        if ($path === '' || !is_file($path)) {
+            return \Athenaeum\Core\View::error(404);
+        }
+        $slug = pathinfo((string) ($row['file_name'] ?? 'page'), PATHINFO_FILENAME) ?: 'page';
+        return Response::file($path, $slug . '.txt', 'text/plain; charset=UTF-8', false);
+    }
+
+    /** A timestamp row, but only when it really belongs to a content page. */
+    private function findPageProof(string $id): ?array
+    {
+        $row = Timestamp::find((int) $id);
+        if ($row === null || (string) ($row['target_type'] ?? '') !== Timestamp::TARGET_PAGE) {
+            return null;
+        }
+        return $row;
     }
 
     /** Built-in text used before an administrator publishes the page. */

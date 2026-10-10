@@ -885,4 +885,21 @@ return [
     'auth.registered_verified'     => 'アカウントを作成しました — メールアドレスは確認済みです。',
     'email.subject_verify_code'    => 'AthenXiv の認証コード',
     'email.body_verify_code'       => "こんにちは。\n\n認証コードは :code です。\n\n10 分後に失効します。お心当たりがない場合は、このメールを無視してください。\n\n— :site",
+
+    // ------------------- password recovery by e-mail
+    'auth.forgot_password'         => 'パスワードをお忘れですか？',
+    'auth.reset_title'             => 'パスワードの再設定',
+    'auth.reset_subtitle'          => 'アカウントのメールアドレスを入力してください。6桁の確認コードをお送りしますので、そのコードを使って新しいパスワードを設定できます。',
+    'auth.reset_email'             => 'アカウントのメールアドレス',
+    'auth.reset_send_cta'          => '確認コードを送信',
+    'auth.reset_code_label'        => 'メールに記載された6桁の確認コード',
+    'auth.reset_new_password'      => '新しいパスワード',
+    'auth.reset_submit'            => '新しいパスワードを保存',
+    'auth.reset_hint'              => 'このコードは一度だけ使用でき、10分後に無効になります。',
+    'auth.reset_sent'              => ':email のアカウントが存在する場合、再設定用のコードを送信しました。迷惑メールフォルダもご確認ください。',
+    'auth.reset_done'              => 'パスワードを変更しました。これでログインできます。',
+    'auth.reset_invalid'           => 'このコードは正しくないか、有効期限が切れています。新しいコードを申請してください。',
+    'auth.reset_unavailable'       => 'このサイトでは、メールによるパスワードの再設定はまだご利用いただけません。フッターに記載されている連絡先までご連絡ください。',
+    'email.subject_reset_code'     => 'AthenXiv パスワード再設定用コード',
+    'email.body_reset_code'        => "こんにちは。\n\nこのメールアドレスを使用している AthenXiv アカウントのパスワードを再設定するように要会がありました。\n\n再設定用のコードは :code です。有効期限は :minutes 分間です。\n\n:url を開いて、コードと新しいパスワードを入力してください。心当たりがない場合は、このメッセージを無視してください。コードがなければ、なにも変わりません。\n\n— :site",
 ];

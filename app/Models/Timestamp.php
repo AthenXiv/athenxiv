@@ -21,9 +21,27 @@ final class Timestamp extends Model
     public const STATUS_CONFIRMED = 'confirmed';
     public const STATUS_FAILED    = 'failed';
 
+    /** target_type used when the proof covers a content page, not a paper. */
+    public const TARGET_PAGE = 'page';
+
     public static function forPaper(int $paperId): array
     {
         return self::all(['paper_id' => $paperId], 'id ASC');
+    }
+
+    /** Every proof ever created for a content page, oldest first. */
+    public static function forPage(int $pageId): array
+    {
+        return self::all(['page_id' => $pageId, 'target_type' => self::TARGET_PAGE], 'id ASC');
+    }
+
+    /** The proof already covering this exact page content, if any. */
+    public static function findForPageContent(int $pageId, string $sha256): ?array
+    {
+        return Database::instance()->selectOne(
+            'SELECT * FROM {{timestamps}} WHERE page_id = :pid AND target_type = :target AND file_sha256 = :hash ORDER BY id ASC LIMIT 1',
+            ['pid' => $pageId, 'target' => self::TARGET_PAGE, 'hash' => $sha256]
+        );
     }
 
     public static function findForFile(string $sha256, int $paperId, string $target = 'pdf'): ?array
@@ -76,6 +94,18 @@ final class Timestamp extends Model
     public static function proofDownloadUrl(array $timestamp, string $paperUid): string
     {
         return url('paper.timestamp.download', ['uid' => $paperUid, 'timestamp' => $timestamp['id']]);
+    }
+
+    /** Public download URL for a page proof (no paper, so no uid). */
+    public static function pageProofUrl(array $timestamp): string
+    {
+        return url('page.timestamp.proof', ['timestamp' => (int) $timestamp['id']]);
+    }
+
+    /** Public download URL for the exact text a page proof commits to. */
+    public static function pageSnapshotUrl(array $timestamp): string
+    {
+        return url('page.timestamp.snapshot', ['timestamp' => (int) $timestamp['id']]);
     }
 
     public static function shortHash(string $hash): string

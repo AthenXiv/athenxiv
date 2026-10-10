@@ -885,4 +885,21 @@ return [
     'auth.registered_verified'     => 'Compte créé — votre adresse e-mail est vérifiée.',
     'email.subject_verify_code'    => 'Votre code de vérification AthenXiv',
     'email.body_verify_code'       => "Bonjour,\n\nVotre code de vérification est :code.\n\nIl expire dans 10 minutes. Si vous n'avez rien demandé, vous pouvez ignorer ce message.\n\n— :site",
+
+    // ------------------- password recovery by e-mail
+    'auth.forgot_password'         => 'Mot de passe oublié ?',
+    'auth.reset_title'             => 'Réinitialisez votre mot de passe',
+    'auth.reset_subtitle'          => 'Saisissez l’adresse e-mail de votre compte. Nous vous envoyons un code à six chiffres ; avec ce code, vous choisissez un nouveau mot de passe.',
+    'auth.reset_email'             => 'Adresse e-mail du compte',
+    'auth.reset_send_cta'          => 'Envoyer le code de réinitialisation',
+    'auth.reset_code_label'        => 'Code à six chiffres reçu dans le message',
+    'auth.reset_new_password'      => 'Nouveau mot de passe',
+    'auth.reset_submit'            => 'Enregistrer le nouveau mot de passe',
+    'auth.reset_hint'              => 'Le code ne fonctionne qu’une seule fois et expire au bout de 10 minutes.',
+    'auth.reset_sent'              => 'Si un compte existe pour :email, un code de réinitialisation est en route. Pensez aussi à vérifier votre dossier de courrier indésirable.',
+    'auth.reset_done'              => 'Votre mot de passe a été modifié. Vous pouvez maintenant vous connecter.',
+    'auth.reset_invalid'           => 'Ce code est erroné ou a expiré. Demandez-en un nouveau.',
+    'auth.reset_unavailable'       => 'La récupération du mot de passe par e-mail n’est pas encore disponible sur ce site. Écrivez à l’adresse de contact indiquée en pied de page.',
+    'email.subject_reset_code'     => 'Votre code de réinitialisation du mot de passe AthenXiv',
+    'email.body_reset_code'        => "Bonjour,\n\nQuelqu’un a demandé la réinitialisation du mot de passe du compte AthenXiv associé à cette adresse.\n\nVotre code de réinitialisation est :code — il expire dans :minutes minutes.\n\nOuvrez :url et saisissez le code avec votre nouveau mot de passe. Si vous n’êtes pas à l’origine de cette demande, ignorez ce message : rien ne change sans le code.\n\n— :site",
 ];

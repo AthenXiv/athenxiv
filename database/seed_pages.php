@@ -25,11 +25,27 @@ return array (
     array (
       'zh-CN' => '# 关于本站
 
-**AthenXiv（AthenXiv）**是一个开放的论文发布与存证平台。名字取自拉斐尔的名画《AthenXiv》——那幅画里没有学位袍，没有头衔牌，只有一群人在争论。我们想做的是同一件事：**不问出身，只问论证。**
+**AthenXiv** 是一个开放的论文发布与存证平台。名字取自拉斐尔的名画《雅典学院》——那幅画里没有学位袍，没有头衔牌，只有一群人在争论。我们想做的是同一件事：**不问出身，只问论证。**
 
 ---
 
-## 一、把「谁先写的」变成任何人都能验证的事实
+## 一、AGI 时代，知识边界应当属于每一个人
+
+随着 AGI 时代的到来，人类对知识边界的拓展正在变得触手可及。就在不久前，大型语言模型还只是「会写字的工具」；而如今，它们已经开始站到真正的新成果之中——在与数学家合作时，GPT-5 为悬置数十年的 Erdős 第 848 号问题补上了证明中缺失的一环，让人们第一次看到模型参与到「还没有人知道的结论」里，而不只是复述已知的知识。
+
+这当然是好消息。但当探索的能力越来越集中在少数机构、少数模型和少数预算手中，一个自然的问题就会浮现：**谁来提出问题？谁有资格得出结论？谁又有权把它发表出来？**
+
+我们的答案很明确：**这种探索的权利，以及把探索结果公诸于众的权利，应当属于每一个人。** 它不该等到某个机构点头，也不该先过一遍学位、职称与经费的筛选。谁都可以提出猜想、给出证明、写下反驳——这正是本站存在的理由。
+
+你或许没有昂贵的算力，也没有挂在墙上的头衔，但这些从来不是「能否参与」的前提。本站想做的，是让想法本身被看见、被记录、被验证。
+
+---
+
+## 二、没有 DOI，但有可证实的优先权
+
+与成熟的预印本平台不同，本站目前**无法为论文分配 DOI**。但我们能做另一件事，而且我们认为它同样重要：
+
+**本站为每一篇上传的论文提供 OpenTimestamps 时间戳存证。** 论文的发布日期因此得到一份**具有可证实效益的时间戳验证**，从而保护发布者对于这项研究的**优先权**——即便论文尚未被任何期刊收录，你「何时想到了它、何时写下了它」也已经留有凭证。
 
 这是本站最不像「普通预印本网站」的地方。
 
@@ -47,9 +63,11 @@ return array (
 
 **存证与审核同时进行**：你点下「提交」的瞬间，存证就已经完成，不必等审核结果。
 
+顺带一提，不只是论文：**本站自己的介绍、指南与政策页面，也都逐页做了同样的时间戳存证**。你可以在这些页面下方下载存证文本与 `.ots` 证明，自行校验它们自发布以来是否被改动过——我们希望连「本站是什么、主张什么」这件事，也是可以被独立验证的。
+
 ---
 
-## 二、低门槛、真开放
+## 三、低门槛、真开放
 
 * 本站**同时接收正式论文与预印本**，不要求同行评议通过，不要求机构背书；
 * **不限学历、不限职称、不限单位、不限推荐人**，任何人均可注册并上传；
@@ -61,7 +79,7 @@ return array (
 
 ---
 
-## 三、多语言、多学科
+## 四、多语言、多学科
 
 * 界面支持**三十种语言**，会根据你的浏览器语言自动切换；
 * 论文正文的语言由你自己选择：列表里没有的语种，可以直接填写，审核通过后它会自动出现在语言筛选栏里；
@@ -69,7 +87,7 @@ return array (
 
 ---
 
-## 四、我们拒绝什么（严肃声明）
+## 五、我们拒绝什么（严肃声明）
 
 **本站拒绝伪科学论文与一切学术造假。** 具体包括但不限于：
 
@@ -86,7 +104,7 @@ return array (
 
 ---
 
-## 五、如何开始
+## 六、如何开始
 
 1. [注册一个账号](/register)——只需要昵称和一个邮箱；
 2. 准备一份 PDF，填写标题、摘要、作者与关键词；
@@ -101,7 +119,23 @@ return array (
 
 ---
 
-## 1. Turning "who wrote it first" into a fact anyone can verify
+## 1. In the age of AGI, the frontier of knowledge should belong to everyone
+
+With the arrival of the AGI era, the human frontier of knowledge is coming within reach. Not long ago, large language models merely produced text; today they are beginning to stand inside genuine new results. Working with mathematicians, GPT-5 supplied the missing step in the proof of Erdős Problem 848 — a question that had stood open for decades — and for the first time many of us saw a model contribute to a conclusion nobody yet knew, rather than restating what was already known.
+
+That is good news. But when the ability to explore concentrates into a few institutions, a few models and a few budgets, an obvious question follows: **who gets to pose the question? Who is allowed to reach the conclusion? And who holds the right to publish it?**
+
+Our answer is plain: **the right to explore, and the right to publish what that exploration finds, should belong to everyone.** It should not wait for an institution\'s nod, nor pass first through a filter of degrees, titles and grants. Anyone may propose a conjecture, give a proof, write a rebuttal — that is why this site exists.
+
+You may have neither expensive compute nor a title on a wall, but neither was ever a precondition for taking part. What this site tries to do is let an idea itself be seen, recorded and checked.
+
+---
+
+## 2. No DOI — but a priority you can verify
+
+Unlike established preprint servers, this site **cannot assign a DOI** to a paper. There is something else we can do, and we think it matters just as much:
+
+**Every paper uploaded here is given an OpenTimestamps proof.** Its publication date is therefore backed by a **verifiable timestamp**, which protects the author\'s **priority** over the work — even if no journal has accepted it, when you thought of it and when you wrote it down is on the record.
 
 This is what makes the site unlike an ordinary preprint server.
 
@@ -119,9 +153,11 @@ The moment a paper is uploaded, every file is hashed with SHA-256 and the digest
 
 **Timestamping happens in parallel with review**: the proof is created the moment you press submit.
 
+One more thing, and it is not only about papers: **this site\'s own introduction, guidelines and policy pages carry the same proof, page by page.** At the bottom of each of them you can download the stamped text and its `.ots` proof and check for yourself that they have not changed since the day they were published. Even what this site is, and what it claims, should be independently verifiable.
+
 ---
 
-## 2. Low barriers, genuinely open
+## 3. Low barriers, genuinely open
 
 * We host **both formal papers and preprints**; peer-review acceptance is not required, nor is institutional backing;
 * **No degree, position, affiliation or sponsor is required** — anyone may register and upload;
@@ -133,7 +169,7 @@ We take this to be the meaning of the name: in the School of Athens, anyone may 
 
 ---
 
-## 3. Many languages, many disciplines
+## 4. Many languages, many disciplines
 
 * The interface ships **thirty languages** and follows your browser automatically;
 * You choose the language of the text itself; if it is not in the list, type it in — once the paper is accepted, it appears in the language filter;
@@ -141,7 +177,7 @@ We take this to be the meaning of the name: in the School of Athens, anyone may 
 
 ---
 
-## 4. What we refuse (a serious statement)
+## 5. What we refuse (a serious statement)
 
 **This site refuses pseudoscientific papers and all academic fraud**, including but not limited to:
 
@@ -158,7 +194,7 @@ Confirmed cases are **taken down, the account is banned and the audit trail is k
 
 ---
 
-## 5. Getting started
+## 6. Getting started
 
 1. [Create an account](/register) — a display name and an e-mail address are enough;
 2. Prepare a PDF and fill in title, abstract, authors and keywords;

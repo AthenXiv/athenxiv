@@ -884,4 +884,21 @@ return [
     'auth.registered_verified'     => 'Cont creat — adresa dumneavoastră de e-mail este verificată.',
     'email.subject_verify_code'    => 'Codul dumneavoastră de verificare AthenXiv',
     'email.body_verify_code'       => "Bună ziua,\n\nCodul dumneavoastră de verificare este :code.\n\nExpiră în 10 minute. Dacă nu l-ați solicitat, puteți ignora acest mesaj.\n\n— :site",
+
+    // ------------------- password recovery by e-mail
+    'auth.forgot_password'         => 'Ți-ai uitat parola?',
+    'auth.reset_title'             => 'Resetează-ți parola',
+    'auth.reset_subtitle'          => 'Introdu adresa de e-mail a contului tău. Îți trimitem un cod din șase cifre; cu acel cod îți alegi o parolă nouă.',
+    'auth.reset_email'             => 'Adresa de e-mail a contului',
+    'auth.reset_send_cta'          => 'Trimite codul de resetare',
+    'auth.reset_code_label'        => 'Codul din șase cifre din mesaj',
+    'auth.reset_new_password'      => 'Parolă nouă',
+    'auth.reset_submit'            => 'Salvează parola nouă',
+    'auth.reset_hint'              => 'Codul funcționează o singură dată și expiră după 10 minute.',
+    'auth.reset_sent'              => 'Dacă există un cont pentru :email, un cod de resetare este pe drum. Verifică și folderul de spam.',
+    'auth.reset_done'              => 'Parola ta a fost schimbată. Te poți autentifica acum.',
+    'auth.reset_invalid'           => 'Acest cod este greșit sau a expirat. Solicită unul nou.',
+    'auth.reset_unavailable'       => 'Recuperarea parolei prin e-mail nu este încă disponibilă pe acest site. Scrie la adresa de contact din subsolul paginii.',
+    'email.subject_reset_code'     => 'Codul tău de resetare a parolei AthenXiv',
+    'email.body_reset_code'        => "Bună,\n\nCineva a cerut resetarea parolei contului AthenXiv care folosește această adresă.\n\nCodul tău de resetare este :code — expiră în :minutes minute.\n\nDeschide :url și introdu codul împreună cu parola nouă. Dacă nu ai fost tu, ignoră acest mesaj: nimic nu se schimbă fără cod.\n\n— :site",
 ];

@@ -884,4 +884,20 @@ return [
     'email.subject_verify_code'   => 'Mã xác minh AthenXiv của bạn',
     'email.body_verify_code'      => "Xin chào,\n\nMã xác minh của bạn là :code.\n\nMã hết hạn sau 10 phút. Nếu bạn không yêu cầu mã này, bạn có thể bỏ qua thư này.\n\n— :site",
 
+    // ------------------- password recovery by e-mail
+    'auth.forgot_password'         => 'Quên mật khẩu?',
+    'auth.reset_title'             => 'Đặt lại mật khẩu',
+    'auth.reset_subtitle'          => 'Hãy nhập địa chỉ email của tài khoản. Chúng tôi gửi một mã gồm sáu chữ số; với mã đó, bạn chọn mật khẩu mới.',
+    'auth.reset_email'             => 'Địa chỉ email của tài khoản',
+    'auth.reset_send_cta'          => 'Gửi mã đặt lại',
+    'auth.reset_code_label'        => 'Mã sáu chữ số trong tin nhắn',
+    'auth.reset_new_password'      => 'Mật khẩu mới',
+    'auth.reset_submit'            => 'Lưu mật khẩu mới',
+    'auth.reset_hint'              => 'Mã chỉ dùng được một lần và hết hạn sau 10 phút.',
+    'auth.reset_sent'              => 'Nếu tồn tại tài khoản cho :email, mã đặt lại đang được gửi tới bạn. Bạn cũng nên kiểm tra thư mục spam.',
+    'auth.reset_done'              => 'Mật khẩu của bạn đã được thay đổi. Bây giờ bạn có thể đăng nhập.',
+    'auth.reset_invalid'           => 'Mã đó không đúng hoặc đã hết hạn. Hãy yêu cầu mã mới.',
+    'auth.reset_unavailable'       => 'Tính năng khôi phục mật khẩu qua email chưa khả dụng trên trang này. Vui lòng viết tới địa chỉ liên hệ ở chân trang.',
+    'email.subject_reset_code'     => 'Mã đặt lại mật khẩu AthenXiv của bạn',
+    'email.body_reset_code'        => "Xin chào,\n\nCó người đã yêu cầu đặt lại mật khẩu của tài khoản AthenXiv dùng địa chỉ này.\n\nMã đặt lại của bạn là :code — mã hết hạn sau :minutes phút.\n\nHãy mở :url và nhập mã cùng với mật khẩu mới. Nếu không phải bạn, hãy bỏ qua tin nhắn này: sẽ không có gì thay đổi nếu thiếu mã.\n\n— :site",
 ];

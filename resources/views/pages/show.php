@@ -27,6 +27,41 @@ $limits = $limits ?? null;
 
     <?= $bodyHtml ?>
 
+    <?php
+    // This page's own OpenTimestamps proof. Shown on every content page so that
+    // "we published this on such a date" is something a visitor can check.
+    $pageProofs = $pageProofs ?? ['current' => null, 'history' => [], 'earliest' => null];
+    ?>
+    <?php if (!empty($pageProofs['current'])): ?>
+      <section class="page-ots">
+        <h2><?= e(__('ots.page_heading')) ?></h2>
+        <p class="small muted"><?= e(__('ots.page_intro')) ?></p>
+        <?php if (!empty($pageProofs['earliest']['submitted_at'])): ?>
+          <p class="small muted">
+            <?= e(__('ots.page_first_stamped', [
+              'date' => (string) format_date((string) $pageProofs['earliest']['submitted_at'], true),
+            ])) ?>
+          </p>
+        <?php endif; ?>
+        <?php \Athenaeum\Core\View::partial('partials/ots', ['timestamp' => $pageProofs['current']]); ?>
+
+        <?php if (!empty($pageProofs['history'])): ?>
+          <details class="ots-history">
+            <summary>
+              <?= e(__('ots.history_toggle', ['count' => (string) count($pageProofs['history'])])) ?>
+            </summary>
+            <div class="ots-history__list">
+              <?php foreach ($pageProofs['history'] as $entry): ?>
+                <div class="ots-history__item">
+                  <?php \Athenaeum\Core\View::partial('partials/ots', ['timestamp' => $entry, 'compact' => true]); ?>
+                </div>
+              <?php endforeach; ?>
+            </div>
+          </details>
+        <?php endif; ?>
+      </section>
+    <?php endif; ?>
+
     <?php if ($pageSlug === 'timestamping' && $calendars !== []): ?>
       <h2><?= e(__('ots.calendars')) ?></h2>
       <ul>

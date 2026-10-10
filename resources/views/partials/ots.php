@@ -18,8 +18,10 @@ use Athenaeum\Models\Timestamp;
 $compact = !empty($compact);
 $confirmed = ($timestamp['status'] ?? '') === 'confirmed';
 $failed = ($timestamp['status'] ?? '') === 'failed';
+$isPage = ($timestamp['target_type'] ?? '') === 'page';
 $verifyUrl = (string) ($timestamp['verify_url'] ?? \Athenaeum\Services\OpenTimestamps::verifyUrl());
 $proofUrl = $timestamp['proof_url'] ?? null;
+$snapshotUrl = $timestamp['snapshot_url'] ?? null;
 $stateClass = $confirmed ? 'ok' : ($failed ? 'bad' : 'warn');
 ?>
 <div class="ots ots--<?= $stateClass ?><?= $compact ? ' ots--compact' : '' ?>">
@@ -29,6 +31,8 @@ $stateClass = $confirmed ? 'ok' : ($failed ? 'bad' : 'warn');
       <strong>OpenTimestamps</strong>
       <?php if ($compact): ?>
         <span class="muted small">· <?= e(Timestamp::shortStatusLabel((string) $timestamp['status'])) ?></span>
+      <?php elseif ($isPage): ?>
+        <span class="muted small">· <?= e(__('ots.target_page')) ?></span>
       <?php elseif ($timestamp['target_type'] === 'attachment'): ?>
         <span class="muted small">· <?= e(__('ots.target_attachment')) ?>: <?= e((string) ($timestamp['file_name'] ?? '')) ?></span>
       <?php else: ?>
@@ -60,6 +64,10 @@ $stateClass = $confirmed ? 'ok' : ($failed ? 'bad' : 'warn');
         <a class="btn btn--ghost btn--tiny" href="<?= e($proofUrl) ?>" download
            title="<?= e(__('ots.download_proof')) ?>">.ots</a>
       <?php endif; ?>
+      <?php if ($snapshotUrl): ?>
+        <a class="btn btn--ghost btn--tiny" href="<?= e($snapshotUrl) ?>" download
+           title="<?= e(__('ots.download_snapshot')) ?>">.txt</a>
+      <?php endif; ?>
     </span>
   </div>
 
@@ -89,7 +97,11 @@ $stateClass = $confirmed ? 'ok' : ($failed ? 'bad' : 'warn');
         <?php endif; ?>
       </dl>
       <p class="muted">
-        <?= e($confirmed ? __('ots.confirmed_explainer') : __('ots.pending_explainer')) ?>
+        <?php if ($isPage): ?>
+          <?= e($confirmed ? __('ots.page_confirmed_explainer') : __('ots.page_pending_explainer')) ?>
+        <?php else: ?>
+          <?= e($confirmed ? __('ots.confirmed_explainer') : __('ots.pending_explainer')) ?>
+        <?php endif; ?>
       </p>
       <?php if (!$confirmed && !$failed): ?>
         <p class="muted"><?= e(__('ots.pending_no_date')) ?></p>

@@ -890,4 +890,21 @@ Din verifieringskod är :code.
 Den upphör att gälla om 10 minuter. Om du inte begärde den kan du bortse från det här meddelandet.
 
 — :site",
+
+    // ------------------- password recovery by e-mail
+    'auth.forgot_password'         => 'Glömt ditt lösenord?',
+    'auth.reset_title'             => 'Återställ ditt lösenord',
+    'auth.reset_subtitle'          => 'Ange e-postadressen för ditt konto. Vi skickar en sexsiffrig kod; med den väljer du ett nytt lösenord.',
+    'auth.reset_email'             => 'Kontots e-postadress',
+    'auth.reset_send_cta'          => 'Skicka återställningskoden',
+    'auth.reset_code_label'        => 'Sexsiffrig kod från meddelandet',
+    'auth.reset_new_password'      => 'Nytt lösenord',
+    'auth.reset_submit'            => 'Spara det nya lösenordet',
+    'auth.reset_hint'              => 'Koden fungerar en gång och upphör att gälla efter 10 minuter.',
+    'auth.reset_sent'              => 'Om ett konto finns för :email är en återställningskod på väg till dig. Titta gärna i skräpposten också.',
+    'auth.reset_done'              => 'Ditt lösenord har ändrats. Du kan logga in nu.',
+    'auth.reset_invalid'           => 'Koden är fel eller har upphört att gälla. Begär en ny.',
+    'auth.reset_unavailable'       => 'Lösenordsåterställning via e-post är ännu inte tillgänglig på den här webbplatsen. Skriv till kontaktadressen i sidfoten.',
+    'email.subject_reset_code'     => 'Din kod för att återställa lösenordet på AthenXiv',
+    'email.body_reset_code'        => "Hej,\n\nNågon har begärt att återställa lösenordet för det AthenXiv-konto som använder den här adressen.\n\nDin återställningskod är :code — den upphör att gälla om :minutes minuter.\n\nÖppna :url och ange koden tillsammans med ditt nya lösenord. Om det inte var du kan du bortse från det här meddelandet: ingenting ändras utan koden.\n\n— :site",
 ];
