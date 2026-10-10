@@ -78,6 +78,9 @@ $option = static function (string $key, string $default = '') use ($options): st
 };
 
 $stateFile = rtrim(Config::path('storage'), '/\\') . '/openalex-import.json';
+// OpenAlex asks heavy users to identify themselves. The address belongs in
+// `site.contact_email` (admin → settings), not in the source: this file is part
+// of the public distribution.
 $mailto = $option('mailto', Settings::string('site.contact_email', 'admin@example.org'));
 $perField = max(1, (int) $option('per_field', '12'));
 $planCap = max(1, (int) $option('plan_cap', '560'));
