@@ -2,8 +2,9 @@
 /**
  * AthenXiv — active configuration.
  *
- * If `config/config.local.php` exists it is merged on top of this file, key by
- * key (recursively). Keep deployment secrets in config.local.php.
+ * The values below are placeholders so a fresh clone boots. Put real
+ * credentials in `config/config.local.php`, which is not versioned and is
+ * merged on top of this file key by key (recursively) when it exists.
  */
 
 $config = [
@@ -18,12 +19,14 @@ $config = [
     ],
 
     'db' => [
-        'driver'      => 'mysql',
+        // SQLite by default so a fresh clone runs with the commands in the
+        // README. Switch to 'mysql' for a public deployment.
+        'driver'      => 'sqlite',
         'host'        => '127.0.0.1',
         'port'        => 3306,
         'database'    => 'athenxiv',
         'username'    => 'athenxiv',
-        'password'    => 'change-me-in-config-local-php',
+        'password'    => '',
         'charset'     => 'utf8mb4',
         'collation'   => 'utf8mb4_unicode_ci',
         'prefix'      => '',

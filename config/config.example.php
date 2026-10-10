@@ -30,11 +30,13 @@ return [
     'db' => [
         // 'mysql' for production, 'sqlite' for local verification.
         'driver'      => 'mysql',
+        // Placeholders only. Put real credentials in config/config.local.php,
+        // which is not versioned — never in this file or in config.php.
         'host'        => '127.0.0.1',
         'port'        => 3306,
         'database'    => 'athenxiv',
         'username'    => 'athenxiv',
-        'password'    => 'change-me-in-config-local-php',
+        'password'    => '',
         'charset'     => 'utf8mb4',
         'collation'   => 'utf8mb4_unicode_ci',
         'prefix'      => '',
