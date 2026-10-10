@@ -122,7 +122,10 @@ final class I18n
         Session::set('locale', self::$locale);
     }
 
-    /** Loose matching so `zh-TW`, `zh-Hans`, `zh` all land on `zh-CN`. */
+    /**
+     * Loose matching: `de-DE` finds `de`, `zh-Hant` finds `zh-TW`, and a bare
+     * `zh` (no region, no script) lands on `zh-CN`.
+     */
     public static function match(string $tag, array $enabled): ?string
     {
         $normalised = self::normalise($tag);
@@ -148,10 +151,11 @@ final class I18n
      * translation for it.
      *
      * Used where the language of the *content* differs from the language of the
-     * reader: a paper written in `zh-TW` is announced to its author in the
-     * `zh-CN` interface, because that is the Chinese we actually ship. Paper
-     * languages outnumber interface locales (74 vs 30), so "no match" is normal
-     * and the caller falls back to the site default.
+     * reader: a paper written in Simplified Chinese is announced to a
+     * Traditional-Chinese author in the `zh-TW` interface, and vice versa,
+     * because both variants are shipped. Paper languages outnumber interface
+     * locales (74 vs 30), so "no match" is normal and the caller falls back to
+     * the site default.
      */
     public static function bestMatch(?string $tag): ?string
     {
@@ -195,10 +199,23 @@ final class I18n
         }
         $region = strtoupper($parts[1]);
         $script = ucfirst(strtolower($parts[1] ?? ''));
-        // zh-hans / zh-hant / zh-cn / zh-tw all collapse onto zh-CN, the only
-        // Chinese locale shipped today.
+        // Chinese is the one language whose *script*, not just its region,
+        // changes the interface we should serve. zh-TW / zh-HK / zh-MO /
+        // zh-Hant are Traditional; zh-CN / zh-SG / zh-Hans are Simplified.
+        // Pin the script when we ship it, and fall back to the other variant
+        // rather than to the wrong script.
         if ($language === 'zh') {
-            return self::hasLocale('zh-CN') ? 'zh-CN' : 'zh';
+            $traditional = in_array($region, ['TW', 'HK', 'MO'], true) || $script === 'Hant';
+            if ($traditional) {
+                if (self::hasLocale('zh-TW')) {
+                    return 'zh-TW';
+                }
+                return self::hasLocale('zh-CN') ? 'zh-CN' : 'zh';
+            }
+            if (self::hasLocale('zh-CN')) {
+                return 'zh-CN';
+            }
+            return self::hasLocale('zh-TW') ? 'zh-TW' : 'zh';
         }
         $candidate = $language . '-' . $region;
         if (self::hasLocale($candidate)) {
@@ -362,6 +379,7 @@ final class I18n
         $patterns = [
             'en'    => $withTime ? 'M j, Y H:i' : 'M j, Y',
             'zh-CN' => $withTime ? 'Y年n月j日 H:i' : 'Y年n月j日',
+            'zh-TW' => $withTime ? 'Y年n月j日 H:i' : 'Y年n月j日',
             'ja'    => $withTime ? 'Y年n月j日 H:i' : 'Y年n月j日',
             'ko'    => $withTime ? 'Y년 n월 j일 H:i' : 'Y년 n월 j일',
             'fr'    => $withTime ? 'j M Y H:i' : 'j M Y',

@@ -571,6 +571,7 @@ return [
     'admin.open_pdf' => '打开 PDF',
     'admin.download_pdf' => '下载 PDF',
     'admin.registration_open' => '允许开放注册',
+    'admin.registration_reset_password' => '允许通过电子邮件找回密码（需要可用的邮件设置）',
     'admin.auto_approve' => '管理员上传即刻发表',
     'admin.require_ots' => '发表前必须具有时间戳证明',
     'admin.notify_email' => '审核通知发送至',
