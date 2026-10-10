@@ -2,6 +2,18 @@
 
 # AthenXiv
 
+In the age of AGI, the human frontier of knowledge is coming within reach.
+Working with mathematicians, GPT-5 supplied the missing step in the proof of
+**Erdős Problem 848** — a question that had stood open for decades — and many of
+us saw for the first time a model stand inside a conclusion nobody yet knew,
+instead of restating what was already known.
+
+The right to explore, and the right to publish what that exploration finds,
+should belong to everyone. It should not wait for an institution's nod, nor pass
+first through a filter of degrees, titles and grants. **AthenXiv was built for
+that reason, and its source code is released here so that more people can join
+in and stand up more open platforms for publishing papers.**
+
 An open, multidisciplinary archive for research papers, with **OpenTimestamps**
 proofs, in-browser PDF reading, and a thirty-language interface.
 
@@ -12,6 +24,26 @@ sponsor is required. Every upload is hashed and stamped with OpenTimestamps, so
 readers can verify that a file existed at a given moment. The archive also
 preserves open-access works published elsewhere, marked as such and shown with
 their original publication date and licence.
+
+## Why run your own copy
+
+Two things are already wired up, so a new instance is useful the moment it is
+online — no extra configuration:
+
+1. **Google Scholar is already handled.** Both athenxiv.com and this
+   open-source build emit the Highwire `citation_*` metadata Scholar reads,
+   serve `/paper/{uid}.pdf` with `Content-Type: application/pdf`, and generate
+   `/sitemap.xml` from the database on every request. Stand up your own copy,
+   keep the content quality good, and Scholar can index it.
+2. **OpenTimestamps is already configured.** The public
+   [opentimestamps.com](https://opentimestamps.com) calendars are wired in by
+   default, so an operator who changes nothing still gets a free, independently
+   verifiable timestamp for every uploaded paper — a cryptographic receipt of
+   the publication date that protects the author's priority.
+
+The site's own content pages (about, guidelines, policy) are timestamped in the
+same way: run `php bin/ots-stamp-pages.php` once after the first deploy, and
+every later edit to a page re-stamps it automatically.
 
 ## What is in the box
 
@@ -47,8 +79,10 @@ their original publication date and licence.
 git clone https://github.com/AthenXiv/athenxiv.git
 cd athenxiv
 
-# 1. configuration: copy the example and edit it
-cp config/config.example.php config/config.local.php
+# 1. configuration: config/config.php ships with SQLite defaults, so the
+#    commands below work as they are. For MySQL, edit config/config.php — or
+#    keep the credentials in config/config.local.php, which is not versioned.
+#    Every option is documented in config/config.example.php.
 
 # 2. database (SQLite is enough to look around)
 php bin/install.php --driver=sqlite \
